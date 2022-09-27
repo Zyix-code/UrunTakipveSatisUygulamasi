@@ -41,12 +41,12 @@ namespace OSBilişim
                     if (programdurumu == "Arızalı")
                     {
                         MessageBox.Show(((string)üründurumusorgulama["program_arizali"]), "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Kapalı")
                     {
                         MessageBox.Show((string)üründurumusorgulama["program_kapali"], "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Zamanlı Bakım")
                     {
@@ -54,12 +54,12 @@ namespace OSBilişim
                         DateTime bitis = (DateTime)üründurumusorgulama["program_zamanli_bakim_bitis"];
                         TimeSpan kalanzaman = bitis - baslangic;
                         MessageBox.Show(((string)üründurumusorgulama["program_zamanli_bakim"]) + "\n Kalan zaman: " + kalanzaman.Days + " gün " + kalanzaman.Hours + " saat " + kalanzaman.Seconds + " saniye kalmıştır.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Bakım")
                     {
-                        MessageBox.Show(((string)üründurumusorgulama["program_bakim"]), "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        MessageBox.Show((string)üründurumusorgulama["program_bakim"], "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        Application.Exit();
                     }
                     else
                     {
@@ -72,7 +72,7 @@ namespace OSBilişim
                                 File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.123/Update/OSUpdate.exe"));
                                 Process.Start("OSUpdate.exe");
                                 System.Threading.Thread.Sleep(1000);
-                                Environment.Exit(0);
+                                Application.Exit();
                             }
                             else
                             {
@@ -86,7 +86,16 @@ namespace OSBilişim
             }
             catch (Exception hata)
             {
-                MessageBox.Show("Program başlatılmadı.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
             try
@@ -114,20 +123,32 @@ namespace OSBilişim
             }
             catch (Exception hata)
             {
-                MessageBox.Show("Server ile bağlantı kurulmadı.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
 
         private void Silbtn_Click(object sender, EventArgs e)
         {
+            provider.Clear();
+
             if (kullanilacak_malzemeler_listesi.SelectedIndex > -1)
                 kullanilacak_malzemeler_listesi.Items.RemoveAt(kullanilacak_malzemeler_listesi.SelectedIndex);
             else if (kullanilacak_malzemeler_listesi.SelectedIndex == -1)
-                MessageBox.Show("Kullanmayacağınız malzemeyi seçmeniz gerekiyor.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(kullanilacak_malzemeler_listesi, "Kullanılmayacak malzemeyi seçiniz.");
         }
         private void Liste_temizle_Click(object sender, EventArgs e)
         {
+            provider.Clear();
             if (kullanilacak_malzemeler_listesi.Items.Count > 0)
             {
                 DialogResult dialog = MessageBox.Show("Kullanılacak malzemeler listesini temizlemek istediğinize emin misiniiz?", "OS BİLİŞİM", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -143,7 +164,7 @@ namespace OSBilişim
             }
             else
             {
-                MessageBox.Show("Malzeme listesi temizlenemez çünkü liste boş!", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(kullanilacak_malzemeler_listesi, "Kullanılacak malzeme listesi boş.");
             }
         }
         private void Ürunadi_SelectedIndexChanged(object sender, EventArgs e)
@@ -193,7 +214,16 @@ namespace OSBilişim
             }
             catch (Exception hata)
             {
-                MessageBox.Show("Serverden ürün stok kodları çekilmedi lütfen tekrar deneyiniz.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
@@ -268,13 +298,11 @@ namespace OSBilişim
                                 int sipno = id + 1;
                                 if (id >= Convert.ToUInt16(sipariş_numarası_textbox.Text))
                                 {
-                                    MessageBox.Show($"Girdiğiniz sipariş numarası küçüktür, girebileceğiniz en düşük sipariş numarası: {id + 1}\nSizin için sipariş numarası otamatik olarak girilmiştir.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     sipariş_numarası_textbox.Text = $"{id + 1}";
                                     provider.SetError(sipariş_numarası_textbox, $"Girdiğiniz sipariş numarası küçüktür, girebileceğiniz en düşük sipariş numarası: {id + 1}\nSizin için sipariş numarası otamatik olarak girilmiştir.");
                                 }
                                 else if (Convert.ToInt16(sipariş_numarası_textbox.Text) > sipno)
                                 {
-                                    MessageBox.Show($"Girdiğiniz sipariş numarası büyüktür, girebileceğiniz en yüksek sipariş numarası: {id + 1}\nSizin için sipariş numarası otamatik olarak girilmiştir.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     sipariş_numarası_textbox.Text = $"{id + 1}";
                                     provider.SetError(sipariş_numarası_textbox, $"Girdiğiniz sipariş numarası büyüktür, girebileceğiniz en yüksek sipariş numarası: {id + 1}\nSizin için sipariş numarası otamatik olarak girilmiştir.");
                                 }
@@ -425,7 +453,16 @@ namespace OSBilişim
                     }
                     catch (Exception hata)
                     {
-                        MessageBox.Show("Siparişiniz oluşturulmadı.\nİnternet bağlantınızı ya da server bağlantınızı kontrol ediniz.\n Hata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                        {
+                            Kullanicigirisiform.Log("Sipariş oluşturulmadı, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+
+                        }
+                        using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                        {
+                            Kullanicigirisiform.DumpLog(r);
+                        }
+                        MessageBox.Show("Sipariş oluşturulmadı, bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Application.Exit();
                     }
                 }
@@ -438,22 +475,24 @@ namespace OSBilişim
         }
         private void Ürünadetitextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            provider.Clear();
             if (e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                MessageBox.Show("Ürün adeti sadece rakam & sayı ile giriş yapılabilir.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(ürünadetitextbox, "Ürün adeti sadece rakam & sayı ile giriş yapılabilir.");
             }
             else { }
         }
         private void Malzeme_ekle_btn_Click(object sender, EventArgs e)
         {
             string kullanilackamalzemekontrol;
+            provider.Clear();   
             if (kullanilacak_malzeme_adeti_textbox.Text == "")
             {
                 if (kullanilacak_malzemeler_listbox.SelectedItem.ToString() == "Ürün orjinal hali ile gönderilecektir")
                 {
                     if (kullanilacak_malzemeler_listesi.Items.Contains(kullanilacak_malzemeler_listbox.SelectedItem))
                     {
-                        MessageBox.Show("Malzemeler listesinde aynı ürün mevcut ürünü silip güncelledikten sonra tekrar ekleyiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        provider.SetError(kullanilacak_malzemeler_listbox, "Malzemeler listesinde aynı ürün mevcut ürünü silip güncelledikten sonra tekrar ekleyiniz.");
                     }
                     else
                     {
@@ -462,17 +501,16 @@ namespace OSBilişim
                 }
                 else
                 {
-                    MessageBox.Show("Kullanılacak malzeme adetini giriniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    provider.SetError(kullanilacak_malzeme_adeti_textbox, "Kullanılacak malzeme adetini giriniz.");
                 }
-
             }
             else if (kullanilacak_malzemeler_listbox.SelectedIndex == -1)
             {
-                MessageBox.Show("Lütfen geçerli malzeme seçiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(kullanilacak_malzemeler_listbox, "Lütfen geçerli malzeme seçiniz.");
             }
             else if (kullanilacak_malzemeler_listbox.Text == "")
             {
-                MessageBox.Show("Lütfen geçerli malzeme seçiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(kullanilacak_malzemeler_listbox, "Lütfen geçerli malzeme seçiniz.");
             }
             else if (Convert.ToInt32(kullanilacak_malzeme_adeti_textbox.Text) < 1)
             {
@@ -480,7 +518,7 @@ namespace OSBilişim
                 {
                     if (kullanilacak_malzemeler_listesi.Items.Contains(kullanilacak_malzemeler_listbox.SelectedItem))
                     {
-                        MessageBox.Show("Malzemeler listesinde aynı ürün mevcut ürünü silip güncelledikten sonra tekrar ekleyiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        provider.SetError(kullanilacak_malzemeler_listbox, "Malzemeler listesinde aynı ürün mevcut ürünü silip güncelledikten sonra tekrar ekleyiniz.");
                     }
                     else
                     {
@@ -489,7 +527,7 @@ namespace OSBilişim
                 }
                 else
                 {
-                    MessageBox.Show("Kullanılacak malzeme adeti 1'den küçük olamaz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    provider.SetError(kullanilacak_malzeme_adeti_textbox, "Kullanılacak malzeme adeti 1'den küçük olamaz.");
                 }
             }
             else
@@ -505,7 +543,7 @@ namespace OSBilişim
                         kullanilackamalzemekontrol = kullanilacak_malzemeler_listbox.SelectedItem + " (" + kullanilacak_malzeme_adeti_textbox.Text + " Adet)" + " Verildi";
                         if (kullanilacak_malzemeler_listesi.Items.Contains(kullanilackamalzemekontrol))
                         {
-                            MessageBox.Show("Malzemeler listesinde aynı ürün mevcut ürünü silip güncelledikten sonra tekrar ekleyiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            provider.SetError(kullanilacak_malzemeler_listbox, "Malzemeler listesinde aynı ürün mevcut ürünü silip güncelledikten sonra tekrar ekleyiniz.");
                         }
                         else
                         {
@@ -518,7 +556,7 @@ namespace OSBilişim
                         kullanilackamalzemekontrol = kullanilacak_malzemeler_listbox.SelectedItem + " (" + kullanilacak_malzeme_adeti_textbox.Text + " Adet)" + " Verildi";
                         if (kullanilacak_malzemeler_listesi.Items.Contains(kullanilackamalzemekontrol))
                         {
-                            MessageBox.Show("Malzemeler listesinde aynı ürün mevcut ürünü silip güncelledikten sonra tekrar ekleyiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            provider.SetError(kullanilacak_malzemeler_listbox, "Malzemeler listesinde aynı ürün mevcut ürünü silip güncelledikten sonra tekrar ekleyiniz.");
                         }
                         else
                         {
@@ -530,7 +568,7 @@ namespace OSBilişim
                         kullanilackamalzemekontrol = kullanilacak_malzemeler_listbox.SelectedItem + " (" + kullanilacak_malzeme_adeti_textbox.Text + " Adet)" + " Kullanıldı";
                         if (kullanilacak_malzemeler_listesi.Items.Contains(kullanilackamalzemekontrol))
                         {
-                            MessageBox.Show("Malzemeler listesinde aynı ürün mevcut ürünü silip güncelledikten sonra tekrar ekleyiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            provider.SetError(kullanilacak_malzemeler_listbox, "Malzemeler listesinde aynı ürün mevcut ürünü silip güncelledikten sonra tekrar ekleyiniz.");
                         }
                         else
                         {
@@ -542,7 +580,7 @@ namespace OSBilişim
                         kullanilackamalzemekontrol = kullanilacak_malzemeler_listbox.SelectedItem + " (" + kullanilacak_malzeme_adeti_textbox.Text + " Adet)" + " Takılacak";
                         if (kullanilacak_malzemeler_listesi.Items.Contains(kullanilackamalzemekontrol))
                         {
-                            MessageBox.Show("Malzemeler listesinde aynı ürün mevcut ürünü silip güncelledikten sonra tekrar ekleyiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            provider.SetError(kullanilacak_malzemeler_listbox, "Malzemeler listesinde aynı ürün mevcut ürünü silip güncelledikten sonra tekrar ekleyiniz.");
                         }
                         else
                         {
@@ -555,18 +593,20 @@ namespace OSBilişim
         }
         private void Aliciaditextbox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            provider.Clear();
             if (e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != ',')
             {
-                MessageBox.Show("Alıcı adı sadece harf ile giriş yapılabilir.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(aliciaditextbox, "Alıcı adı sadece harf ile giriş yapılabilir.");
             }
             else { }
         }
 
         private void Alicisoyaditextboxt_KeyPress(object sender, KeyPressEventArgs e)
         {
+            provider.Clear();
             if (e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != ',')
             {
-                MessageBox.Show("Alıcı soyadı sadece harf ile giriş yapılabilir.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(alicisoyaditextboxt, "Alıcı soyadı sadece harf ile giriş yapılabilir.");
             }
             else { }
         }
@@ -592,7 +632,16 @@ namespace OSBilişim
             }
             catch (Exception kullaniciaktifligi)
             {
-                MessageBox.Show("Kullanıcı bilgileri çekilmedi tekrar deneyiniz.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             foreach (var process in Process.GetProcessesByName("OSBilişim"))
@@ -614,7 +663,16 @@ namespace OSBilişim
             }
             catch (Exception kullaniciaktifligi)
             {
-                MessageBox.Show("Kullanıcı bilgileri çekilirken bir hata oluştu.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             Application.Exit();
@@ -626,10 +684,10 @@ namespace OSBilişim
 
         private void Kullanilacak_malzeme_adeti_textbox_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            provider.Clear();
             if (e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                MessageBox.Show("Ürün adeti sadece rakam & sayı ile giriş yapılabilir.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(ürünadetitextbox, "Ürün adeti sadece rakam & sayı ile giriş yapılabilir.");
             }
             else { }
         }
@@ -698,6 +756,15 @@ namespace OSBilişim
             }
             catch (Exception hata)
             {
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Yazıcı çıktısı alınırken bir hata oluştu.\nHata kodu: " + hata.Message,w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
                 MessageBox.Show("Yazıcı çıktısı alınırken bir hata oluştu.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -762,90 +829,80 @@ namespace OSBilişim
         #region renkayarı
         private void linkLabel1_MouseLeave(object sender, EventArgs e)
         {
-            linkLabel1.LinkColor = Color.MediumSeaGreen;
+            linkLabel1.LinkColor = Color.FromArgb(22, 53, 56);
         }
 
         private void linkLabel1_MouseMove(object sender, MouseEventArgs e)
         {
-            linkLabel1.LinkColor = Color.DarkGreen;
+            linkLabel1.LinkColor = Color.FromArgb(13, 31, 33);
         }
         private void Silbtn_MouseMove(object sender, MouseEventArgs e)
         {
-            silbtn.BackColor = Color.DarkGreen;
-            silbtn.ForeColor = Color.Black;
+            silbtn.BackColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Liste_temizle_MouseMove(object sender, MouseEventArgs e)
         {
-            liste_temizle.BackColor = Color.DarkGreen;
-            liste_temizle.ForeColor = Color.Black;
+            liste_temizle.BackColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Siparis_gonder_MouseMove(object sender, MouseEventArgs e)
         {
-            siparis_gonder.BackColor = Color.DarkGreen;
-            siparis_gonder.ForeColor = Color.Black;
+            siparis_gonder.BackColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Malzeme_ekle_btn_MouseMove(object sender, MouseEventArgs e)
         {
-            malzeme_ekle_btn.BackColor = Color.DarkGreen;
-            malzeme_ekle_btn.ForeColor = Color.Black;
+            malzeme_ekle_btn.BackColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Ana_menü_btn_MouseMove(object sender, MouseEventArgs e)
         {
-            ana_menü_btn.BackColor = Color.DarkGreen;
-            ana_menü_btn.ForeColor = Color.Black;
+            ana_menü_btn.BackColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Liste_temizle_MouseLeave(object sender, EventArgs e)
         {
-            liste_temizle.BackColor = Color.MediumSeaGreen;
-            liste_temizle.ForeColor = Color.White;
+            liste_temizle.BackColor = Color.FromArgb(22, 53, 56);
         }
 
         private void Silbtn_MouseLeave(object sender, EventArgs e)
         {
-            silbtn.BackColor = Color.MediumSeaGreen;
-            silbtn.ForeColor = Color.White;
+            silbtn.BackColor = Color.FromArgb(22, 53, 56);
         }
 
         private void Siparis_gonder_MouseLeave(object sender, EventArgs e)
         {
-            siparis_gonder.BackColor = Color.MediumSeaGreen;
-            siparis_gonder.ForeColor = Color.White;
+            siparis_gonder.BackColor = Color.FromArgb(22, 53, 56);
         }
 
         private void Malzeme_ekle_btn_MouseLeave(object sender, EventArgs e)
         {
-            malzeme_ekle_btn.BackColor = Color.MediumSeaGreen;
-            malzeme_ekle_btn.ForeColor = Color.White;
+            malzeme_ekle_btn.BackColor = Color.FromArgb(22, 53, 56);
         }
 
         private void Ana_menü_btn_MouseLeave(object sender, EventArgs e)
         {
-            ana_menü_btn.BackColor = Color.MediumSeaGreen;
-            ana_menü_btn.ForeColor = Color.White;
+            ana_menü_btn.BackColor = Color.FromArgb(22, 53, 56);
         }
         private void Logout_label_MouseMove(object sender, MouseEventArgs e)
         {
-            logout_label.ForeColor = Color.Black;
+            logout_label.ForeColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Windows_kücültme_label_MouseMove(object sender, MouseEventArgs e)
         {
-            windows_kücültme_label.ForeColor = Color.Black;
+            windows_kücültme_label.ForeColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Logout_label_MouseLeave(object sender, EventArgs e)
         {
-            logout_label.ForeColor = Color.Gray;
+            logout_label.ForeColor = Color.FromArgb(22, 53, 56);
         }
 
         private void Windows_kücültme_label_MouseLeave(object sender, EventArgs e)
         {
-            windows_kücültme_label.ForeColor = Color.Gray;
+            windows_kücültme_label.ForeColor = Color.FromArgb(22, 53, 56);
         }
         #endregion
 

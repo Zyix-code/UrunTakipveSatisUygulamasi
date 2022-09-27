@@ -368,7 +368,7 @@
             // 
             // malzeme_ekle_btn
             // 
-            this.malzeme_ekle_btn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.malzeme_ekle_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.malzeme_ekle_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.malzeme_ekle_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.malzeme_ekle_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
@@ -387,7 +387,7 @@
             // 
             // siparis_gonder
             // 
-            this.siparis_gonder.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.siparis_gonder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.siparis_gonder.Cursor = System.Windows.Forms.Cursors.Hand;
             this.siparis_gonder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.siparis_gonder.Font = new System.Drawing.Font("Century Gothic", 8F);
@@ -414,7 +414,7 @@
             // 
             // liste_temizle
             // 
-            this.liste_temizle.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.liste_temizle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.liste_temizle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.liste_temizle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.liste_temizle.Font = new System.Drawing.Font("Century Gothic", 8F);
@@ -452,7 +452,7 @@
             // 
             // silbtn
             // 
-            this.silbtn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.silbtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.silbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.silbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.silbtn.Font = new System.Drawing.Font("Century Gothic", 8F);
@@ -470,7 +470,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
+            this.panel2.BackColor = System.Drawing.SystemColors.Window;
             this.panel2.Controls.Add(this.ana_menü_btn);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.loginpanel_hosgeldiniz_label);
@@ -486,7 +486,7 @@
             // 
             // ana_menü_btn
             // 
-            this.ana_menü_btn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.ana_menü_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.ana_menü_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ana_menü_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ana_menü_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
@@ -506,7 +506,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 16F);
-            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.ForeColor = System.Drawing.Color.Black;
             this.label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label12.Location = new System.Drawing.Point(90, 333);
             this.label12.Name = "label12";
@@ -518,7 +518,7 @@
             // 
             this.loginpanel_hosgeldiniz_label.AutoSize = true;
             this.loginpanel_hosgeldiniz_label.Font = new System.Drawing.Font("Century Gothic", 16F);
-            this.loginpanel_hosgeldiniz_label.ForeColor = System.Drawing.Color.White;
+            this.loginpanel_hosgeldiniz_label.ForeColor = System.Drawing.Color.Black;
             this.loginpanel_hosgeldiniz_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.loginpanel_hosgeldiniz_label.Location = new System.Drawing.Point(128, 303);
             this.loginpanel_hosgeldiniz_label.Name = "loginpanel_hosgeldiniz_label";
@@ -530,7 +530,7 @@
             // 
             this.loginpanel_gelistiren_label.AutoSize = true;
             this.loginpanel_gelistiren_label.Font = new System.Drawing.Font("Century Gothic", 7F);
-            this.loginpanel_gelistiren_label.ForeColor = System.Drawing.Color.White;
+            this.loginpanel_gelistiren_label.ForeColor = System.Drawing.Color.Black;
             this.loginpanel_gelistiren_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.loginpanel_gelistiren_label.Location = new System.Drawing.Point(267, 685);
             this.loginpanel_gelistiren_label.Name = "loginpanel_gelistiren_label";
@@ -558,7 +558,7 @@
             this.windows_kücültme_label.AutoSize = true;
             this.windows_kücültme_label.Cursor = System.Windows.Forms.Cursors.Hand;
             this.windows_kücültme_label.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold);
-            this.windows_kücültme_label.ForeColor = System.Drawing.Color.Gray;
+            this.windows_kücültme_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.windows_kücültme_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.windows_kücültme_label.Location = new System.Drawing.Point(1104, 7);
             this.windows_kücültme_label.Name = "windows_kücültme_label";
@@ -575,7 +575,7 @@
             this.logout_label.AutoSize = true;
             this.logout_label.Cursor = System.Windows.Forms.Cursors.Hand;
             this.logout_label.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold);
-            this.logout_label.ForeColor = System.Drawing.Color.Gray;
+            this.logout_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.logout_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.logout_label.Location = new System.Drawing.Point(1124, 8);
             this.logout_label.Name = "logout_label";
@@ -605,18 +605,18 @@
             // 
             // linkLabel1
             // 
-            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.DarkGreen;
+            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel1.Font = new System.Drawing.Font("Century Gothic", 8F);
             this.linkLabel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.linkLabel1.LinkColor = System.Drawing.Color.MediumSeaGreen;
+            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.linkLabel1.Location = new System.Drawing.Point(577, 695);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(151, 16);
             this.linkLabel1.TabIndex = 19;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "selcuksahin158@gmail.com";
+            this.linkLabel1.Text = "selcuksahin158@gmail.com\r\n";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
             this.linkLabel1.MouseLeave += new System.EventHandler(this.linkLabel1_MouseLeave);
             this.linkLabel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.linkLabel1_MouseMove);
@@ -625,7 +625,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
+            this.label14.ForeColor = System.Drawing.Color.Black;
             this.label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label14.Location = new System.Drawing.Point(393, 664);
             this.label14.Name = "label14";

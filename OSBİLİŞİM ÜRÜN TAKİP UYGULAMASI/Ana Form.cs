@@ -12,6 +12,7 @@ namespace OSBilişim
     public partial class Anaform : Form
     {
         public static string isim, statü;
+        ErrorProvider provider = new ErrorProvider();
         public Anaform()
         {
             InitializeComponent();
@@ -42,12 +43,12 @@ namespace OSBilişim
                     if (programdurumu == "Arızalı")
                     {
                         MessageBox.Show(((string)üründurumusorgulama["program_arizali"]), "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Kapalı")
                     {
                         MessageBox.Show((string)üründurumusorgulama["program_kapali"], "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Zamanlı Bakım")
                     {
@@ -55,29 +56,29 @@ namespace OSBilişim
                         DateTime bitis = (DateTime)üründurumusorgulama["program_zamanli_bakim_bitis"];
                         TimeSpan kalanzaman = bitis - baslangic;
                         MessageBox.Show(((string)üründurumusorgulama["program_zamanli_bakim"]) + "\n Kalan zaman: " + kalanzaman.Days + " gün " + kalanzaman.Hours + " saat " + kalanzaman.Seconds + " saniye kalmıştır.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Bakım")
                     {
                         MessageBox.Show(((string)üründurumusorgulama["program_bakim"]), "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else
                     {
                         if (Convert.ToInt32(Kullanicigirisiform.güncelversiyon) >= Convert.ToInt32(programversion.FileVersion))
                         {
-                            DialogResult dialog = MessageBox.Show("Uygulamanızın yeni sürümünü indirmek ister misiniz?", "OS BİLİŞİM", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            DialogResult dialog = MessageBox.Show("Uygulama'nın yeni sürümünü indirmek ister misiniz?", "OS BİLİŞİM", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (dialog == DialogResult.Yes)
                             {
                                 string dosya_dizini = AppDomain.CurrentDomain.BaseDirectory.ToString() + "OSUpdate.exe";
                                 File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.123/Update/OSUpdate.exe"));
                                 Process.Start("OSUpdate.exe");
                                 System.Threading.Thread.Sleep(1000);
-                                Environment.Exit(0);
+                                Application.Exit();
                             }
                             else
                             {
-                                MessageBox.Show("Uygulamanızı güncellemediğiniz için, program çalışmayacaktır.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Uygulama eski sürümü ile çalışmayacaktır, yeni sürümünü indiriniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 Application.Exit();
                             }
                         }
@@ -87,7 +88,15 @@ namespace OSBilişim
             }
             catch (Exception hata)
             {
-                MessageBox.Show("Uygulama başlatılırken bir hata oluştu.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
             try
@@ -109,23 +118,35 @@ namespace OSBilişim
                     }
                 }
                 aktifkullanici.Close();
-
-                SqlCommand kullanicilar = new SqlCommand("SELECT *FROM kullanicilar where k_adi = '" + Kullanicigirisiform.username + "'", connection);
+                SqlCommand kullanicilar = new SqlCommand("select * from kullanicilar where k_adi = '" + Kullanicigirisiform.username + "'", connection);
                 SqlDataReader kullaniciaciklamasi;
                 kullaniciaciklamasi = kullanicilar.ExecuteReader();
                 while (kullaniciaciklamasi.Read())
                 {
-                    isim_label.Text = ((string)kullaniciaciklamasi["kullanici_isim"]);
-                    soyisim_label.Text = ((string)kullaniciaciklamasi["kullanici_soyisim"]);
-                    statü_label.Text = ((string)kullaniciaciklamasi["kullanici_statü"]);
-                    kayit_tarihi_label.Text = ((string)kullaniciaciklamasi["kullanici_kayit_tarihi"]);
+                    isim_label.Text = (string)kullaniciaciklamasi["kullanici_isim"];
+                    soyisim_label.Text = (string)kullaniciaciklamasi["kullanici_soyisim"];
+                    statü_label.Text = (string)kullaniciaciklamasi["kullanici_statü"];
+                    kayit_tarihi_label.Text = (string)kullaniciaciklamasi["kullanici_kayit_tarihi"];
+                    if ((string)kullaniciaciklamasi["cinsiyet"] == "E")
+                    pictureBox1.Image = Properties.Resources.person_icon_man;
+                    else if ((string)kullaniciaciklamasi["cinsiyet"] == "K")
+                        pictureBox1.Image = Properties.Resources.person_icon_gril;
+                    else pictureBox1.Image = Properties.Resources.person_icon_green;
 
                 }
                 connection.Close();
             }
             catch (Exception hata)
             {
-                MessageBox.Show("Kullanıcı bilgileri alınırken hata oluştu.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
             if (statü_label.Text == "Teknik Görevli" || statü_label.Text == "Teknisyen" || statü_label.Text == "Teknik")
@@ -154,12 +175,7 @@ namespace OSBilişim
                 ürün_ekle_ve_düzenle_btn.Location = new System.Drawing.Point(474, 267);
 
             }
-
-
-
             tarih_label.Text = DateTime.Now.ToLongDateString();
-
-
         }
         private void Anaform_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -177,7 +193,16 @@ namespace OSBilişim
             }
             catch (Exception kullaniciaktifligi)
             {
-                MessageBox.Show("Kullanıcı bilgileri çekilmedi tekrar deneyiniz.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             foreach (var process in Process.GetProcessesByName("OSBilişim"))
@@ -191,14 +216,22 @@ namespace OSBilişim
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-
                 Kullanicigirisiform kullanicigirisiform = new Kullanicigirisiform();
                 SqlCommand kullanicidurumgüncelle = new SqlCommand("Update kullanicilar set durum='" + 0 + "' where k_adi = '" + Kullanicigirisiform.username + "'", connection);
                 kullanicidurumgüncelle.ExecuteNonQuery();
             }
             catch (Exception kullaniciaktifligi)
             {
-                MessageBox.Show("Kullanıcı bilgileri çekilirken bir hata oluştu.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             Application.Exit();
@@ -227,7 +260,16 @@ namespace OSBilişim
             }
             catch (Exception kullaniciaktifligi)
             {
-                MessageBox.Show("Kullanıcı bilgileri alınırken hata oluştu.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -319,105 +361,142 @@ namespace OSBilişim
         #region renkayarları
         private void Siparis_olustur_btn_MouseMove(object sender, MouseEventArgs e)
         {
-            siparis_olustur_btn.BackColor = Color.DarkGreen;
-            siparis_olustur_btn.ForeColor = Color.Black;
+            siparis_olustur_btn.BackColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Siparis_olustur_btn_MouseLeave(object sender, EventArgs e)
         {
-            siparis_olustur_btn.BackColor = Color.MediumSeaGreen;
-            siparis_olustur_btn.ForeColor = Color.White;
+            siparis_olustur_btn.BackColor = Color.FromArgb(22, 53, 56);
         }
 
         private void Siparis_kontrol_btn_MouseLeave(object sender, EventArgs e)
         {
-            siparis_kontrol_btn.BackColor = Color.MediumSeaGreen;
-            siparis_kontrol_btn.ForeColor = Color.White;
+            siparis_kontrol_btn.BackColor = Color.FromArgb(22, 53, 56);
         }
 
         private void Siparis_kontrol_btn_MouseMove(object sender, MouseEventArgs e)
         {
-            siparis_kontrol_btn.BackColor = Color.DarkGreen;
-            siparis_kontrol_btn.ForeColor = Color.Black;
+            siparis_kontrol_btn.BackColor = Color.FromArgb(13, 31, 33);
+           
         }
 
         private void Ürün_ekle_ve_düzenle_btn_MouseLeave(object sender, EventArgs e)
         {
-            ürün_ekle_ve_düzenle_btn.BackColor = Color.MediumSeaGreen;
-            ürün_ekle_ve_düzenle_btn.ForeColor = Color.White;
+            ürün_ekle_ve_düzenle_btn.BackColor = Color.FromArgb(22, 53, 56);
         }
 
         private void Ürün_ekle_ve_düzenle_btn_MouseMove(object sender, MouseEventArgs e)
         {
-            ürün_ekle_ve_düzenle_btn.BackColor = Color.DarkGreen;
-            ürün_ekle_ve_düzenle_btn.ForeColor = Color.Black;
+            ürün_ekle_ve_düzenle_btn.BackColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Diğer_malzeme_grubları_MouseMove(object sender, MouseEventArgs e)
         {
-            diğer_malzeme_grubları.BackColor = Color.DarkGreen;
-            diğer_malzeme_grubları.ForeColor = Color.Black;
+            diğer_malzeme_grubları.BackColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Diğer_malzeme_grubları_MouseLeave(object sender, EventArgs e)
         {
-            diğer_malzeme_grubları.BackColor = Color.MediumSeaGreen;
+            diğer_malzeme_grubları.BackColor = Color.FromArgb(22, 53, 56);
             diğer_malzeme_grubları.ForeColor = Color.White;
         }
 
         private void Diğer_malzeme_grubları_ekle_ve_düzenleme_btn_MouseMove(object sender, MouseEventArgs e)
         {
-            Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.BackColor = Color.DarkGreen;
-            Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.ForeColor = Color.Black;
+            Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.BackColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Diğer_malzeme_grubları_ekle_ve_düzenleme_btn_MouseLeave(object sender, EventArgs e)
         {
-            Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.BackColor = Color.MediumSeaGreen;
-            Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.ForeColor = Color.White;
+            Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.BackColor = Color.FromArgb(22, 53, 56);
         }
 
         private void Btn_cikis_MouseLeave(object sender, EventArgs e)
         {
-            btn_cikis.BackColor = Color.MediumSeaGreen;
-            btn_cikis.ForeColor = Color.White;
+            btn_cikis.BackColor = Color.FromArgb(22, 53, 56);
         }
         private void Logout_label_MouseMove(object sender, MouseEventArgs e)
         {
-            logout_label.ForeColor = Color.Black;
+            logout_label.ForeColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Label3_MouseMove(object sender, MouseEventArgs e)
         {
-            label3.ForeColor = Color.Black;
+            label3.ForeColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Logout_label_MouseLeave(object sender, EventArgs e)
         {
-            logout_label.ForeColor = Color.Gray;
+            logout_label.ForeColor = Color.FromArgb(22, 53, 56);
         }
 
         private void Label3_MouseLeave(object sender, EventArgs e)
         {
-            label3.ForeColor = Color.Gray;
+            label3.ForeColor = Color.FromArgb(22, 53, 56);
         }
 
         private void linkLabel1_MouseLeave(object sender, EventArgs e)
         {
-            linkLabel1.LinkColor = Color.MediumSeaGreen;
+            linkLabel1.LinkColor = Color.FromArgb(22, 53, 56);
         }
 
         private void linkLabel1_MouseMove(object sender, MouseEventArgs e)
         {
-            linkLabel1.LinkColor = Color.DarkGreen;
+            linkLabel1.LinkColor = Color.FromArgb(13, 31, 33);
         }
-
         private void Btn_cikis_MouseMove(object sender, MouseEventArgs e)
         {
-            btn_cikis.BackColor = Color.DarkGreen;
-            btn_cikis.ForeColor = Color.Black;
+            btn_cikis.BackColor = Color.FromArgb(13, 31, 33);
+
         }
         #endregion
+        private void aktifkullanicilar_listbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            provider.Clear();
+            ToolTip Aciklama = new ToolTip();
+            string cinsiyetsorgulama = " ";
+            try
+            {
+                if (connection.State == ConnectionState.Closed)
+                    connection.Open();
+                string kullanıcı = aktifkullanicilar_listbox.SelectedItem.ToString();
+                string aranan = kullanıcı.Substring(0, kullanıcı.IndexOf(' '));
+                SqlCommand kullanicilar = new SqlCommand("select * from  kullanicilar where kullanici_isim = '" + aranan + "'", connection);
+                 SqlDataReader kullaniciaciklamasi;
+                 kullaniciaciklamasi = kullanicilar.ExecuteReader();
+                 while (kullaniciaciklamasi.Read())
+                 {
+                    if ((string)kullaniciaciklamasi["cinsiyet"] == "E")
+                        cinsiyetsorgulama = "Erkek";
+                    else if ((string)kullaniciaciklamasi["cinsiyet"] == "K")
+                        cinsiyetsorgulama = "Kadın";
+                    else
+                        cinsiyetsorgulama = "Belirtilmemiş";
+                    Aciklama.SetToolTip(aktifkullanicilar_listbox,
+                        "Adı: " + (string)kullaniciaciklamasi["kullanici_isim"] +
+                        "\nSoyadı: " + (string)kullaniciaciklamasi["kullanici_soyisim"] +
+                        "\nStatü: " + (string)kullaniciaciklamasi["kullanici_statü"] +
+                        "\nCinsiyet: " + cinsiyetsorgulama +
+                        "\nKayıt tarihi: " + (string)kullaniciaciklamasi["kullanici_kayit_tarihi"]);
+                 }
+            }
+            catch (Exception hata)
+            {
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            connection.Close();
+        }
+
+       
        
     }
 }

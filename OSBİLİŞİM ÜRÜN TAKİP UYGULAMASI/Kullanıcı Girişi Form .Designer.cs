@@ -50,15 +50,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_giris
             // 
-            this.btn_giris.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btn_giris.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.btn_giris.Cursor = System.Windows.Forms.Cursors.Hand;
             resources.ApplyResources(this.btn_giris, "btn_giris");
             this.btn_giris.ForeColor = System.Drawing.SystemColors.Window;
@@ -74,7 +72,7 @@
             this.kullaniciaditextbox.BackColor = System.Drawing.SystemColors.Window;
             this.kullaniciaditextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.kullaniciaditextbox, "kullaniciaditextbox");
-            this.kullaniciaditextbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
+            this.kullaniciaditextbox.ForeColor = System.Drawing.Color.Black;
             this.kullaniciaditextbox.Name = "kullaniciaditextbox";
             this.kullaniciaditextbox.Enter += new System.EventHandler(this.Kullaniciaditextbox_Enter);
             this.kullaniciaditextbox.Leave += new System.EventHandler(this.Kullaniciaditextbox_Leave);
@@ -83,7 +81,7 @@
             // 
             this.sifretextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.sifretextbox, "sifretextbox");
-            this.sifretextbox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
+            this.sifretextbox.ForeColor = System.Drawing.Color.Black;
             this.sifretextbox.Name = "sifretextbox";
             this.sifretextbox.Enter += new System.EventHandler(this.Sifretextbox_Enter);
             this.sifretextbox.Leave += new System.EventHandler(this.Sifretextbox_Leave);
@@ -128,7 +126,7 @@
             // 
             resources.ApplyResources(this.logout_label, "logout_label");
             this.logout_label.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.logout_label.ForeColor = System.Drawing.Color.Gray;
+            this.logout_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.logout_label.Name = "logout_label";
             this.toolTip1.SetToolTip(this.logout_label, resources.GetString("logout_label.ToolTip"));
             this.logout_label.Click += new System.EventHandler(this.Logout_label_Click);
@@ -139,7 +137,7 @@
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.ForeColor = System.Drawing.Color.Gray;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.label3.Name = "label3";
             this.toolTip1.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             this.label3.Click += new System.EventHandler(this.Label3_Click);
@@ -148,9 +146,9 @@
             // 
             // şifremiunuttumlinklabel
             // 
-            this.şifremiunuttumlinklabel.ActiveLinkColor = System.Drawing.Color.DarkGreen;
+            this.şifremiunuttumlinklabel.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             resources.ApplyResources(this.şifremiunuttumlinklabel, "şifremiunuttumlinklabel");
-            this.şifremiunuttumlinklabel.LinkColor = System.Drawing.Color.MediumSeaGreen;
+            this.şifremiunuttumlinklabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.şifremiunuttumlinklabel.Name = "şifremiunuttumlinklabel";
             this.şifremiunuttumlinklabel.TabStop = true;
             this.toolTip1.SetToolTip(this.şifremiunuttumlinklabel, resources.GetString("şifremiunuttumlinklabel.ToolTip"));
@@ -166,7 +164,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
+            this.panel2.BackColor = System.Drawing.SystemColors.Window;
             this.panel2.Controls.Add(this.loginpanel_hosgeldiniz_label);
             this.panel2.Controls.Add(this.loginpanel_gelistiren_label);
             this.panel2.Controls.Add(this.pictureBox1);
@@ -179,13 +177,13 @@
             // loginpanel_hosgeldiniz_label
             // 
             resources.ApplyResources(this.loginpanel_hosgeldiniz_label, "loginpanel_hosgeldiniz_label");
-            this.loginpanel_hosgeldiniz_label.ForeColor = System.Drawing.Color.White;
+            this.loginpanel_hosgeldiniz_label.ForeColor = System.Drawing.Color.Black;
             this.loginpanel_hosgeldiniz_label.Name = "loginpanel_hosgeldiniz_label";
             // 
             // loginpanel_gelistiren_label
             // 
             resources.ApplyResources(this.loginpanel_gelistiren_label, "loginpanel_gelistiren_label");
-            this.loginpanel_gelistiren_label.ForeColor = System.Drawing.Color.White;
+            this.loginpanel_gelistiren_label.ForeColor = System.Drawing.Color.Black;
             this.loginpanel_gelistiren_label.Name = "loginpanel_gelistiren_label";
             // 
             // pictureBox1
@@ -215,19 +213,15 @@
             // 
             // linkLabel1
             // 
-            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.DarkGreen;
+            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
             resources.ApplyResources(this.linkLabel1, "linkLabel1");
             this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.linkLabel1.LinkColor = System.Drawing.Color.MediumSeaGreen;
+            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.TabStop = true;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
             this.linkLabel1.MouseLeave += new System.EventHandler(this.linkLabel1_MouseLeave);
             this.linkLabel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.linkLabel1_MouseMove);
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
             // 
             // Kullanicigirisiform
             // 
@@ -263,7 +257,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,7 +283,6 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.LinkLabel şifremiunuttumlinklabel;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 

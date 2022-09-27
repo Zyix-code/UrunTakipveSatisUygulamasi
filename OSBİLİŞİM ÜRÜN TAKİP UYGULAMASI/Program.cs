@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace OSBilişim
@@ -14,6 +15,7 @@ namespace OSBilişim
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Kullanicigirisiform());
+           
         }
     }
 }

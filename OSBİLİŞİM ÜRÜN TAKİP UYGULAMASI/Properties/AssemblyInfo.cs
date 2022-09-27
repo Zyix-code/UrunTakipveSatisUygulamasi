@@ -6,13 +6,13 @@ using System.Runtime.InteropServices;
 // Bir bütünleştirilmiş koda ilişkin Genel Bilgiler aşağıdaki öznitelikler kümesiyle
 // denetlenir. Bütünleştirilmiş kod ile ilişkili bilgileri değiştirmek için
 // bu öznitelik değerlerini değiştirin.
-[assembly: AssemblyTitle("OS BİLİŞİM")]
-[assembly: AssemblyDescription("OS BİLİŞİM ÜRÜN, STOK TAKİP UYGULAMAI")]
+[assembly: AssemblyTitle("OSBilişim")]
+[assembly: AssemblyDescription("OSBilişim ürün ve stok takip sipariş kontrol uygulaması")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("OS BİLİŞİM")]
-[assembly: AssemblyProduct("OSBilişim")]
+[assembly: AssemblyCompany("OS BİLİŞİM TEKNOLOJİLERİ SAN. VE TİC. LTD. ŞTİ.")]
+[assembly: AssemblyProduct("OSBilişim Ürün Uygulaması")]
 [assembly: AssemblyCopyright("Copyright ©  2021- 2022")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyTrademark("OS BİLİŞİM TEKNOLOJİLERİ SAN. VE TİC. LTD. ŞTİ.")]
 [assembly: AssemblyCulture("")]
 
 // ComVisible özniteliğinin false olarak ayarlanması bu bütünleştirilmiş koddaki türleri
@@ -33,6 +33,6 @@ using System.Runtime.InteropServices;
 // Tüm değerleri belirtebilir veya varsayılan Derleme ve Düzeltme Numaralarını kullanmak için
 // aşağıda gösterildiği gibi '*' kullanabilirsiniz:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("32")]
-[assembly: AssemblyFileVersion("32")]
+[assembly: AssemblyVersion("33")]
+[assembly: AssemblyFileVersion("33")]
 [assembly: NeutralResourcesLanguage("tr")]

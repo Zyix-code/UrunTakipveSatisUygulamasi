@@ -228,6 +228,10 @@
     <Content Include="alt-logo-green.ico" />
     <Content Include="alt-logo.ico" />
     <Content Include="Resources\alt-logo.ico" />
+    <None Include="Resources\person-icon-man.png" />
+    <None Include="Resources\person-icon-gril.png" />
+    <None Include="Resources\person-icon-man-green.png" />
+    <None Include="Resources\person-icon-gril-green.png" />
     <None Include="Resources\footer-green.png" />
     <None Include="Resources\person-icon-green.png" />
     <None Include="Resources\person-icon.png" />

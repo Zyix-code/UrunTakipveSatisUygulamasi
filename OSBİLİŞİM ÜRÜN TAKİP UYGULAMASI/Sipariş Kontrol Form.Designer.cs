@@ -114,21 +114,21 @@
             this.sipariskontrolview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.sipariskontrolview.BackgroundColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.MediumSeaGreen;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGreen;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.sipariskontrolview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.sipariskontrolview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.sipariskontrolview.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.MediumSeaGreen;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 6, 0, 6);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkGreen;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.sipariskontrolview.DefaultCellStyle = dataGridViewCellStyle3;
@@ -137,17 +137,17 @@
             this.sipariskontrolview.Name = "sipariskontrolview";
             this.sipariskontrolview.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.MediumSeaGreen;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 8F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DarkGreen;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.sipariskontrolview.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.sipariskontrolview.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.sipariskontrolview.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.sipariskontrolview.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.sipariskontrolview.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.Window;
-            this.sipariskontrolview.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.DarkGreen;
+            this.sipariskontrolview.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
             this.sipariskontrolview.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.Window;
             this.sipariskontrolview.RowTemplate.Height = 40;
             this.sipariskontrolview.Size = new System.Drawing.Size(1242, 310);
@@ -187,6 +187,7 @@
             // üründurumunugüncelle_combobox
             // 
             this.üründurumunugüncelle_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.üründurumunugüncelle_combobox.ForeColor = System.Drawing.Color.Black;
             this.üründurumunugüncelle_combobox.FormattingEnabled = true;
             this.üründurumunugüncelle_combobox.Items.AddRange(new object[] {
             "Sipariş Arızalı",
@@ -205,6 +206,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(9, 160);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(143, 16);
@@ -213,7 +215,7 @@
             // 
             // kullanilacak_malzeme_serino_ekle_btn
             // 
-            this.kullanilacak_malzeme_serino_ekle_btn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.kullanilacak_malzeme_serino_ekle_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.kullanilacak_malzeme_serino_ekle_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.kullanilacak_malzeme_serino_ekle_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kullanilacak_malzeme_serino_ekle_btn.ForeColor = System.Drawing.SystemColors.Window;
@@ -231,6 +233,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.ForeColor = System.Drawing.Color.Black;
             this.label13.Location = new System.Drawing.Point(9, 103);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(77, 16);
@@ -239,6 +242,7 @@
             // 
             // ürün_seri_no_textbox
             // 
+            this.ürün_seri_no_textbox.ForeColor = System.Drawing.Color.Black;
             this.ürün_seri_no_textbox.Location = new System.Drawing.Point(161, 100);
             this.ürün_seri_no_textbox.Name = "ürün_seri_no_textbox";
             this.ürün_seri_no_textbox.ReadOnly = true;
@@ -248,6 +252,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(9, 326);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(97, 16);
@@ -256,6 +261,7 @@
             // 
             // aciklama_textbox
             // 
+            this.aciklama_textbox.ForeColor = System.Drawing.Color.Black;
             this.aciklama_textbox.Location = new System.Drawing.Point(161, 320);
             this.aciklama_textbox.Multiline = true;
             this.aciklama_textbox.Name = "aciklama_textbox";
@@ -266,6 +272,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.Black;
             this.label14.Location = new System.Drawing.Point(9, 296);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(49, 16);
@@ -274,6 +281,7 @@
             // 
             // kullanilacak_malzemeler_listbox
             // 
+            this.kullanilacak_malzemeler_listbox.ForeColor = System.Drawing.Color.Black;
             this.kullanilacak_malzemeler_listbox.FormattingEnabled = true;
             this.kullanilacak_malzemeler_listbox.ItemHeight = 16;
             this.kullanilacak_malzemeler_listbox.Location = new System.Drawing.Point(161, 187);
@@ -285,6 +293,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(9, 187);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(142, 16);
@@ -293,6 +302,7 @@
             // 
             // ürünstokkodutextbox
             // 
+            this.ürünstokkodutextbox.ForeColor = System.Drawing.Color.Black;
             this.ürünstokkodutextbox.Location = new System.Drawing.Point(161, 46);
             this.ürünstokkodutextbox.Name = "ürünstokkodutextbox";
             this.ürünstokkodutextbox.ReadOnly = true;
@@ -301,7 +311,7 @@
             // 
             // siparis_aciklama_güncelleme_btn
             // 
-            this.siparis_aciklama_güncelleme_btn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.siparis_aciklama_güncelleme_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.siparis_aciklama_güncelleme_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.siparis_aciklama_güncelleme_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.siparis_aciklama_güncelleme_btn.ForeColor = System.Drawing.SystemColors.Window;
@@ -318,6 +328,7 @@
             // 
             // kullanilacak_malzemeler_seri_no_textbox
             // 
+            this.kullanilacak_malzemeler_seri_no_textbox.ForeColor = System.Drawing.Color.Black;
             this.kullanilacak_malzemeler_seri_no_textbox.Location = new System.Drawing.Point(161, 293);
             this.kullanilacak_malzemeler_seri_no_textbox.Name = "kullanilacak_malzemeler_seri_no_textbox";
             this.kullanilacak_malzemeler_seri_no_textbox.Size = new System.Drawing.Size(246, 21);
@@ -325,6 +336,7 @@
             // 
             // ürünaditextbox
             // 
+            this.ürünaditextbox.ForeColor = System.Drawing.Color.Black;
             this.ürünaditextbox.Location = new System.Drawing.Point(161, 20);
             this.ürünaditextbox.Name = "ürünaditextbox";
             this.ürünaditextbox.ReadOnly = true;
@@ -335,6 +347,7 @@
             // 
             this.ürünhazirlikdurumu_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ürünhazirlikdurumu_combobox.Enabled = false;
+            this.ürünhazirlikdurumu_combobox.ForeColor = System.Drawing.Color.Black;
             this.ürünhazirlikdurumu_combobox.FormattingEnabled = true;
             this.ürünhazirlikdurumu_combobox.Items.AddRange(new object[] {
             "Sipariş Arızalı",
@@ -352,6 +365,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(9, 130);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(125, 16);
@@ -361,6 +375,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(9, 74);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(69, 16);
@@ -369,6 +384,7 @@
             // 
             // ürünadetitextbox
             // 
+            this.ürünadetitextbox.ForeColor = System.Drawing.Color.Black;
             this.ürünadetitextbox.Location = new System.Drawing.Point(161, 73);
             this.ürünadetitextbox.Name = "ürünadetitextbox";
             this.ürünadetitextbox.ReadOnly = true;
@@ -379,6 +395,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(9, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 16);
@@ -388,6 +405,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(9, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 16);
@@ -396,7 +414,7 @@
             // 
             // siparis_sil_btn
             // 
-            this.siparis_sil_btn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.siparis_sil_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.siparis_sil_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.siparis_sil_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.siparis_sil_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
@@ -414,7 +432,7 @@
             // 
             // siparis_listesi_güncelle_btn
             // 
-            this.siparis_listesi_güncelle_btn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.siparis_listesi_güncelle_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.siparis_listesi_güncelle_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.siparis_listesi_güncelle_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.siparis_listesi_güncelle_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
@@ -445,6 +463,7 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.aliciaditextbox);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.groupBox2.ForeColor = System.Drawing.Color.Black;
             this.groupBox2.Location = new System.Drawing.Point(951, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(354, 181);
@@ -455,6 +474,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
+            this.label18.ForeColor = System.Drawing.Color.Black;
             this.label18.Location = new System.Drawing.Point(7, 157);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(89, 16);
@@ -463,6 +483,7 @@
             // 
             // siparis_numarasi_textbox
             // 
+            this.siparis_numarasi_textbox.ForeColor = System.Drawing.Color.Black;
             this.siparis_numarasi_textbox.Location = new System.Drawing.Point(153, 154);
             this.siparis_numarasi_textbox.Name = "siparis_numarasi_textbox";
             this.siparis_numarasi_textbox.ReadOnly = true;
@@ -472,6 +493,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.Black;
             this.label15.Location = new System.Drawing.Point(7, 130);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(66, 16);
@@ -480,6 +502,7 @@
             // 
             // satis_tarihi_textbox
             // 
+            this.satis_tarihi_textbox.ForeColor = System.Drawing.Color.Black;
             this.satis_tarihi_textbox.Location = new System.Drawing.Point(153, 127);
             this.satis_tarihi_textbox.Name = "satis_tarihi_textbox";
             this.satis_tarihi_textbox.ReadOnly = true;
@@ -489,6 +512,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(7, 103);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(123, 16);
@@ -497,6 +521,7 @@
             // 
             // ürününsatildigifirmatextbox
             // 
+            this.ürününsatildigifirmatextbox.ForeColor = System.Drawing.Color.Black;
             this.ürününsatildigifirmatextbox.Location = new System.Drawing.Point(153, 100);
             this.ürününsatildigifirmatextbox.Name = "ürününsatildigifirmatextbox";
             this.ürününsatildigifirmatextbox.ReadOnly = true;
@@ -506,6 +531,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(7, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 16);
@@ -514,6 +540,7 @@
             // 
             // satisyapilanfirmatextbox
             // 
+            this.satisyapilanfirmatextbox.ForeColor = System.Drawing.Color.Black;
             this.satisyapilanfirmatextbox.Location = new System.Drawing.Point(153, 73);
             this.satisyapilanfirmatextbox.Name = "satisyapilanfirmatextbox";
             this.satisyapilanfirmatextbox.ReadOnly = true;
@@ -523,6 +550,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(7, 49);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(138, 16);
@@ -531,6 +559,7 @@
             // 
             // alicisoyaditextboxt
             // 
+            this.alicisoyaditextboxt.ForeColor = System.Drawing.Color.Black;
             this.alicisoyaditextboxt.Location = new System.Drawing.Point(153, 46);
             this.alicisoyaditextboxt.Name = "alicisoyaditextboxt";
             this.alicisoyaditextboxt.ReadOnly = true;
@@ -540,6 +569,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(7, 22);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(121, 16);
@@ -548,6 +578,7 @@
             // 
             // aliciaditextbox
             // 
+            this.aliciaditextbox.ForeColor = System.Drawing.Color.Black;
             this.aliciaditextbox.Location = new System.Drawing.Point(153, 19);
             this.aliciaditextbox.Name = "aliciaditextbox";
             this.aliciaditextbox.ReadOnly = true;
@@ -575,6 +606,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.Black;
             this.label12.Location = new System.Drawing.Point(330, 202);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(49, 16);
@@ -583,6 +615,7 @@
             // 
             // cikacakürün_serino_textbox
             // 
+            this.cikacakürün_serino_textbox.ForeColor = System.Drawing.Color.Black;
             this.cikacakürün_serino_textbox.Location = new System.Drawing.Point(385, 199);
             this.cikacakürün_serino_textbox.Name = "cikacakürün_serino_textbox";
             this.cikacakürün_serino_textbox.Size = new System.Drawing.Size(257, 21);
@@ -590,7 +623,7 @@
             // 
             // kullanilmayacak_malzemeyi_sil_btn
             // 
-            this.kullanilmayacak_malzemeyi_sil_btn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.kullanilmayacak_malzemeyi_sil_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.kullanilmayacak_malzemeyi_sil_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.kullanilmayacak_malzemeyi_sil_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.kullanilmayacak_malzemeyi_sil_btn.ForeColor = System.Drawing.SystemColors.Window;
@@ -607,6 +640,7 @@
             // 
             // çıkacak_olan_parçalar_listesi_listbox
             // 
+            this.çıkacak_olan_parçalar_listesi_listbox.ForeColor = System.Drawing.Color.Black;
             this.çıkacak_olan_parçalar_listesi_listbox.FormattingEnabled = true;
             this.çıkacak_olan_parçalar_listesi_listbox.ItemHeight = 16;
             this.çıkacak_olan_parçalar_listesi_listbox.Location = new System.Drawing.Point(331, 19);
@@ -618,6 +652,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(9, 202);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(69, 16);
@@ -626,6 +661,7 @@
             // 
             // çıkacak_olan_parçalar_listbox
             // 
+            this.çıkacak_olan_parçalar_listbox.ForeColor = System.Drawing.Color.Black;
             this.çıkacak_olan_parçalar_listbox.FormattingEnabled = true;
             this.çıkacak_olan_parçalar_listbox.ItemHeight = 16;
             this.çıkacak_olan_parçalar_listbox.Location = new System.Drawing.Point(11, 19);
@@ -636,7 +672,7 @@
             // 
             // malzeme_ekle_btn
             // 
-            this.malzeme_ekle_btn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.malzeme_ekle_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.malzeme_ekle_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.malzeme_ekle_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.malzeme_ekle_btn.ForeColor = System.Drawing.SystemColors.Window;
@@ -653,6 +689,7 @@
             // 
             // kullanilacak_malzeme_adeti_textbox
             // 
+            this.kullanilacak_malzeme_adeti_textbox.ForeColor = System.Drawing.Color.Black;
             this.kullanilacak_malzeme_adeti_textbox.Location = new System.Drawing.Point(81, 199);
             this.kullanilacak_malzeme_adeti_textbox.Name = "kullanilacak_malzeme_adeti_textbox";
             this.kullanilacak_malzeme_adeti_textbox.Size = new System.Drawing.Size(228, 21);
@@ -661,7 +698,7 @@
             // 
             // Siparisi_onayla_btn
             // 
-            this.Siparisi_onayla_btn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.Siparisi_onayla_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.Siparisi_onayla_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Siparisi_onayla_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Siparisi_onayla_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
@@ -682,7 +719,7 @@
             this.windows_kücültme_label.AutoSize = true;
             this.windows_kücültme_label.Cursor = System.Windows.Forms.Cursors.Hand;
             this.windows_kücültme_label.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold);
-            this.windows_kücültme_label.ForeColor = System.Drawing.Color.Gray;
+            this.windows_kücültme_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.windows_kücültme_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.windows_kücültme_label.Location = new System.Drawing.Point(1585, 7);
             this.windows_kücültme_label.Name = "windows_kücültme_label";
@@ -699,7 +736,7 @@
             this.logout_label.AutoSize = true;
             this.logout_label.Cursor = System.Windows.Forms.Cursors.Hand;
             this.logout_label.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold);
-            this.logout_label.ForeColor = System.Drawing.Color.Gray;
+            this.logout_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.logout_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.logout_label.Location = new System.Drawing.Point(1605, 8);
             this.logout_label.Name = "logout_label";
@@ -713,7 +750,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
+            this.panel2.BackColor = System.Drawing.SystemColors.Window;
             this.panel2.Controls.Add(this.ana_menü_btnn);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.loginpanel_hosgeldiniz_label);
@@ -729,7 +766,7 @@
             // 
             // ana_menü_btnn
             // 
-            this.ana_menü_btnn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.ana_menü_btnn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.ana_menü_btnn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ana_menü_btnn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ana_menü_btnn.Font = new System.Drawing.Font("Century Gothic", 8F);
@@ -747,8 +784,9 @@
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.SystemColors.Window;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 16F);
-            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.ForeColor = System.Drawing.Color.Black;
             this.label16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label16.Location = new System.Drawing.Point(107, 328);
             this.label16.Name = "label16";
@@ -759,8 +797,9 @@
             // loginpanel_hosgeldiniz_label
             // 
             this.loginpanel_hosgeldiniz_label.AutoSize = true;
+            this.loginpanel_hosgeldiniz_label.BackColor = System.Drawing.SystemColors.Window;
             this.loginpanel_hosgeldiniz_label.Font = new System.Drawing.Font("Century Gothic", 16F);
-            this.loginpanel_hosgeldiniz_label.ForeColor = System.Drawing.Color.White;
+            this.loginpanel_hosgeldiniz_label.ForeColor = System.Drawing.Color.Black;
             this.loginpanel_hosgeldiniz_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.loginpanel_hosgeldiniz_label.Location = new System.Drawing.Point(128, 303);
             this.loginpanel_hosgeldiniz_label.Name = "loginpanel_hosgeldiniz_label";
@@ -772,9 +811,9 @@
             // 
             this.loginpanel_gelistiren_label.AutoSize = true;
             this.loginpanel_gelistiren_label.Font = new System.Drawing.Font("Century Gothic", 7F);
-            this.loginpanel_gelistiren_label.ForeColor = System.Drawing.Color.White;
+            this.loginpanel_gelistiren_label.ForeColor = System.Drawing.Color.Black;
             this.loginpanel_gelistiren_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.loginpanel_gelistiren_label.Location = new System.Drawing.Point(270, 879);
+            this.loginpanel_gelistiren_label.Location = new System.Drawing.Point(267, 879);
             this.loginpanel_gelistiren_label.Name = "loginpanel_gelistiren_label";
             this.loginpanel_gelistiren_label.Size = new System.Drawing.Size(107, 30);
             this.loginpanel_gelistiren_label.TabIndex = 7;
@@ -801,10 +840,11 @@
             // 
             // linkLabel1
             // 
+            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.linkLabel1.LinkColor = System.Drawing.Color.MediumSeaGreen;
+            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.linkLabel1.Location = new System.Drawing.Point(566, 893);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(139, 13);
@@ -819,7 +859,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
+            this.label19.ForeColor = System.Drawing.Color.Black;
             this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label19.Location = new System.Drawing.Point(380, 861);
             this.label19.Name = "label19";
@@ -830,6 +870,7 @@
             // 
             // Arama_textbox
             // 
+            this.Arama_textbox.ForeColor = System.Drawing.Color.Black;
             this.Arama_textbox.Location = new System.Drawing.Point(161, 20);
             this.Arama_textbox.Multiline = true;
             this.Arama_textbox.Name = "Arama_textbox";
@@ -838,7 +879,7 @@
             // 
             // Arama_btn
             // 
-            this.Arama_btn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.Arama_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.Arama_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Arama_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Arama_btn.ForeColor = System.Drawing.SystemColors.Window;
@@ -868,6 +909,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.Color.Black;
             this.label20.Location = new System.Drawing.Point(9, 23);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(138, 16);

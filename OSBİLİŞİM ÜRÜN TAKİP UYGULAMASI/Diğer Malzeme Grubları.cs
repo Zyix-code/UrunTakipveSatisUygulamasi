@@ -25,6 +25,7 @@ namespace OSBilişim
             Hide();
         }
 
+        ErrorProvider provider = new ErrorProvider();
         private void Logout_label_Click(object sender, EventArgs e)
         {
             try
@@ -38,7 +39,16 @@ namespace OSBilişim
             }
             catch (Exception kullaniciaktifligi)
             {
-                MessageBox.Show("Kullanıcı bilgileri çekilirken bir hata oluştu.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             Application.Exit();
@@ -71,12 +81,12 @@ namespace OSBilişim
                     if (programdurumu == "Arızalı")
                     {
                         MessageBox.Show(((string)üründurumusorgulama["program_arizali"]), "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Kapalı")
                     {
                         MessageBox.Show((string)üründurumusorgulama["program_kapali"], "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Zamanlı Bakım")
                     {
@@ -84,29 +94,29 @@ namespace OSBilişim
                         DateTime bitis = (DateTime)üründurumusorgulama["program_zamanli_bakim_bitis"];
                         TimeSpan kalanzaman = bitis - baslangic;
                         MessageBox.Show(((string)üründurumusorgulama["program_zamanli_bakim"]) + "\n Kalan zaman: " + kalanzaman.Days + " gün " + kalanzaman.Hours + " saat " + kalanzaman.Seconds + " saniye kalmıştır.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Bakım")
                     {
                         MessageBox.Show(((string)üründurumusorgulama["program_bakim"]), "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else
                     {
                         if (Convert.ToInt32(Kullanicigirisiform.güncelversiyon) >= Convert.ToInt32(programversion.FileVersion))
                         {
-                            DialogResult dialog = MessageBox.Show("Uygulamanızın yeni sürümünü indirmek ister misiniz?", "OS BİLİŞİM", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            DialogResult dialog = MessageBox.Show("Uygulama'nın yeni sürümünü indirmek ister misiniz?", "OS BİLİŞİM", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (dialog == DialogResult.Yes)
                             {
                                 string dosya_dizini = AppDomain.CurrentDomain.BaseDirectory.ToString() + "OSUpdate.exe";
                                 File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.123/Update/OSUpdate.exe"));
                                 Process.Start("OSUpdate.exe");
                                 System.Threading.Thread.Sleep(1000);
-                                Environment.Exit(0);
+                                Application.Exit();
                             }
                             else
                             {
-                                MessageBox.Show("Uygulamanızı güncellemediğiniz için, program çalışmayacaktır.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Uygulama eski sürümü ile çalışmayacaktır, yeni sürümünü indiriniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 Application.Exit();
                             }
                         }
@@ -116,7 +126,16 @@ namespace OSBilişim
             }
             catch (Exception hata)
             {
-                MessageBox.Show("Program başlatılmadı.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
             try
@@ -138,7 +157,16 @@ namespace OSBilişim
             }
             catch (Exception hata)
             {
-                MessageBox.Show("Server ile bağlantı kurulmadı.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
@@ -146,7 +174,8 @@ namespace OSBilişim
         {
             if (e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                MessageBox.Show("Ürün adeti sadece rakam & sayı ile giriş yapılabilir.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.Clear();
+                provider.SetError(ürünadetitextbox, "Ürün adeti sadece rakam & sayı ile giriş yapılabilir.");
             }
             else { }
         }
@@ -155,7 +184,8 @@ namespace OSBilişim
         {
             if (e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != ',')
             {
-                MessageBox.Show("Alıcı adı sadece harf ile giriş yapılabilir.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.Clear();
+                provider.SetError(aliciaditextbox, "Alıcı adı sadece harf ile giriş yapılabilir.");
             }
             else { }
         }
@@ -164,90 +194,84 @@ namespace OSBilişim
         {
             if (e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsSeparator(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != ',')
             {
-                MessageBox.Show("Alıcı adı sadece harf ile giriş yapılabilir.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else { }
-        }
-
-        private void Kullanilacak_malzeme_adeti_textbox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-            {
-                MessageBox.Show("Ürün adeti sadece rakam & sayı ile giriş yapılabilir.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.Clear();
+                provider.SetError(alicisoyaditextboxt, "Alıcı soyadı sadece harf ile giriş yapılabilir.");
             }
             else { }
         }
 
         private void Malzeme_ekle_btn_Click(object sender, EventArgs e)
         {
+            provider.Clear();   
             if (ürünadetitextbox.Text == "")
             {
-                MessageBox.Show("Kullanılacak malzeme adetini giriniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(ürünadetitextbox, "Kullanılacak malzeme adetini giriniz.");
             }
             else if (ürünadi.SelectedIndex == -1)
             {
-                MessageBox.Show("Lütfen geçerli malzeme seçiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(ürünadi, "Lütfen geçerli malzeme seçiniz.");
             }
             else if (ürünstokkodu.SelectedIndex == -1)
             {
-                MessageBox.Show("Lütfen geçerli malzeme kodu seçin.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(ürünstokkodu, "Lütfen geçerli malzeme kodu seçin.");
             }
 
             else if (Convert.ToInt32(ürünadetitextbox.Text) < 1)
             {
-                MessageBox.Show("Kullanılacak malzeme adeti 1'den küçük olamaz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(ürünadetitextbox, "Kullanılacak malzeme adeti 1'den küçük olamaz.");
             }
         }
 
         private void Siparis_gonder_Click(object sender, EventArgs e)
         {
+            provider.Clear();
             if (ürünadi.SelectedIndex == -1)
             {
-                MessageBox.Show("Lütfen geçerli bir ürün seçiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(ürünadi, "Lütfen geçerli bir ürün seçiniz.");
             }
             else if (ürünstokkodu.SelectedIndex == -1)
             {
-                MessageBox.Show("Lütfen geçerli bir ürün kodu seçiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(ürünstokkodu, "Lütfen geçerli bir ürün kodu seçiniz.");
             }
             else if (ürünserino_checklistbox.CheckedItems.Count <= 0)
             {
-                MessageBox.Show("Lütfen ürünün seri numarasını seçip devam ediniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(ürünserino_checklistbox, "Lütfen ürünün seri numarasını seçip devam ediniz.");
             }
             else if ((string)ürünserino_checklistbox.SelectedItem == "Ürün kalmamıştır")
             {
-                MessageBox.Show("Ürün stoğu tükenmiştir, yeni ürün tedarik ediniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(ürünserino_checklistbox, "Ürün stoğu tükenmiştir, yeni ürün tedarik ediniz.");
             }
             else if (ürünadetitextbox.Text == "")
             {
-                MessageBox.Show("Lütfen geçerli bir ürün adeti giriniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(ürünadetitextbox, "Geçerli bir ürün adeti giriniz.");
             }
             else if (Convert.ToInt32(ürünadetitextbox.Text) < 1)
             {
-                MessageBox.Show("0 adetli ürün olur mu? Ürün adetini değiştir.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(ürünadetitextbox, "Ürün adeti 0'dan küçük olamaz.");
             }
             else if (aliciaditextbox.Text == "")
             {
-                MessageBox.Show("Ürünün alıcı adını giriniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(aliciaditextbox, "Ürünün alıcı adını giriniz.");
             }
             else if (alicisoyaditextboxt.Text == "")
             {
-                MessageBox.Show("Ürünün alıcı soyadını giriniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(alicisoyaditextboxt, "Ürünün alıcı soyadını giriniz.");
             }
             else if (satış_yapılan_firma.SelectedIndex == -1)
             {
-                MessageBox.Show("Lütfen ürün hangi firma tarafından satılıyor seçiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(satış_yapılan_firma, "Lütfen ürün hangi firma tarafından satılıyor seçiniz.");
             }
             else if (ürünün_satıldığı_firma.SelectedIndex == -1)
             {
-                MessageBox.Show("Lütfen ürün hangi firma adı altında satılıyor seçiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(ürünün_satıldığı_firma, "Lütfen ürün hangi firma adı altında satılıyor seçiniz.");
             }
             else if (ürünstokkodu.SelectedItem.ToString() == "Ürün stok kodu mevcut değil")
             {
-                MessageBox.Show("Ürün stok kodu mevcut değildir.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(ürünstokkodu, "Ürün stok kodu mevcut değildir.");
             }
             else if (sipariş_numarası_textbox.Text == "")
             {
-                MessageBox.Show("Sipariş numarasını boş bırakmayınız.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                provider.SetError(sipariş_numarası_textbox, "Sipariş numarasını boş bırakmayınız.");
             }
             else
             {
@@ -266,12 +290,12 @@ namespace OSBilişim
                                 int sipno = id + 1;
                                 if (id >= Convert.ToUInt16(sipariş_numarası_textbox.Text))
                                 {
-                                    MessageBox.Show($"Girdiğiniz sipariş numarası küçüktür, girebileceğiniz en düşük sipariş numarası: {id + 1}\nSizin için sipariş numarası otamatik olarak girilmiştir.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    provider.SetError(sipariş_numarası_textbox, $"Girdiğiniz sipariş numarası küçüktür, girebileceğiniz en düşük sipariş numarası: { id + 1}\nSizin için sipariş numarası otamatik olarak girilmiştir.");
                                     sipariş_numarası_textbox.Text = $"{id + 1}";
                                 }
                                 else if (Convert.ToInt16(sipariş_numarası_textbox.Text) > sipno)
                                 {
-                                    MessageBox.Show($"Girdiğiniz sipariş numarası büyüktür, girebileceğiniz en yüksek sipariş numarası: {id + 1}\nSizin için sipariş numarası otamatik olarak girilmiştir.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    provider.SetError(sipariş_numarası_textbox, $"Girdiğiniz sipariş numarası büyüktür, girebileceğiniz en yüksek sipariş numarası: { id + 1}\nSizin için sipariş numarası otamatik olarak girilmiştir.");
                                     sipariş_numarası_textbox.Text = $"{id + 1}";
                                 }
                                 else
@@ -400,7 +424,16 @@ namespace OSBilişim
                     }
                     catch (Exception hata)
                     {
-                        MessageBox.Show("Siparişiniz oluşturulmadı.\nİnternet bağlantınızı ya da server bağlantınızı kontrol ediniz.\n Hata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                        {
+                            Kullanicigirisiform.Log("Sipariş oluşturulmadı, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+
+                        }
+                        using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                        {
+                            Kullanicigirisiform.DumpLog(r);
+                        }
+                        MessageBox.Show("Sipariş oluşturulmadı, bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Application.Exit();
                     }
                 }
@@ -460,7 +493,16 @@ namespace OSBilişim
             }
             catch (Exception hata)
             {
-                MessageBox.Show("Server'den ürün stok kodları çekilmedi lütfen tekrar deneyiniz.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
@@ -480,7 +522,16 @@ namespace OSBilişim
             }
             catch (Exception kullaniciaktifligi)
             {
-                MessageBox.Show("Kullanıcı bilgileri çekilmedi tekrar deneyiniz.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             foreach (var process in Process.GetProcessesByName("OSBilişim"))
@@ -558,6 +609,15 @@ namespace OSBilişim
             }
             catch (Exception hata)
             {
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Yazıcı çıktısı alınırken bir hata oluştu.\nHata kodu: " + hata.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
                 MessageBox.Show("Yazıcı çıktısı alınırken bir hata oluştu.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
@@ -618,52 +678,48 @@ namespace OSBilişim
         #region renkayarı
         private void linkLabel1_MouseLeave(object sender, EventArgs e)
         {
-            linkLabel1.LinkColor = Color.MediumSeaGreen;
+            linkLabel1.LinkColor = Color.FromArgb(22, 53, 56);
         }
 
         private void linkLabel1_MouseMove(object sender, MouseEventArgs e)
         {
-            linkLabel1.LinkColor = Color.DarkGreen;
+            linkLabel1.LinkColor = Color.FromArgb(13, 31, 33);
         }
         private void Siparis_gonder_MouseMove(object sender, MouseEventArgs e)
         {
-            siparis_gonder.BackColor = Color.DarkGreen;
-            siparis_gonder.ForeColor = Color.Black;
+            siparis_gonder.BackColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Ana_menü_btn_MouseMove(object sender, MouseEventArgs e)
         {
-            ana_menü_btn.BackColor = Color.DarkGreen;
-            ana_menü_btn.ForeColor = Color.Black;
+            ana_menü_btn.BackColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Ana_menü_btn_MouseLeave(object sender, EventArgs e)
         {
-            ana_menü_btn.BackColor = Color.MediumSeaGreen;
-            ana_menü_btn.ForeColor = Color.White;
+            ana_menü_btn.BackColor = Color.FromArgb(22, 53, 56);
         }
 
         private void Siparis_gonder_MouseLeave(object sender, EventArgs e)
         {
-            siparis_gonder.BackColor = Color.MediumSeaGreen;
-            siparis_gonder.ForeColor = Color.White;
+            siparis_gonder.BackColor = Color.FromArgb(22, 53, 56);
         }
         private void Logout_label_MouseMove(object sender, MouseEventArgs e)
         {
-            logout_label.ForeColor = Color.Black;
+            logout_label.ForeColor = Color.FromArgb(13, 31, 33);
         }
         private void Logout_label_MouseLeave(object sender, EventArgs e)
         {
-            logout_label.ForeColor = Color.Gray;
+            logout_label.ForeColor = Color.FromArgb(22, 53, 56);
         }
         private void Windows_kücültme_label_MouseMove(object sender, MouseEventArgs e)
         {
-            windows_kücültme_label.ForeColor = Color.Black;
+            windows_kücültme_label.ForeColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Windows_kücültme_label_MouseLeave(object sender, EventArgs e)
         {
-            windows_kücültme_label.ForeColor = Color.Gray;
+            windows_kücültme_label.ForeColor = Color.FromArgb(22, 53, 56);
         }
         #endregion
     }

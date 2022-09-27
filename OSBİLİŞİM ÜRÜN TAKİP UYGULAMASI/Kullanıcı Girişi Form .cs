@@ -15,7 +15,6 @@ namespace OSBilişim
 
     public partial class Kullanicigirisiform : Form
     {
-       
         readonly Anaform anaform = new Anaform();
         readonly Sifresıfırlamaforum sifresıfırlamaforum = new Sifresıfırlamaforum();
 
@@ -26,7 +25,6 @@ namespace OSBilişim
         {
             InitializeComponent();
             Kullanici_Data();
-
         }
         private void Kullanici_Data()
         {
@@ -71,7 +69,6 @@ namespace OSBilişim
         {
             string bilgisayarAdi = Dns.GetHostName();
             string ipAdresi = Dns.GetHostByName(bilgisayarAdi).AddressList[0].ToString();
-            File.SetAttributes(@"OSBilisim-log.log", FileAttributes.Hidden); 
             w.WriteLine("---------------------------------");
             w.WriteLine("Bilgisayar adı: " + bilgisayarAdi + " " + "Ip adresi: " + ipAdresi);
             w.WriteLine($"{DateTime.Now.ToLongTimeString()} {DateTime.Now.ToLongDateString()}");
@@ -90,7 +87,6 @@ namespace OSBilişim
                 Console.WriteLine(line);
             }
         }
-
         [Obsolete]
         private void Btn_giris_Click(object sender, EventArgs e)
         {
@@ -130,7 +126,7 @@ namespace OSBilişim
                         SqlCommand sifresorgu = new SqlCommand
                         {
                             Connection = connection,
-                            CommandText = "Select * From kullanicilar where sifre ='" + sifretextbox.Text + "'"
+                            CommandText = "select * from kullanicilar where k_adi = '" + kullaniciaditextbox.Text + "' and sifre = '" + sifretextbox.Text + "'"
                         };
                         SqlDataReader kullanıcıkontrol = kullanıcısorgu.ExecuteReader();
                         SqlDataReader sifrekontrol = sifresorgu.ExecuteReader();
@@ -144,20 +140,28 @@ namespace OSBilişim
                                 sifrekontrol.Close();
 
                                 string adi, soyadi;
-                                SqlCommand kullanicilar = new SqlCommand("SELECT *FROM kullanicilar where k_adi = '" + Kullanicigirisiform.username + "'", connection);
+                                SqlCommand kullanicilar = new SqlCommand("SELECT *FROM kullanicilar where k_adi = '" + username + "'", connection);
                                 SqlDataReader kullaniciaciklamasi;
                                 kullaniciaciklamasi = kullanicilar.ExecuteReader();
                                 while (kullaniciaciklamasi.Read())
                                 {
-                                    adi = ((string)kullaniciaciklamasi["kullanici_isim"]);
-                                    soyadi = ((string)kullaniciaciklamasi["kullanici_soyisim"]);
-                                    if (username == "Admin")
+                                    adi = (string)kullaniciaciklamasi["kullanici_isim"];
+                                    soyadi = (string)kullaniciaciklamasi["kullanici_soyisim"];
+                                    if (username.ToLower() == "admin")
                                     {
-                                        MessageBox.Show("Admin olarak giriş yaptınız.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MessageBox.Show("Admin olarak giriş yapıldı.\nUygulamaya yönlendiriliyorsunuz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                                        {
+                                            Log("Admin olarak giriş yapıldı.", w);
+                                        }
+                                        using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                                        {
+                                            DumpLog(r);
+                                        }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Merhaba hoş geldin, " + adi + " " + soyadi + " sisteme yönlendiriliyorsun.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        MessageBox.Show("Merhaba hoş geldin, " + adi + " " + soyadi + "\nUygulamaya yönlendiriliyorsun.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                         using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
                                         {
                                             Log(adi + " " + soyadi + " sisteme " + "(" + username + ")" + " kullanıcı adı ile giriş yaptı.", w);
@@ -172,7 +176,7 @@ namespace OSBilişim
                                 kullaniciaciklamasi.Close();
                                 SqlCommand kullanicidurumgüncelle = new SqlCommand("Update kullanicilar set durum='" + 1 + "' where k_adi = '" + username + "'", connection);
                                 kullanicidurumgüncelle.ExecuteNonQuery();
-                                username = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(Kullanicigirisiform.username);
+                                username = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(username);
                                 anaform.Show();
                                 Hide();
                             }
@@ -195,7 +199,15 @@ namespace OSBilişim
             }
             catch (Exception hata)
             {
-                MessageBox.Show("Server ile bağlantı kurulmadı lütfen internet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Log("Bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    DumpLog(r);
+                }
+                MessageBox.Show("Bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
            
@@ -214,12 +226,12 @@ namespace OSBilişim
                 try
                 {
                     Process.Start(program);
-                    Environment.Exit(0);
+                    Application.Exit();
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Uygulama yönetici olarak çalıştırılmadığından başlatılmayacaktır. ", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Environment.Exit(1);
+                    MessageBox.Show("Uygulama yönetici olarak çalıştırılmadığı için başlatılmayacaktır.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Exit();
                 }
             }
         }
@@ -250,12 +262,12 @@ namespace OSBilişim
                     if (programdurumu == "Arızalı")
                     {
                         MessageBox.Show(((string)üründurumusorgulama["program_arizali"]),"OS BİLİŞİM",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Kapalı")
                     {
                         MessageBox.Show((string)üründurumusorgulama["program_kapali"], "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Zamanlı Bakım")
                     {
@@ -263,29 +275,29 @@ namespace OSBilişim
                         DateTime bitis = (DateTime)üründurumusorgulama["program_zamanli_bakim_bitis"];
                         TimeSpan kalanzaman = bitis - baslangic;
                         MessageBox.Show(((string)üründurumusorgulama["program_zamanli_bakim"])+ "\n Kalan zaman: " + kalanzaman.Days + " gün " + kalanzaman.Hours + " saat " + kalanzaman.Seconds + " saniye kalmıştır." , "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Bakım")
                     {
-                        MessageBox.Show(((string)üründurumusorgulama["program_bakim"]), "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        MessageBox.Show((string)üründurumusorgulama["program_bakim"], "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        Application.Exit();
                     }
                     else
                     {
                         if (Convert.ToInt32(güncelversiyon) >= Convert.ToInt32(programversion.FileVersion))
                         {
-                            DialogResult dialog = MessageBox.Show("Uygulamanızın yeni sürümünü indirmek ister misiniz?", "OS BİLİŞİM", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            DialogResult dialog = MessageBox.Show("Uygulama'nın yeni sürümünü indirmek ister misiniz?", "OS BİLİŞİM", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (dialog == DialogResult.Yes)
                             {
                                 string dosya_dizini = AppDomain.CurrentDomain.BaseDirectory.ToString() + "OSUpdate.exe";
                                 File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.123/Update/OSUpdate.exe"));
                                 Process.Start("OSUpdate.exe");
                                 System.Threading.Thread.Sleep(1000);
-                                Environment.Exit(0);
+                                Application.Exit();
                             }
                             else
                             {
-                                MessageBox.Show("Uygulamanızı güncellemediğiniz için, program çalışmayacaktır.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Uygulama eski sürümü ile çalışmayacaktır, yeni sürümünü indiriniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 Application.Exit();
                             }
                         }
@@ -295,13 +307,15 @@ namespace OSBilişim
             }
             catch (Exception hata)
             {
-                MessageBox.Show("Program başlatılmadı.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-            }
-
-            if (Process.GetProcessesByName("OSBilişim").Length > 1)
-            {
-                MessageBox.Show("OSBilişim uygulaması çalışıyor açık olan uygulamayı kapatıp tekrar deneyiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Log("Bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    DumpLog(r);
+                }
+                MessageBox.Show("Bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
@@ -454,52 +468,50 @@ namespace OSBilişim
         #region renkayarları
         private void Btn_giris_MouseMove(object sender, MouseEventArgs e)
         {
-            btn_giris.BackColor = Color.DarkGreen;
-            btn_giris.ForeColor = Color.Black;
+            btn_giris.BackColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Btn_giris_MouseLeave(object sender, EventArgs e)
         {
-            btn_giris.BackColor = Color.MediumSeaGreen;
-            btn_giris.ForeColor = Color.White;
+            btn_giris.BackColor = Color.FromArgb(22, 53, 56);
         }
 
         private void Logout_label_MouseMove(object sender, MouseEventArgs e)
         {
-            logout_label.ForeColor = Color.Black;
+            logout_label.ForeColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Label3_MouseMove(object sender, MouseEventArgs e)
         {
-            label3.ForeColor = Color.Black;
+            label3.ForeColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Logout_label_MouseLeave(object sender, EventArgs e)
         {
-            logout_label.ForeColor = Color.Gray;
+            logout_label.ForeColor = Color.FromArgb(22, 53, 56);
         }
 
         private void Label3_MouseLeave(object sender, EventArgs e)
         {
-            label3.ForeColor = Color.Gray;
+            label3.ForeColor = Color.FromArgb(22, 53, 56);
         }
         private void şifremiunuttumlinklabel_MouseMove(object sender, MouseEventArgs e)
         {
-            şifremiunuttumlinklabel.LinkColor = Color.DarkGreen;
+            şifremiunuttumlinklabel.LinkColor = Color.FromArgb(13, 31, 33);
         }
 
         private void şifremiunuttumlinklabel_MouseLeave(object sender, EventArgs e)
         {
-            şifremiunuttumlinklabel.LinkColor = Color.MediumSeaGreen;
+            şifremiunuttumlinklabel.LinkColor = Color.FromArgb(22, 53, 56);
         }
         private void linkLabel1_MouseMove(object sender, MouseEventArgs e)
         {
-            linkLabel1.LinkColor = Color.DarkGreen;
+            linkLabel1.LinkColor = Color.FromArgb(13, 31, 33);
         }
 
         private void linkLabel1_MouseLeave(object sender, EventArgs e)
         {
-            linkLabel1.LinkColor = Color.MediumSeaGreen;
+            linkLabel1.LinkColor = Color.FromArgb(22, 53, 56);
         }
         #endregion
 
@@ -526,7 +538,5 @@ namespace OSBilişim
             if (sifretextbox.Text == "")
             { sifretextbox.Text = "Şifrenizi giriniz"; sifretextbox.UseSystemPasswordChar = false; }
         }
-
-
     }
 }

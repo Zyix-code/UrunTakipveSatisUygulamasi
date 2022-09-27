@@ -92,7 +92,7 @@
             // 
             this.ürün_adi_label.AutoSize = true;
             this.ürün_adi_label.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.ürün_adi_label.ForeColor = System.Drawing.SystemColors.Window;
+            this.ürün_adi_label.ForeColor = System.Drawing.Color.Black;
             this.ürün_adi_label.Location = new System.Drawing.Point(50, 283);
             this.ürün_adi_label.Name = "ürün_adi_label";
             this.ürün_adi_label.Size = new System.Drawing.Size(75, 19);
@@ -103,7 +103,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label1.ForeColor = System.Drawing.SystemColors.Window;
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(8, 312);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 19);
@@ -112,7 +112,7 @@
             // 
             // yeni_ürün_ekle_btn
             // 
-            this.yeni_ürün_ekle_btn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.yeni_ürün_ekle_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.yeni_ürün_ekle_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.yeni_ürün_ekle_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.yeni_ürün_ekle_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
@@ -163,7 +163,7 @@
             // 
             // ana_menü_btn
             // 
-            this.ana_menü_btn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.ana_menü_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.ana_menü_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ana_menü_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ana_menü_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
@@ -183,7 +183,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label5.ForeColor = System.Drawing.SystemColors.Window;
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(30, 340);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(95, 19);
@@ -192,7 +192,7 @@
             // 
             // secili_ürünü_sil_btn
             // 
-            this.secili_ürünü_sil_btn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.secili_ürünü_sil_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.secili_ürünü_sil_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.secili_ürünü_sil_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.secili_ürünü_sil_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
@@ -211,7 +211,7 @@
             // 
             // secili_ürünün_kod_seri_no_sil_btn
             // 
-            this.secili_ürünün_kod_seri_no_sil_btn.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.secili_ürünün_kod_seri_no_sil_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.secili_ürünün_kod_seri_no_sil_btn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.secili_ürünün_kod_seri_no_sil_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.secili_ürünün_kod_seri_no_sil_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
@@ -232,7 +232,7 @@
             this.windows_kücültme_label.AutoSize = true;
             this.windows_kücültme_label.Cursor = System.Windows.Forms.Cursors.Hand;
             this.windows_kücültme_label.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold);
-            this.windows_kücültme_label.ForeColor = System.Drawing.Color.Gray;
+            this.windows_kücültme_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.windows_kücültme_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.windows_kücültme_label.Location = new System.Drawing.Point(1044, 7);
             this.windows_kücültme_label.Name = "windows_kücültme_label";
@@ -249,7 +249,7 @@
             this.logout_label.AutoSize = true;
             this.logout_label.Cursor = System.Windows.Forms.Cursors.Hand;
             this.logout_label.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold);
-            this.logout_label.ForeColor = System.Drawing.Color.Gray;
+            this.logout_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.logout_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.logout_label.Location = new System.Drawing.Point(1064, 8);
             this.logout_label.Name = "logout_label";
@@ -279,10 +279,10 @@
             // 
             // ürün_stok_kodu_textbox
             // 
-            this.ürün_stok_kodu_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
+            this.ürün_stok_kodu_textbox.BackColor = System.Drawing.SystemColors.Window;
             this.ürün_stok_kodu_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ürün_stok_kodu_textbox.Font = new System.Drawing.Font("Century Gothic", 11F);
-            this.ürün_stok_kodu_textbox.ForeColor = System.Drawing.SystemColors.Window;
+            this.ürün_stok_kodu_textbox.ForeColor = System.Drawing.Color.Black;
             this.ürün_stok_kodu_textbox.Location = new System.Drawing.Point(131, 311);
             this.ürün_stok_kodu_textbox.Name = "ürün_stok_kodu_textbox";
             this.ürün_stok_kodu_textbox.Size = new System.Drawing.Size(200, 18);
@@ -290,10 +290,10 @@
             // 
             // ürün_adi_textbox
             // 
-            this.ürün_adi_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
+            this.ürün_adi_textbox.BackColor = System.Drawing.SystemColors.Window;
             this.ürün_adi_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ürün_adi_textbox.Font = new System.Drawing.Font("Century Gothic", 11F);
-            this.ürün_adi_textbox.ForeColor = System.Drawing.SystemColors.Window;
+            this.ürün_adi_textbox.ForeColor = System.Drawing.Color.Black;
             this.ürün_adi_textbox.Location = new System.Drawing.Point(131, 282);
             this.ürün_adi_textbox.Name = "ürün_adi_textbox";
             this.ürün_adi_textbox.Size = new System.Drawing.Size(200, 18);
@@ -309,10 +309,10 @@
             // 
             // ürün_seri_no_textbox
             // 
-            this.ürün_seri_no_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
+            this.ürün_seri_no_textbox.BackColor = System.Drawing.SystemColors.Window;
             this.ürün_seri_no_textbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ürün_seri_no_textbox.Font = new System.Drawing.Font("Century Gothic", 11F);
-            this.ürün_seri_no_textbox.ForeColor = System.Drawing.SystemColors.Window;
+            this.ürün_seri_no_textbox.ForeColor = System.Drawing.Color.Black;
             this.ürün_seri_no_textbox.Location = new System.Drawing.Point(131, 339);
             this.ürün_seri_no_textbox.Name = "ürün_seri_no_textbox";
             this.ürün_seri_no_textbox.Size = new System.Drawing.Size(200, 18);
@@ -321,7 +321,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
+            this.panel4.BackColor = System.Drawing.SystemColors.Window;
             this.panel4.Controls.Add(this.ürünkalankullanımlabel);
             this.panel4.Controls.Add(this.loginpanel_gelistiren_label);
             this.panel4.Controls.Add(this.panel2);
@@ -351,8 +351,8 @@
             this.ürünkalankullanımlabel.AutoSize = true;
             this.ürünkalankullanımlabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ürünkalankullanımlabel.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.ürünkalankullanımlabel.ForeColor = System.Drawing.SystemColors.Window;
-            this.ürünkalankullanımlabel.Location = new System.Drawing.Point(38, 447);
+            this.ürünkalankullanımlabel.ForeColor = System.Drawing.Color.Black;
+            this.ürünkalankullanımlabel.Location = new System.Drawing.Point(102, 447);
             this.ürünkalankullanımlabel.Name = "ürünkalankullanımlabel";
             this.ürünkalankullanımlabel.Size = new System.Drawing.Size(190, 19);
             this.ürünkalankullanımlabel.TabIndex = 7;
@@ -365,7 +365,7 @@
             // 
             this.loginpanel_gelistiren_label.AutoSize = true;
             this.loginpanel_gelistiren_label.Font = new System.Drawing.Font("Century Gothic", 7F);
-            this.loginpanel_gelistiren_label.ForeColor = System.Drawing.Color.White;
+            this.loginpanel_gelistiren_label.ForeColor = System.Drawing.Color.Black;
             this.loginpanel_gelistiren_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.loginpanel_gelistiren_label.Location = new System.Drawing.Point(266, 522);
             this.loginpanel_gelistiren_label.Name = "loginpanel_gelistiren_label";
@@ -401,12 +401,12 @@
             // 
             // linkLabel1
             // 
-            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.DarkGreen;
+            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(13)))), ((int)(((byte)(31)))), ((int)(((byte)(33)))));
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.linkLabel1.Font = new System.Drawing.Font("Century Gothic", 8F);
             this.linkLabel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.linkLabel1.LinkColor = System.Drawing.Color.MediumSeaGreen;
+            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.linkLabel1.Location = new System.Drawing.Point(565, 535);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(151, 16);
@@ -421,7 +421,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label2.Location = new System.Drawing.Point(381, 504);
             this.label2.Name = "label2";

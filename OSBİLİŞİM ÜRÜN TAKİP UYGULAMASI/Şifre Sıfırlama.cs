@@ -98,12 +98,12 @@ namespace OSBilişim
                     if (programdurumu == "Arızalı")
                     {
                         MessageBox.Show(((string)üründurumusorgulama["program_arizali"]), "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Kapalı")
                     {
                         MessageBox.Show((string)üründurumusorgulama["program_kapali"], "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Zamanlı Bakım")
                     {
@@ -111,29 +111,29 @@ namespace OSBilişim
                         DateTime bitis = (DateTime)üründurumusorgulama["program_zamanli_bakim_bitis"];
                         TimeSpan kalanzaman = bitis - baslangic;
                         MessageBox.Show(((string)üründurumusorgulama["program_zamanli_bakim"]) + "\n Kalan zaman: " + kalanzaman.Days + " gün " + kalanzaman.Hours + " saat " + kalanzaman.Seconds + " saniye kalmıştır.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else if (programdurumu == "Bakım")
                     {
                         MessageBox.Show(((string)üründurumusorgulama["program_bakim"]), "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        Environment.Exit(0);
+                        Application.Exit();
                     }
                     else
                     {
                         if (Convert.ToInt32(Kullanicigirisiform.güncelversiyon) >= Convert.ToInt32(programversion.FileVersion))
                         {
-                            DialogResult dialog = MessageBox.Show("Uygulamanızın yeni sürümünü indirmek ister misiniz?", "OS BİLİŞİM", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            DialogResult dialog = MessageBox.Show("Uygulama'nın yeni sürümünü indirmek ister misiniz?", "OS BİLİŞİM", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (dialog == DialogResult.Yes)
                             {
                                 string dosya_dizini = AppDomain.CurrentDomain.BaseDirectory.ToString() + "OSUpdate.exe";
                                 File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.123/Update/OSUpdate.exe"));
                                 Process.Start("OSUpdate.exe");
                                 System.Threading.Thread.Sleep(1000);
-                                Environment.Exit(0);
+                                Application.Exit();
                             }
                             else
                             {
-                                MessageBox.Show("Uygulamanızı güncellemediğiniz için, program çalışmayacaktır.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Uygulama eski sürümü ile çalışmayacaktır, yeni sürümünü indiriniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 Application.Exit();
                             }
                         }
@@ -143,12 +143,21 @@ namespace OSBilişim
             }
             catch (Exception hata)
             {
-                MessageBox.Show("Program başlatılmadı.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
         }
             private void Sifremiunuttumlinklabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
+            {
             provider.Clear();
             try
             {
@@ -187,7 +196,7 @@ namespace OSBilişim
                         veriokuyucu3.Close();
                         string kime = eposta;
                         string konu = "OSBİLİŞİM - Güvenlik Sorusu";
-                        sc.Credentials = new NetworkCredential("teknik@trentatek.com.tr", "M9H8zRS3!");
+                        sc.Credentials = new NetworkCredential("teknik@trentatek.com.tr", "A6P3e2DvK6");
                         MailMessage mail = new MailMessage
                         {
                             From = new MailAddress("teknik@trentatek.com.tr", "OS BİLİŞİM")
@@ -274,7 +283,16 @@ namespace OSBilişim
             }
             catch (Exception hata)
             {
-                MessageBox.Show("Güvenlik sorusu cevabı talebiniz oluşturulmadı, bir hata oluştu lütfen daha sonra tekrar deneyiniz.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Güvenlik sorusu cevabınız gönderilmedi, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Güvenlik sorusu cevabınız gönderilmedi, bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
             connection.Close();
@@ -357,7 +375,7 @@ namespace OSBilişim
                         string kime = eposta;
                         string konu = "OSBİLİŞİM - Parola Sıfırlama";
 
-                        sc.Credentials = new NetworkCredential("teknik@trentatek.com.tr", "M9H8zRS3!");
+                        sc.Credentials = new NetworkCredential("teknik@trentatek.com.tr", "A6P3e2DvK6");
                         MailMessage mail = new MailMessage
                         {
                             From = new MailAddress("teknik@trentatek.com.tr", "OS BİLİŞİM")
@@ -443,7 +461,16 @@ namespace OSBilişim
             }
             catch (Exception hata)
             {
-                MessageBox.Show("Şifre sıfırlama talebiniz oluşturulurken bir hata oluştu lütfen daha sonra tekrar deneyiniz.\nİnternet bağlantınızı ya da server bağlantınızı kontrol edin.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.Log("Güvenlik onay kodu gönderilmedi, bağlantı kesildi.\nnHata kodu: " + hata.Message, w);
+
+                }
+                using (StreamReader r = File.OpenText("OSBilisim-log.log"))
+                {
+                    Kullanicigirisiform.DumpLog(r);
+                }
+                MessageBox.Show("Güvenlik onay kodu gönderilmedi, bağlantı kesildi.\nnHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
             connection.Close();
@@ -502,63 +529,64 @@ namespace OSBilişim
         #region renkayarları
         private void Btn_sıfırla_MouseMove(object sender, MouseEventArgs e)
         {
-            btn_sıfırla.BackColor = Color.DarkGreen;
-            btn_sıfırla.ForeColor = Color.Black;
+            btn_sıfırla.BackColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Btn_onaykodugönder_MouseMove(object sender, MouseEventArgs e)
         {
-            btn_onaykodugönder.BackColor = Color.DarkGreen;
-            btn_onaykodugönder.ForeColor = Color.Black;
+            btn_onaykodugönder.BackColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Btn_onaykodugönder_MouseLeave(object sender, EventArgs e)
         {
-            btn_onaykodugönder.BackColor = Color.MediumSeaGreen;
-            btn_onaykodugönder.ForeColor = Color.White;
+            btn_onaykodugönder.BackColor = Color.FromArgb(22, 53, 56);
         }
 
         private void Btn_sıfırla_MouseLeave(object sender, EventArgs e)
         {
-            btn_sıfırla.BackColor = Color.MediumSeaGreen;
-            btn_sıfırla.ForeColor = Color.White;
+            btn_sıfırla.BackColor = Color.FromArgb(22, 53, 56);
         }
         private void Logout_label_MouseMove(object sender, MouseEventArgs e)
         {
-            logout_label.ForeColor = Color.Black;
+            logout_label.ForeColor = Color.FromArgb(13, 31, 33);
         }
 
         private void Label3_MouseMove(object sender, MouseEventArgs e)
         {
-            label3.ForeColor = Color.Black;
+            label3.ForeColor = Color.FromArgb(13, 31, 33);
         }
         private void Label3_MouseLeave(object sender, EventArgs e)
         {
-            label3.ForeColor = Color.Gray;
+            label3.ForeColor = Color.FromArgb(22, 53, 56);
         }
 
         private void linkLabel1_MouseLeave(object sender, EventArgs e)
         {
-            linkLabel1.LinkColor = Color.MediumSeaGreen;
+            linkLabel1.LinkColor = Color.FromArgb(22, 53, 56);
         }
 
         private void linkLabel1_MouseMove(object sender, MouseEventArgs e)
         {
-            linkLabel1.LinkColor = Color.DarkGreen;
+            linkLabel1.LinkColor = Color.FromArgb(13, 31, 33);
         }
         private void şifremiunuttumlinklabel_MouseLeave(object sender, EventArgs e)
         {
-            şifremiunuttumlinklabel.LinkColor = Color.MediumSeaGreen;
+            şifremiunuttumlinklabel.LinkColor = Color.FromArgb(22, 53, 56);
         }
 
         private void şifremiunuttumlinklabel_MouseMove(object sender, MouseEventArgs e)
         {
-            şifremiunuttumlinklabel.LinkColor = Color.DarkGreen;
+            şifremiunuttumlinklabel.LinkColor = Color.FromArgb(13, 31, 33);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void Logout_label_MouseLeave(object sender, EventArgs e)
         {
-            logout_label.ForeColor = Color.Gray;
+            logout_label.ForeColor = Color.FromArgb(22, 53, 56);
         }
         #endregion
     }

@@ -626,8 +626,6 @@ namespace OSBilişim
                     Kullanicigirisiform Kullanicigirisiform = new Kullanicigirisiform();
                     SqlCommand kullanicidurumgüncelle = new SqlCommand("Update kullanicilar set durum='" + 0 + "' where k_adi = '" + Kullanicigirisiform.username + "'", connection);
                     kullanicidurumgüncelle.ExecuteNonQuery();
-                    Kullanicigirisiform.Show();
-                    Hide();
                 }
             }
             catch (Exception kullaniciaktifligi)

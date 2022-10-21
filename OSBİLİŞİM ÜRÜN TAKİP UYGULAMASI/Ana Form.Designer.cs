@@ -131,11 +131,11 @@
             this.label7.Font = new System.Drawing.Font("Century Gothic", 16F);
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(12, 371);
+            this.label7.Location = new System.Drawing.Point(12, 356);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(191, 25);
+            this.label7.Size = new System.Drawing.Size(138, 25);
             this.label7.TabIndex = 21;
-            this.label7.Text = "Aktif Kullanıcılar;";
+            this.label7.Text = "Kullanıcılar;";
             // 
             // aktifkullanicilar_listbox
             // 
@@ -145,9 +145,9 @@
             this.aktifkullanicilar_listbox.ForeColor = System.Drawing.Color.Black;
             this.aktifkullanicilar_listbox.IntegralHeight = false;
             this.aktifkullanicilar_listbox.ItemHeight = 20;
-            this.aktifkullanicilar_listbox.Location = new System.Drawing.Point(17, 399);
+            this.aktifkullanicilar_listbox.Location = new System.Drawing.Point(17, 384);
             this.aktifkullanicilar_listbox.Name = "aktifkullanicilar_listbox";
-            this.aktifkullanicilar_listbox.Size = new System.Drawing.Size(353, 101);
+            this.aktifkullanicilar_listbox.Size = new System.Drawing.Size(339, 125);
             this.aktifkullanicilar_listbox.TabIndex = 6;
             this.aktifkullanicilar_listbox.SelectedIndexChanged += new System.EventHandler(this.aktifkullanicilar_listbox_SelectedIndexChanged);
             // 
@@ -257,7 +257,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::OSBilişim.Properties.Resources.person_icon_man;
-            this.pictureBox1.Location = new System.Drawing.Point(102, 24);
+            this.pictureBox1.Location = new System.Drawing.Point(116, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(128, 128);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;

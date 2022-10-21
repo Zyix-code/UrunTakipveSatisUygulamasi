@@ -65,6 +65,9 @@
             // toolTip1
             // 
             this.toolTip1.IsBalloon = true;
+            this.toolTip1.Tag = "Bilgilendirme";
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "Bilgilendirme";
             // 
             // secili_ürünün_kod_seri_no_sil_btn
             // 

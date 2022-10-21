@@ -9,6 +9,9 @@ using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Drawing;
+using System.Threading;
+using System.Security.AccessControl;
+using System.ComponentModel;
 
 namespace OSBilişim
 {

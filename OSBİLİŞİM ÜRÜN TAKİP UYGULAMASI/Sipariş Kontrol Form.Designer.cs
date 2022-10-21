@@ -266,7 +266,7 @@
             this.aciklama_textbox.Multiline = true;
             this.aciklama_textbox.Name = "aciklama_textbox";
             this.aciklama_textbox.ReadOnly = true;
-            this.aciklama_textbox.Size = new System.Drawing.Size(246, 70);
+            this.aciklama_textbox.Size = new System.Drawing.Size(231, 70);
             this.aciklama_textbox.TabIndex = 10;
             // 
             // label14
@@ -331,7 +331,7 @@
             this.kullanilacak_malzemeler_seri_no_textbox.ForeColor = System.Drawing.Color.Black;
             this.kullanilacak_malzemeler_seri_no_textbox.Location = new System.Drawing.Point(161, 293);
             this.kullanilacak_malzemeler_seri_no_textbox.Name = "kullanilacak_malzemeler_seri_no_textbox";
-            this.kullanilacak_malzemeler_seri_no_textbox.Size = new System.Drawing.Size(246, 21);
+            this.kullanilacak_malzemeler_seri_no_textbox.Size = new System.Drawing.Size(231, 21);
             this.kullanilacak_malzemeler_seri_no_textbox.TabIndex = 8;
             // 
             // ürünaditextbox
@@ -803,9 +803,9 @@
             this.loginpanel_hosgeldiniz_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.loginpanel_hosgeldiniz_label.Location = new System.Drawing.Point(128, 303);
             this.loginpanel_hosgeldiniz_label.Name = "loginpanel_hosgeldiniz_label";
-            this.loginpanel_hosgeldiniz_label.Size = new System.Drawing.Size(123, 25);
+            this.loginpanel_hosgeldiniz_label.Size = new System.Drawing.Size(108, 25);
             this.loginpanel_hosgeldiniz_label.TabIndex = 9;
-            this.loginpanel_hosgeldiniz_label.Text = "OS BİLİŞİM\r\n";
+            this.loginpanel_hosgeldiniz_label.Text = "Os Bilişim";
             // 
             // loginpanel_gelistiren_label
             // 
@@ -833,6 +833,9 @@
             // toolTip1
             // 
             this.toolTip1.IsBalloon = true;
+            this.toolTip1.Tag = "Bilgilendirme";
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "Bilgilendirme";
             // 
             // timer1
             // 
@@ -874,7 +877,7 @@
             this.Arama_textbox.Location = new System.Drawing.Point(161, 20);
             this.Arama_textbox.Multiline = true;
             this.Arama_textbox.Name = "Arama_textbox";
-            this.Arama_textbox.Size = new System.Drawing.Size(246, 20);
+            this.Arama_textbox.Size = new System.Drawing.Size(231, 20);
             this.Arama_textbox.TabIndex = 13;
             // 
             // Arama_btn

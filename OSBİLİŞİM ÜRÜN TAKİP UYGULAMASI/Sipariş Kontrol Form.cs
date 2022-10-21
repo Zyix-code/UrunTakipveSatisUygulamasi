@@ -12,6 +12,9 @@ using System.Net;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Data.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OSBilişim
 {
@@ -34,8 +37,6 @@ namespace OSBilişim
                     Kullanicigirisiform Kullanicigirisiform = new Kullanicigirisiform();
                     SqlCommand kullanicidurumgüncelle = new SqlCommand("Update kullanicilar set durum='" + 0 + "' where k_adi = '" + Kullanicigirisiform.username + "'", connection);
                     kullanicidurumgüncelle.ExecuteNonQuery();
-                    Kullanicigirisiform.Show();
-                    Hide();
                 }
             }
             catch (Exception kullaniciaktifligi)
@@ -620,9 +621,10 @@ namespace OSBilişim
                     {
                         Icon = new Icon(@"alt-logo.ico"),
                         Text = "OS BİLİŞİM",
-                        Visible = true
+                        Visible = true,
+                        BalloonTipTitle = "Yeni Sipariş"
                     };
-                    trayIcon.ShowBalloonTip(1, "Bilgi", "Yeni bir sipariş geldi, lütfen kontrol ediniz.", ToolTipIcon.Info);
+                    trayIcon.ShowBalloonTip(1, "Bilgi", "Yeni sipariş bulunuyor, sipariş listesini güncelleyin!", ToolTipIcon.Info);
 
                 }
                 ürünaditextbox.Text = "";
@@ -1294,8 +1296,6 @@ namespace OSBilişim
         {
             Process.Start("https://mail.google.com/");
         }
-
-
         new
         #region forumharaketettirme
         int Move;
@@ -1467,17 +1467,24 @@ namespace OSBilişim
         #endregion
         private void Arama_btn_Click(object sender, EventArgs e)
         {
+            provider.Clear();
             try
             {
                 if (connection.State == ConnectionState.Closed)
                 connection.Open();
-
-                SqlCommand komut = new SqlCommand("select * from siparisler where urun_adi='" + Arama_textbox.Text + "' OR urun_stok_kodu='" + Arama_textbox.Text + "' OR urun_seri_no= '" + Arama_textbox.Text + "' OR urun_adeti ='" + Arama_textbox.Text + "' OR teslim_alacak_kisi_adi = '" + Arama_textbox.Text + "' OR teslim_alacak_kisi_soyadi = '" + Arama_textbox.Text + "' OR urun_hazirlik_durumu ='" + Arama_textbox.Text + "'", connection);
-                SqlDataAdapter okuyucu = new SqlDataAdapter(komut);
-                DataSet ds = new DataSet();
-                okuyucu.Fill(ds);
-                sipariskontrolview.DataSource = ds.Tables[0];
-                connection.Close();
+                if (Arama_textbox.Text == "")
+                {
+                    provider.SetError(Arama_textbox, "Arama kutusu boş bırakılmaz");
+                }
+                else
+                {
+                    SqlCommand komut = new SqlCommand("select * from siparisler where urun_adi='" + Arama_textbox.Text + "' OR urun_stok_kodu='" + Arama_textbox.Text + "' OR urun_seri_no= '" + Arama_textbox.Text + "' OR urun_adeti ='" + Arama_textbox.Text + "' OR teslim_alacak_kisi_adi = '" + Arama_textbox.Text + "' OR teslim_alacak_kisi_soyadi = '" + Arama_textbox.Text + "' OR urun_hazirlik_durumu ='" + Arama_textbox.Text + "'", connection);
+                    SqlDataAdapter okuyucu = new SqlDataAdapter(komut);
+                    DataSet ds = new DataSet();
+                    okuyucu.Fill(ds);
+                    sipariskontrolview.DataSource = ds.Tables[0];
+                    connection.Close();
+                }
             }
             catch (Exception hata)
             {

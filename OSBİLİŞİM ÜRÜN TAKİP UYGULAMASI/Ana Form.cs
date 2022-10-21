@@ -6,6 +6,8 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Drawing;
 using System.Net;
+using com.itextpdf.text.pdf;
+using System.Globalization;
 
 namespace OSBilişim
 {
@@ -103,20 +105,40 @@ namespace OSBilişim
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-
-                SqlCommand kullanicikomut = new SqlCommand("SELECT kullanici_isim, kullanici_statü FROM kullanicilar where durum = '1'", connection);
+                string kullanıcıadı = Kullanicigirisiform.username.ToLower();
+                kullanıcıadı = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(kullanıcıadı);
+                SqlCommand kullanicikomut = new SqlCommand("Select durum, kullanici_isim, kullanici_statü FROM kullanicilar", connection);
                 SqlDataReader aktifkullanici;
                 aktifkullanici = kullanicikomut.ExecuteReader();
                 aktifkullanicilar_listbox.Items.Clear();
                 while (aktifkullanici.Read())
                 {
-                    aktifkullanicilar_listbox.Items.Add(aktifkullanici["kullanici_isim"] + " (" + (string)aktifkullanici["kullanici_statü"] + ")".ToString());
-                    string kendikullaniciisminikaldirma = Kullanicigirisiform.username + " (" + (string)aktifkullanici["kullanici_statü"] + ")";
-                    if (aktifkullanicilar_listbox.Items.Contains(kendikullaniciisminikaldirma))
+                    if ((string)aktifkullanici["durum"] == "1")
                     {
-                        aktifkullanicilar_listbox.Items.Remove(kendikullaniciisminikaldirma);
+                        aktifkullanicilar_listbox.Items.Add(aktifkullanici["kullanici_isim"] + " (" + (string)aktifkullanici["kullanici_statü"] + ")"  + " Çevrimiçi".ToString());
+                        string kendikullaniciisminikaldirma = kullanıcıadı + " (" + (string)aktifkullanici["kullanici_statü"] + ")" + " Çevrimiçi";
+                        if (aktifkullanicilar_listbox.Items.Contains(kendikullaniciisminikaldirma))
+                            aktifkullanicilar_listbox.Items.Remove(kendikullaniciisminikaldirma);
                     }
+                    else if ((string)aktifkullanici["durum"] == "0")
+                    {
+                        aktifkullanicilar_listbox.Items.Add(aktifkullanici["kullanici_isim"] + " (" + (string)aktifkullanici["kullanici_statü"] + ")" + " Çevrimdışı".ToString());
+                        string kendikullaniciisminikaldirma = kullanıcıadı + " (" + (string)aktifkullanici["kullanici_statü"] + ")" + " Çevrimdışı";
+                        if (aktifkullanicilar_listbox.Items.Contains(kendikullaniciisminikaldirma))
+                            aktifkullanicilar_listbox.Items.Remove(kendikullaniciisminikaldirma);
+                    }
+                    else
+                    {
+                        aktifkullanicilar_listbox.Items.Add(aktifkullanici["kullanici_isim"] + " (" + (string)aktifkullanici["kullanici_statü"] + ")" + " Çevrimdışı".ToString());
+                        string kendikullaniciisminikaldirma = kullanıcıadı + " (" + (string)aktifkullanici["kullanici_statü"] + ")" + " Çevrimdışı";
+                        if (aktifkullanicilar_listbox.Items.Contains(kendikullaniciisminikaldirma))
+                            aktifkullanicilar_listbox.Items.Remove(kendikullaniciisminikaldirma);
+                    }
+                   
                 }
+                if (aktifkullanicilar_listbox.Items.Count < 1)
+                    aktifkullanicilar_listbox.Items.Add("Aktif kullanıcı yoktur.");
+               
                 aktifkullanici.Close();
                 SqlCommand kullanicilar = new SqlCommand("select * from kullanicilar where k_adi = '" + Kullanicigirisiform.username + "'", connection);
                 SqlDataReader kullaniciaciklamasi;
@@ -187,8 +209,6 @@ namespace OSBilişim
                     Kullanicigirisiform kullanicigirisiform = new Kullanicigirisiform();
                     SqlCommand kullanicidurumgüncelle = new SqlCommand("Update kullanicilar set durum='" + 0 + "' where k_adi = '" + Kullanicigirisiform.username + "'", connection);
                     kullanicidurumgüncelle.ExecuteNonQuery();
-                    kullanicigirisiform.Show();
-                    Hide();
                 }
             }
             catch (Exception kullaniciaktifligi)
@@ -450,35 +470,46 @@ namespace OSBilişim
 
         }
         #endregion
+
         private void aktifkullanicilar_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             provider.Clear();
             ToolTip Aciklama = new ToolTip();
             string cinsiyetsorgulama = " ";
+           
             try
             {
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
-                string kullanıcı = aktifkullanicilar_listbox.SelectedItem.ToString();
-                string aranan = kullanıcı.Substring(0, kullanıcı.IndexOf(' '));
-                SqlCommand kullanicilar = new SqlCommand("select * from  kullanicilar where kullanici_isim = '" + aranan + "'", connection);
-                 SqlDataReader kullaniciaciklamasi;
-                 kullaniciaciklamasi = kullanicilar.ExecuteReader();
-                 while (kullaniciaciklamasi.Read())
-                 {
-                    if ((string)kullaniciaciklamasi["cinsiyet"] == "E")
-                        cinsiyetsorgulama = "Erkek";
-                    else if ((string)kullaniciaciklamasi["cinsiyet"] == "K")
-                        cinsiyetsorgulama = "Kadın";
-                    else
-                        cinsiyetsorgulama = "Belirtilmemiş";
-                    Aciklama.SetToolTip(aktifkullanicilar_listbox,
-                        "Adı: " + (string)kullaniciaciklamasi["kullanici_isim"] +
-                        "\nSoyadı: " + (string)kullaniciaciklamasi["kullanici_soyisim"] +
-                        "\nStatü: " + (string)kullaniciaciklamasi["kullanici_statü"] +
-                        "\nCinsiyet: " + cinsiyetsorgulama +
-                        "\nKayıt tarihi: " + (string)kullaniciaciklamasi["kullanici_kayit_tarihi"]);
-                 }
+                if (aktifkullanicilar_listbox.SelectedIndex == -1)
+                {
+                    provider.SetError(aktifkullanicilar_listbox,"Geçerli bir kullanıcı seçiniz.");
+                    Aciklama.SetToolTip(aktifkullanicilar_listbox, "Kullanıcı bulunamadı.");
+                }
+                else
+                {
+                    string kullanıcı = aktifkullanicilar_listbox.SelectedItem.ToString();
+                    string aranan = kullanıcı.Substring(0, kullanıcı.IndexOf(' '));
+                    SqlCommand kullanicilar = new SqlCommand("select * from  kullanicilar where kullanici_isim = '" + aranan + "'", connection);
+                    SqlDataReader kullaniciaciklamasi;
+                    kullaniciaciklamasi = kullanicilar.ExecuteReader();
+                    while (kullaniciaciklamasi.Read())
+                    {
+                        if ((string)kullaniciaciklamasi["cinsiyet"] == "E")
+                            cinsiyetsorgulama = "Erkek";
+                        else if ((string)kullaniciaciklamasi["cinsiyet"] == "K")
+                            cinsiyetsorgulama = "Kadın";
+                        else
+                            cinsiyetsorgulama = "Belirtilmemiş";
+                        Aciklama.SetToolTip(aktifkullanicilar_listbox,
+                            "Adı: " + (string)kullaniciaciklamasi["kullanici_isim"] +
+                            "\nSoyadı: " + (string)kullaniciaciklamasi["kullanici_soyisim"] +
+                            "\nStatü: " + (string)kullaniciaciklamasi["kullanici_statü"] +
+                            "\nCinsiyet: " + cinsiyetsorgulama +
+                            "\nKayıt tarihi: " + (string)kullaniciaciklamasi["kullanici_kayit_tarihi"]);
+
+                    }
+                }
             }
             catch (Exception hata)
             {

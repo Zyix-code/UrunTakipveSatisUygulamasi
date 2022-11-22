@@ -1,6 +1,6 @@
 ﻿namespace OSBilişim
 {
-    partial class Kullanicigirisiform
+    partial class Kullanıcı_girisi
     {
         /// <summary>
         ///Gerekli tasarımcı değişkeni.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kullanicigirisiform));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kullanıcı_girisi));
             this.btn_giris = new System.Windows.Forms.Button();
             this.kullaniciaditextbox = new System.Windows.Forms.TextBox();
             this.sifretextbox = new System.Windows.Forms.TextBox();
@@ -226,7 +226,7 @@
             this.linkLabel1.MouseLeave += new System.EventHandler(this.linkLabel1_MouseLeave);
             this.linkLabel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.linkLabel1_MouseMove);
             // 
-            // Kullanicigirisiform
+            // Kullanıcı_girisi
             // 
             this.AcceptButton = this.btn_giris;
             resources.ApplyResources(this, "$this");
@@ -251,12 +251,12 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Kullanicigirisiform";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Kullanicigirisiform_FormClosed);
-            this.Load += new System.EventHandler(this.Kullanicigirisiform_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Kullanicigirisiform_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Kullanicigirisiform_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Kullanicigirisiform_MouseUp);
+            this.Name = "Kullanıcı_girisi";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Kullanıcı_girisi_FormClosed);
+            this.Load += new System.EventHandler(this.Kullanıcı_girisi_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Kullanıcı_girisi_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Kullanıcı_girisi_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Kullanıcı_girisi_MouseUp);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

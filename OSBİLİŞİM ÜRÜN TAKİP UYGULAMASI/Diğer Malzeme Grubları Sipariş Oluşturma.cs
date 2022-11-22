@@ -9,9 +9,9 @@ using System.Net;
 
 namespace OSBilişim
 {
-    public partial class Diğer_Malzeme_Grubları : Form
+    public partial class Diger_malzeme_grubları_siparis_olusturma : Form
     {
-        public Diğer_Malzeme_Grubları()
+        public Diger_malzeme_grubları_siparis_olusturma()
         {
             InitializeComponent();
         }
@@ -33,20 +33,20 @@ namespace OSBilişim
                 if (connection.State == ConnectionState.Closed)
                     connection.Open();
 
-                Kullanicigirisiform kullanicigirisiform = new Kullanicigirisiform();
-                SqlCommand kullanicidurumgüncelle = new SqlCommand("Update kullanicilar set durum='" + 0 + "' where k_adi = '" + Kullanicigirisiform.username + "'", connection);
+                Kullanıcı_girisi Kullanıcı_girisi = new Kullanıcı_girisi();
+                SqlCommand kullanicidurumgüncelle = new SqlCommand("Update kullanicilar set durum='" + 0 + "' where k_adi = '" + Kullanıcı_girisi.username + "'", connection);
                 kullanicidurumgüncelle.ExecuteNonQuery();
             }
             catch (Exception kullaniciaktifligi)
             {
                 using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.Log("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, w);
+                    Kullanıcı_girisi.Log("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, w);
 
                 }
                 using (StreamReader r = File.OpenText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.DumpLog(r);
+                    Kullanıcı_girisi.DumpLog(r);
                 }
                 MessageBox.Show("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -62,7 +62,7 @@ namespace OSBilişim
 
         private void Diğer_Malzeme_Grubları_Load(object sender, EventArgs e)
         {
-            Kullanicigirisiform Kullanicigirisiform = new Kullanicigirisiform();
+            Kullanıcı_girisi Kullanıcı_girisi = new Kullanıcı_girisi();
             try
             {
                 if (connection.State == ConnectionState.Closed)
@@ -75,7 +75,7 @@ namespace OSBilişim
                 while (üründurumusorgulama.Read())
                 {
 
-                    Kullanicigirisiform.güncelversiyon = (string)üründurumusorgulama["version"];
+                    Kullanıcı_girisi.güncelversiyon = (string)üründurumusorgulama["version"];
                     programdurumu = (string)üründurumusorgulama["program_durumu"];
 
                     if (programdurumu == "Arızalı")
@@ -103,7 +103,7 @@ namespace OSBilişim
                     }
                     else
                     {
-                        if (Convert.ToInt32(Kullanicigirisiform.güncelversiyon) >= Convert.ToInt32(programversion.FileVersion))
+                        if (Convert.ToInt32(Kullanıcı_girisi.güncelversiyon) >= Convert.ToInt32(programversion.FileVersion))
                         {
                             DialogResult dialog = MessageBox.Show("Uygulama'nın yeni sürümünü indirmek ister misiniz?", "OS BİLİŞİM", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (dialog == DialogResult.Yes)
@@ -128,12 +128,12 @@ namespace OSBilişim
             {
                 using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.Log("Bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+                    Kullanıcı_girisi.Log("Bağlantı kesildi.\nHata kodu: " + hata.Message, w);
 
                 }
                 using (StreamReader r = File.OpenText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.DumpLog(r);
+                    Kullanıcı_girisi.DumpLog(r);
                 }
                 MessageBox.Show("Bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
@@ -159,12 +159,12 @@ namespace OSBilişim
             {
                 using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.Log("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+                    Kullanıcı_girisi.Log("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
 
                 }
                 using (StreamReader r = File.OpenText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.DumpLog(r);
+                    Kullanıcı_girisi.DumpLog(r);
                 }
                 MessageBox.Show("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
@@ -343,11 +343,11 @@ namespace OSBilişim
 
                                     using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
                                     {
-                                        Kullanicigirisiform.Log(aliciaditextbox.Text + " " + alicisoyaditextboxt.Text + " adlı alıcı " + ürünadi.SelectedItem.ToString() + " ürününün " + serino.Trim(new Char[] { ' ', '/', '.' }) + " seri numarasını girerek, " + Kullanicigirisiform.username + " tarafından alıcı için sipariş oluşturuldu.", w);
+                                        Kullanıcı_girisi.Log(aliciaditextbox.Text + " " + alicisoyaditextboxt.Text + " adlı alıcı " + ürünadi.SelectedItem.ToString() + " ürününün " + serino.Trim(new Char[] { ' ', '/', '.' }) + " seri numarasını girerek, " + Kullanıcı_girisi.username + " tarafından alıcı için sipariş oluşturuldu.", w);
                                     }
                                     using (StreamReader r = File.OpenText("OSBilisim-log.log"))
                                     {
-                                        Kullanicigirisiform.DumpLog(r);
+                                        Kullanıcı_girisi.DumpLog(r);
                                     }
 
                                     ürünadetitextbox.Text = "0";
@@ -402,11 +402,11 @@ namespace OSBilişim
 
                             using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
                             {
-                                Kullanicigirisiform.Log(aliciaditextbox.Text + " " + alicisoyaditextboxt.Text + " adlı alıcı " + ürünadi.SelectedItem.ToString() + " ürününün " + serino.Trim(new Char[] { ' ', '/', '.' }) + " seri numarasını girerek, " + Kullanicigirisiform.username + " tarafından alıcı için sipariş oluşturuldu.", w);
+                                Kullanıcı_girisi.Log(aliciaditextbox.Text + " " + alicisoyaditextboxt.Text + " adlı alıcı " + ürünadi.SelectedItem.ToString() + " ürününün " + serino.Trim(new Char[] { ' ', '/', '.' }) + " seri numarasını girerek, " + Kullanıcı_girisi.username + " tarafından alıcı için sipariş oluşturuldu.", w);
                             }
                             using (StreamReader r = File.OpenText("OSBilisim-log.log"))
                             {
-                                Kullanicigirisiform.DumpLog(r);
+                                Kullanıcı_girisi.DumpLog(r);
                             }
 
                             ürünadetitextbox.Text = "0";
@@ -426,12 +426,12 @@ namespace OSBilişim
                     {
                         using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
                         {
-                            Kullanicigirisiform.Log("Sipariş oluşturulmadı, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+                            Kullanıcı_girisi.Log("Sipariş oluşturulmadı, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
 
                         }
                         using (StreamReader r = File.OpenText("OSBilisim-log.log"))
                         {
-                            Kullanicigirisiform.DumpLog(r);
+                            Kullanıcı_girisi.DumpLog(r);
                         }
                         MessageBox.Show("Sipariş oluşturulmadı, bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Application.Exit();
@@ -495,12 +495,12 @@ namespace OSBilişim
             {
                 using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.Log("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+                    Kullanıcı_girisi.Log("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
 
                 }
                 using (StreamReader r = File.OpenText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.DumpLog(r);
+                    Kullanıcı_girisi.DumpLog(r);
                 }
                 MessageBox.Show("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
@@ -513,8 +513,8 @@ namespace OSBilişim
                 if (connection.State == ConnectionState.Closed)
                 {
                     connection.Open();
-                    Kullanicigirisiform kullanicigirisiform = new Kullanicigirisiform();
-                    SqlCommand kullanicidurumgüncelle = new SqlCommand("Update kullanicilar set durum='" + 0 + "' where k_adi = '" + Kullanicigirisiform.username + "'", connection);
+                    Kullanıcı_girisi Kullanıcı_girisi = new Kullanıcı_girisi();
+                    SqlCommand kullanicidurumgüncelle = new SqlCommand("Update kullanicilar set durum='" + 0 + "' where k_adi = '" + Kullanıcı_girisi.username + "'", connection);
                     kullanicidurumgüncelle.ExecuteNonQuery();
                 }
             }
@@ -522,12 +522,12 @@ namespace OSBilişim
             {
                 using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.Log("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, w);
+                    Kullanıcı_girisi.Log("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, w);
 
                 }
                 using (StreamReader r = File.OpenText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.DumpLog(r);
+                    Kullanıcı_girisi.DumpLog(r);
                 }
                 MessageBox.Show("Kullanıcı bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + kullaniciaktifligi.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -609,12 +609,12 @@ namespace OSBilişim
             {
                 using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.Log("Yazıcı çıktısı alınırken bir hata oluştu.\nHata kodu: " + hata.Message, w);
+                    Kullanıcı_girisi.Log("Yazıcı çıktısı alınırken bir hata oluştu.\nHata kodu: " + hata.Message, w);
 
                 }
                 using (StreamReader r = File.OpenText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.DumpLog(r);
+                    Kullanıcı_girisi.DumpLog(r);
                 }
                 MessageBox.Show("Yazıcı çıktısı alınırken bir hata oluştu.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

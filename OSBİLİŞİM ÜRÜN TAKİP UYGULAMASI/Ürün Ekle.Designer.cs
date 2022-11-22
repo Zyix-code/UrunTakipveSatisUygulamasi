@@ -1,6 +1,6 @@
 ﻿namespace OSBilişim
 {
-    partial class Ürüneklemedüzenlemeform
+    partial class Ürün_ekle
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ürüneklemedüzenlemeform));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ürün_ekle));
             this.notebook_ürün_kodlari_listbox = new System.Windows.Forms.ListBox();
             this.notebook_ürünler_listbox = new System.Windows.Forms.ListBox();
             this.ürün_adi_label = new System.Windows.Forms.Label();
@@ -51,6 +51,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.ürün_seri_no_textbox = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.arenaürünkullanım_label = new System.Windows.Forms.Label();
+            this.pentaürünkullanım_label = new System.Windows.Forms.Label();
+            this.indexürünkullanım_label = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.depo_combobox = new System.Windows.Forms.ComboBox();
             this.ürünkalankullanımlabel = new System.Windows.Forms.Label();
             this.loginpanel_gelistiren_label = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -58,6 +63,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
+            this.index_seri_no_listbox = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.penta_seri_no_listbox = new System.Windows.Forms.ListBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.arena_seri_no_listbox = new System.Windows.Forms.ListBox();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -68,7 +79,7 @@
             this.notebook_ürün_kodlari_listbox.Font = new System.Drawing.Font("Century Gothic", 8.5F);
             this.notebook_ürün_kodlari_listbox.FormattingEnabled = true;
             this.notebook_ürün_kodlari_listbox.ItemHeight = 16;
-            this.notebook_ürün_kodlari_listbox.Location = new System.Drawing.Point(642, 97);
+            this.notebook_ürün_kodlari_listbox.Location = new System.Drawing.Point(600, 40);
             this.notebook_ürün_kodlari_listbox.Name = "notebook_ürün_kodlari_listbox";
             this.notebook_ürün_kodlari_listbox.Size = new System.Drawing.Size(191, 404);
             this.notebook_ürün_kodlari_listbox.Sorted = true;
@@ -81,7 +92,7 @@
             this.notebook_ürünler_listbox.Font = new System.Drawing.Font("Century Gothic", 8.5F);
             this.notebook_ürünler_listbox.FormattingEnabled = true;
             this.notebook_ürünler_listbox.ItemHeight = 16;
-            this.notebook_ürünler_listbox.Location = new System.Drawing.Point(445, 97);
+            this.notebook_ürünler_listbox.Location = new System.Drawing.Point(403, 40);
             this.notebook_ürünler_listbox.Name = "notebook_ürünler_listbox";
             this.notebook_ürünler_listbox.Size = new System.Drawing.Size(191, 404);
             this.notebook_ürünler_listbox.Sorted = true;
@@ -117,7 +128,7 @@
             this.yeni_ürün_ekle_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.yeni_ürün_ekle_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
             this.yeni_ürün_ekle_btn.ForeColor = System.Drawing.SystemColors.Window;
-            this.yeni_ürün_ekle_btn.Location = new System.Drawing.Point(106, 374);
+            this.yeni_ürün_ekle_btn.Location = new System.Drawing.Point(88, 397);
             this.yeni_ürün_ekle_btn.Name = "yeni_ürün_ekle_btn";
             this.yeni_ürün_ekle_btn.Size = new System.Drawing.Size(101, 32);
             this.yeni_ürün_ekle_btn.TabIndex = 4;
@@ -132,7 +143,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label3.Location = new System.Drawing.Point(682, 75);
+            this.label3.Location = new System.Drawing.Point(640, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 19);
             this.label3.TabIndex = 8;
@@ -144,7 +155,7 @@
             this.notebook_ürün_seri_no_listbox.Font = new System.Drawing.Font("Century Gothic", 8.5F);
             this.notebook_ürün_seri_no_listbox.FormattingEnabled = true;
             this.notebook_ürün_seri_no_listbox.ItemHeight = 16;
-            this.notebook_ürün_seri_no_listbox.Location = new System.Drawing.Point(839, 97);
+            this.notebook_ürün_seri_no_listbox.Location = new System.Drawing.Point(797, 40);
             this.notebook_ürün_seri_no_listbox.Name = "notebook_ürün_seri_no_listbox";
             this.notebook_ürün_seri_no_listbox.Size = new System.Drawing.Size(191, 404);
             this.notebook_ürün_seri_no_listbox.Sorted = true;
@@ -155,11 +166,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label4.Location = new System.Drawing.Point(901, 75);
+            this.label4.Location = new System.Drawing.Point(798, 18);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 19);
+            this.label4.Size = new System.Drawing.Size(184, 19);
             this.label4.TabIndex = 10;
-            this.label4.Text = "SERİ NO";
+            this.label4.Text = "OS DEPO MERKEZ SERİ NO";
             // 
             // ana_menü_btn
             // 
@@ -168,7 +179,7 @@
             this.ana_menü_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ana_menü_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
             this.ana_menü_btn.ForeColor = System.Drawing.SystemColors.Window;
-            this.ana_menü_btn.Location = new System.Drawing.Point(12, 517);
+            this.ana_menü_btn.Location = new System.Drawing.Point(12, 904);
             this.ana_menü_btn.Name = "ana_menü_btn";
             this.ana_menü_btn.Size = new System.Drawing.Size(121, 32);
             this.ana_menü_btn.TabIndex = 14;
@@ -197,7 +208,7 @@
             this.secili_ürünü_sil_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.secili_ürünü_sil_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
             this.secili_ürünü_sil_btn.ForeColor = System.Drawing.SystemColors.Window;
-            this.secili_ürünü_sil_btn.Location = new System.Drawing.Point(106, 412);
+            this.secili_ürünü_sil_btn.Location = new System.Drawing.Point(88, 435);
             this.secili_ürünü_sil_btn.Name = "secili_ürünü_sil_btn";
             this.secili_ürünü_sil_btn.Size = new System.Drawing.Size(101, 32);
             this.secili_ürünü_sil_btn.TabIndex = 5;
@@ -216,7 +227,7 @@
             this.secili_ürünün_kod_seri_no_sil_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.secili_ürünün_kod_seri_no_sil_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
             this.secili_ürünün_kod_seri_no_sil_btn.ForeColor = System.Drawing.SystemColors.Window;
-            this.secili_ürünün_kod_seri_no_sil_btn.Location = new System.Drawing.Point(213, 374);
+            this.secili_ürünün_kod_seri_no_sil_btn.Location = new System.Drawing.Point(195, 397);
             this.secili_ürünün_kod_seri_no_sil_btn.Name = "secili_ürünün_kod_seri_no_sil_btn";
             this.secili_ürünün_kod_seri_no_sil_btn.Size = new System.Drawing.Size(129, 70);
             this.secili_ürünün_kod_seri_no_sil_btn.TabIndex = 6;
@@ -234,7 +245,7 @@
             this.windows_kücültme_label.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold);
             this.windows_kücültme_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.windows_kücültme_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.windows_kücültme_label.Location = new System.Drawing.Point(1044, 7);
+            this.windows_kücültme_label.Location = new System.Drawing.Point(1003, 8);
             this.windows_kücültme_label.Name = "windows_kücültme_label";
             this.windows_kücültme_label.Size = new System.Drawing.Size(22, 25);
             this.windows_kücültme_label.TabIndex = 12;
@@ -251,7 +262,7 @@
             this.logout_label.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Bold);
             this.logout_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.logout_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.logout_label.Location = new System.Drawing.Point(1064, 8);
+            this.logout_label.Location = new System.Drawing.Point(1023, 9);
             this.logout_label.Name = "logout_label";
             this.logout_label.Size = new System.Drawing.Size(28, 25);
             this.logout_label.TabIndex = 13;
@@ -322,6 +333,11 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Window;
+            this.panel4.Controls.Add(this.arenaürünkullanım_label);
+            this.panel4.Controls.Add(this.pentaürünkullanım_label);
+            this.panel4.Controls.Add(this.indexürünkullanım_label);
+            this.panel4.Controls.Add(this.label10);
+            this.panel4.Controls.Add(this.depo_combobox);
             this.panel4.Controls.Add(this.ürünkalankullanımlabel);
             this.panel4.Controls.Add(this.loginpanel_gelistiren_label);
             this.panel4.Controls.Add(this.panel2);
@@ -340,11 +356,82 @@
             this.panel4.Controls.Add(this.ürün_adi_textbox);
             this.panel4.Location = new System.Drawing.Point(-1, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(376, 689);
+            this.panel4.Size = new System.Drawing.Size(376, 1082);
             this.panel4.TabIndex = 33;
             this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel4_MouseDown);
             this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel4_MouseMove);
             this.panel4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Panel4_MouseUp);
+            // 
+            // arenaürünkullanım_label
+            // 
+            this.arenaürünkullanım_label.AutoSize = true;
+            this.arenaürünkullanım_label.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.arenaürünkullanım_label.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.arenaürünkullanım_label.ForeColor = System.Drawing.Color.Black;
+            this.arenaürünkullanım_label.Location = new System.Drawing.Point(20, 537);
+            this.arenaürünkullanım_label.Name = "arenaürünkullanım_label";
+            this.arenaürünkullanım_label.Size = new System.Drawing.Size(276, 19);
+            this.arenaürünkullanım_label.TabIndex = 37;
+            this.arenaürünkullanım_label.Text = "Arena depo kullanılmamış ürün sayısı: 0";
+            this.toolTip1.SetToolTip(this.arenaürünkullanım_label, "Eğer bu metinin üstüne tıklarsanız;\r\nArena Depo\'da kalan kullanılmamış seri numar" +
+        "alı ürünleri gösterir.");
+            this.arenaürünkullanım_label.Click += new System.EventHandler(this.arenaürünkullanım_label_Click);
+            // 
+            // pentaürünkullanım_label
+            // 
+            this.pentaürünkullanım_label.AutoSize = true;
+            this.pentaürünkullanım_label.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pentaürünkullanım_label.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.pentaürünkullanım_label.ForeColor = System.Drawing.Color.Black;
+            this.pentaürünkullanım_label.Location = new System.Drawing.Point(20, 518);
+            this.pentaürünkullanım_label.Name = "pentaürünkullanım_label";
+            this.pentaürünkullanım_label.Size = new System.Drawing.Size(276, 19);
+            this.pentaürünkullanım_label.TabIndex = 36;
+            this.pentaürünkullanım_label.Text = "Penta depo kullanılmamış ürün sayısı: 0";
+            this.toolTip1.SetToolTip(this.pentaürünkullanım_label, "Eğer bu metinin üstüne tıklarsanız;\r\nPenta Depo\'da kalan kullanılmamış seri numar" +
+        "alı ürünleri gösterir.");
+            this.pentaürünkullanım_label.Click += new System.EventHandler(this.pentaürünkullanım_label_Click);
+            // 
+            // indexürünkullanım_label
+            // 
+            this.indexürünkullanım_label.AutoSize = true;
+            this.indexürünkullanım_label.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.indexürünkullanım_label.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.indexürünkullanım_label.ForeColor = System.Drawing.Color.Black;
+            this.indexürünkullanım_label.Location = new System.Drawing.Point(20, 499);
+            this.indexürünkullanım_label.Name = "indexürünkullanım_label";
+            this.indexürünkullanım_label.Size = new System.Drawing.Size(273, 19);
+            this.indexürünkullanım_label.TabIndex = 35;
+            this.indexürünkullanım_label.Text = "İndex depo kullanılmamış ürün sayısı: 0";
+            this.toolTip1.SetToolTip(this.indexürünkullanım_label, "Eğer bu metinin üstüne tıklarsanız;\r\nİndex Depo\'da kalan kullanılmamış seri numar" +
+        "alı ürünleri gösterir.\r\n");
+            this.indexürünkullanım_label.Click += new System.EventHandler(this.indexürünkullanım_label_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(67, 366);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(55, 19);
+            this.label10.TabIndex = 34;
+            this.label10.Text = "Depo: ";
+            // 
+            // depo_combobox
+            // 
+            this.depo_combobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.depo_combobox.FormattingEnabled = true;
+            this.depo_combobox.Items.AddRange(new object[] {
+            "OS Depo Merkez",
+            "İndex Depo",
+            "Penta Depo",
+            "Arena Depo"});
+            this.depo_combobox.Location = new System.Drawing.Point(131, 365);
+            this.depo_combobox.Name = "depo_combobox";
+            this.depo_combobox.Size = new System.Drawing.Size(200, 21);
+            this.depo_combobox.TabIndex = 33;
+            this.toolTip1.SetToolTip(this.depo_combobox, "Oluşturulacak yeni kullanıcının cinsiyetini seçmeniz gereken alan.");
             // 
             // ürünkalankullanımlabel
             // 
@@ -352,13 +439,13 @@
             this.ürünkalankullanımlabel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ürünkalankullanımlabel.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.ürünkalankullanımlabel.ForeColor = System.Drawing.Color.Black;
-            this.ürünkalankullanımlabel.Location = new System.Drawing.Point(102, 447);
+            this.ürünkalankullanımlabel.Location = new System.Drawing.Point(20, 480);
             this.ürünkalankullanımlabel.Name = "ürünkalankullanımlabel";
-            this.ürünkalankullanımlabel.Size = new System.Drawing.Size(190, 19);
+            this.ürünkalankullanımlabel.Size = new System.Drawing.Size(304, 19);
             this.ürünkalankullanımlabel.TabIndex = 7;
-            this.ürünkalankullanımlabel.Text = "Kullanılmamış ürün sayısı: 0";
-            this.toolTip1.SetToolTip(this.ürünkalankullanımlabel, "Eğer bu metinin üstüne tıklarsanız;\r\nStok\'da kalan kullanılmamış seri numaralı ür" +
-        "ünleri gösterir\r\n");
+            this.ürünkalankullanımlabel.Text = "Os depo merkez kullanılmamış ürün sayısı: 0";
+            this.toolTip1.SetToolTip(this.ürünkalankullanımlabel, "Eğer bu metinin üstüne tıklarsanız;\r\nOS merkez depo\'da kalan kullanılmamış seri n" +
+        "umaralı ürünleri gösterir.");
             this.ürünkalankullanımlabel.Click += new System.EventHandler(this.Ürünkalankullanımlabel_Click);
             // 
             // loginpanel_gelistiren_label
@@ -367,7 +454,7 @@
             this.loginpanel_gelistiren_label.Font = new System.Drawing.Font("Century Gothic", 7F);
             this.loginpanel_gelistiren_label.ForeColor = System.Drawing.Color.Black;
             this.loginpanel_gelistiren_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.loginpanel_gelistiren_label.Location = new System.Drawing.Point(266, 522);
+            this.loginpanel_gelistiren_label.Location = new System.Drawing.Point(255, 906);
             this.loginpanel_gelistiren_label.Name = "loginpanel_gelistiren_label";
             this.loginpanel_gelistiren_label.Size = new System.Drawing.Size(107, 30);
             this.loginpanel_gelistiren_label.TabIndex = 7;
@@ -396,7 +483,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
-            this.label7.Location = new System.Drawing.Point(502, 75);
+            this.label7.Location = new System.Drawing.Point(460, 18);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 19);
             this.label7.TabIndex = 34;
@@ -410,7 +497,7 @@
             this.linkLabel1.Font = new System.Drawing.Font("Century Gothic", 8F);
             this.linkLabel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.linkLabel1.Location = new System.Drawing.Point(565, 535);
+            this.linkLabel1.Location = new System.Drawing.Point(566, 922);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(151, 16);
             this.linkLabel1.TabIndex = 11;
@@ -426,22 +513,97 @@
             this.label2.Font = new System.Drawing.Font("Century Gothic", 8F);
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(381, 504);
+            this.label2.Location = new System.Drawing.Point(382, 891);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(212, 48);
             this.label2.TabIndex = 35;
             this.label2.Text = "Bu uygulamaya ilgili \r\nherhangi bir sorun, şikayet ve öneri için\r\nbir -eposta mes" +
     "aji gönderebilirsiniz";
             // 
-            // Ürüneklemedüzenlemeform
+            // index_seri_no_listbox
+            // 
+            this.index_seri_no_listbox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.index_seri_no_listbox.Font = new System.Drawing.Font("Century Gothic", 8.5F);
+            this.index_seri_no_listbox.FormattingEnabled = true;
+            this.index_seri_no_listbox.ItemHeight = 16;
+            this.index_seri_no_listbox.Location = new System.Drawing.Point(402, 470);
+            this.index_seri_no_listbox.Name = "index_seri_no_listbox";
+            this.index_seri_no_listbox.Size = new System.Drawing.Size(191, 404);
+            this.index_seri_no_listbox.Sorted = true;
+            this.index_seri_no_listbox.TabIndex = 36;
+            this.index_seri_no_listbox.SelectedIndexChanged += new System.EventHandler(this.index_seri_no_listbox_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label6.Location = new System.Drawing.Point(442, 448);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(106, 19);
+            this.label6.TabIndex = 37;
+            this.label6.Text = "İNDEX SERİ NO";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label8.Location = new System.Drawing.Point(640, 448);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(106, 19);
+            this.label8.TabIndex = 39;
+            this.label8.Text = "PENTA SERİ NO";
+            // 
+            // penta_seri_no_listbox
+            // 
+            this.penta_seri_no_listbox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.penta_seri_no_listbox.Font = new System.Drawing.Font("Century Gothic", 8.5F);
+            this.penta_seri_no_listbox.FormattingEnabled = true;
+            this.penta_seri_no_listbox.ItemHeight = 16;
+            this.penta_seri_no_listbox.Location = new System.Drawing.Point(600, 470);
+            this.penta_seri_no_listbox.Name = "penta_seri_no_listbox";
+            this.penta_seri_no_listbox.Size = new System.Drawing.Size(191, 404);
+            this.penta_seri_no_listbox.Sorted = true;
+            this.penta_seri_no_listbox.TabIndex = 38;
+            this.penta_seri_no_listbox.SelectedIndexChanged += new System.EventHandler(this.penta_seri_no_listbox_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label9.Location = new System.Drawing.Point(835, 448);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(111, 19);
+            this.label9.TabIndex = 41;
+            this.label9.Text = "ARENA SERİ NO";
+            // 
+            // arena_seri_no_listbox
+            // 
+            this.arena_seri_no_listbox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.arena_seri_no_listbox.Font = new System.Drawing.Font("Century Gothic", 8.5F);
+            this.arena_seri_no_listbox.FormattingEnabled = true;
+            this.arena_seri_no_listbox.ItemHeight = 16;
+            this.arena_seri_no_listbox.Location = new System.Drawing.Point(797, 470);
+            this.arena_seri_no_listbox.Name = "arena_seri_no_listbox";
+            this.arena_seri_no_listbox.Size = new System.Drawing.Size(191, 404);
+            this.arena_seri_no_listbox.Sorted = true;
+            this.arena_seri_no_listbox.TabIndex = 40;
+            this.arena_seri_no_listbox.SelectedIndexChanged += new System.EventHandler(this.arena_seri_no_listbox_SelectedIndexChanged);
+            // 
+            // Ürün_ekle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1099, 561);
+            this.ClientSize = new System.Drawing.Size(1063, 948);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.arena_seri_no_listbox);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.penta_seri_no_listbox);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.index_seri_no_listbox);
             this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.windows_kücültme_label);
             this.Controls.Add(this.logout_label);
@@ -454,7 +616,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Ürüneklemedüzenlemeform";
+            this.Name = "Ürün_ekle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Ürün_Ekle_ve_Düzenleme_FormClosed);
             this.Load += new System.EventHandler(this.Ürün_Ekle_ve_Düzenleme_Load);
@@ -499,5 +661,16 @@
         private System.Windows.Forms.Label ürünkalankullanımlabel;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox index_seri_no_listbox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ListBox penta_seri_no_listbox;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ListBox arena_seri_no_listbox;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox depo_combobox;
+        private System.Windows.Forms.Label arenaürünkullanım_label;
+        private System.Windows.Forms.Label pentaürünkullanım_label;
+        private System.Windows.Forms.Label indexürünkullanım_label;
     }
 }

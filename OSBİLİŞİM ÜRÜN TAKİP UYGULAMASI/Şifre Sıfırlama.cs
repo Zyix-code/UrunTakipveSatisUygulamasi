@@ -11,9 +11,9 @@ using System.Drawing;
 
 namespace OSBilişim
 {
-    public partial class Sifresıfırlamaforum : Form
+    public partial class Sifre_sifirlama : Form
     {
-        public Sifresıfırlamaforum()
+        public Sifre_sifirlama()
         {
             InitializeComponent();
         }
@@ -78,7 +78,7 @@ namespace OSBilişim
         {
             yenisifretekrartextbox.UseSystemPasswordChar = true;
             yenisifretextbox.UseSystemPasswordChar = true;
-            Kullanicigirisiform Kullanicigirisiform = new Kullanicigirisiform();
+            Kullanıcı_girisi Kullanıcı_girisi = new Kullanıcı_girisi();
 
             try
             {
@@ -92,7 +92,7 @@ namespace OSBilişim
                 while (üründurumusorgulama.Read())
                 {
 
-                    Kullanicigirisiform.güncelversiyon = (string)üründurumusorgulama["version"];
+                    Kullanıcı_girisi.güncelversiyon = (string)üründurumusorgulama["version"];
                     programdurumu = (string)üründurumusorgulama["program_durumu"];
 
                     if (programdurumu == "Arızalı")
@@ -120,7 +120,7 @@ namespace OSBilişim
                     }
                     else
                     {
-                        if (Convert.ToInt32(Kullanicigirisiform.güncelversiyon) >= Convert.ToInt32(programversion.FileVersion))
+                        if (Convert.ToInt32(Kullanıcı_girisi.güncelversiyon) >= Convert.ToInt32(programversion.FileVersion))
                         {
                             DialogResult dialog = MessageBox.Show("Uygulama'nın yeni sürümünü indirmek ister misiniz?", "OS BİLİŞİM", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (dialog == DialogResult.Yes)
@@ -145,12 +145,12 @@ namespace OSBilişim
             {
                 using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.Log("Bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+                    Kullanıcı_girisi.Log("Bağlantı kesildi.\nHata kodu: " + hata.Message, w);
 
                 }
                 using (StreamReader r = File.OpenText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.DumpLog(r);
+                    Kullanıcı_girisi.DumpLog(r);
                 }
                 MessageBox.Show("Bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
@@ -285,12 +285,12 @@ namespace OSBilişim
             {
                 using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.Log("Güvenlik sorusu cevabınız gönderilmedi, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
+                    Kullanıcı_girisi.Log("Güvenlik sorusu cevabınız gönderilmedi, bağlantı kesildi.\nHata kodu: " + hata.Message, w);
 
                 }
                 using (StreamReader r = File.OpenText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.DumpLog(r);
+                    Kullanıcı_girisi.DumpLog(r);
                 }
                 MessageBox.Show("Güvenlik sorusu cevabınız gönderilmedi, bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
@@ -463,12 +463,12 @@ namespace OSBilişim
             {
                 using (StreamWriter w = File.AppendText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.Log("Güvenlik onay kodu gönderilmedi, bağlantı kesildi.\nnHata kodu: " + hata.Message, w);
+                    Kullanıcı_girisi.Log("Güvenlik onay kodu gönderilmedi, bağlantı kesildi.\nnHata kodu: " + hata.Message, w);
 
                 }
                 using (StreamReader r = File.OpenText("OSBilisim-log.log"))
                 {
-                    Kullanicigirisiform.DumpLog(r);
+                    Kullanıcı_girisi.DumpLog(r);
                 }
                 MessageBox.Show("Güvenlik onay kodu gönderilmedi, bağlantı kesildi.\nnHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();

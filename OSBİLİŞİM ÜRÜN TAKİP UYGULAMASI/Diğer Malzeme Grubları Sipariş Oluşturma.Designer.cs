@@ -1,6 +1,6 @@
 ﻿namespace OSBilişim
 {
-    partial class Diğer_Malzeme_Grubları
+    partial class Diger_malzeme_grubları_siparis_olusturma
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Diğer_Malzeme_Grubları));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Diger_malzeme_grubları_siparis_olusturma));
             this.siparis_gonder = new System.Windows.Forms.Button();
             this.ürünün_satıldığı_firma = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();

@@ -12,19 +12,20 @@ using System.Drawing;
 using System.Threading;
 using System.Security.AccessControl;
 using System.ComponentModel;
+using Microsoft.Win32;
 
 namespace OSBilişim
 {
 
-    public partial class Kullanicigirisiform : Form
+    public partial class Kullanıcı_girisi : Form
     {
         readonly Anaform anaform = new Anaform();
-        readonly Sifresıfırlamaforum sifresıfırlamaforum = new Sifresıfırlamaforum();
+        readonly Sifre_sifirlama sifre_sifirlama = new Sifre_sifirlama();
 
         public static string username;
         public string güncelversiyon = "";
         ErrorProvider provider = new ErrorProvider();
-        public Kullanicigirisiform()
+        public Kullanıcı_girisi()
         {
             InitializeComponent();
             Kullanici_Data();
@@ -215,29 +216,6 @@ namespace OSBilişim
             }
            
         }
-        private void Yoneticizni()
-        {
-            if (!Yoneticiznikontrol())
-            {
-                ProcessStartInfo program = new ProcessStartInfo
-                {
-                    UseShellExecute = true,
-                    WorkingDirectory = Environment.CurrentDirectory,
-                    FileName = Assembly.GetEntryAssembly().CodeBase,
-                    Verb = "runas"
-                };
-                try
-                {
-                    Process.Start(program);
-                    Application.Exit();
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Uygulama yönetici olarak çalıştırılmadığı için başlatılmayacaktır.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Application.Exit();
-                }
-            }
-        }
         private bool Yoneticiznikontrol()
         {
             WindowsIdentity id = WindowsIdentity.GetCurrent();
@@ -245,9 +223,8 @@ namespace OSBilişim
             return principal.IsInRole(WindowsBuiltInRole.Administrator);
         }
         public string günlükveritabanıadı;
-        private void Kullanicigirisiform_Load(object sender, EventArgs e)
+        private void Kullanıcı_girisi_Load(object sender, EventArgs e)
         {
-            Yoneticizni();
             try
             {
                 if (connection.State == ConnectionState.Closed)
@@ -324,7 +301,7 @@ namespace OSBilişim
         }
 
         readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.123,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
-        private void Kullanicigirisiform_FormClosed(object sender, FormClosedEventArgs e)
+        private void Kullanıcı_girisi_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
@@ -359,7 +336,7 @@ namespace OSBilişim
         }
         private void Şifremiunuttumlinklabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            sifresıfırlamaforum.Show();
+            sifre_sifirlama.Show();
         }
         private void Label3_Click(object sender, EventArgs e)
         {
@@ -371,7 +348,7 @@ namespace OSBilişim
         int Move;
         int Mouse_X;
         int Mouse_Y;
-        private void Kullanicigirisiform_MouseDown(object sender, MouseEventArgs e)
+        private void Kullanıcı_girisi_MouseDown(object sender, MouseEventArgs e)
         {
             Move = 1;
             Mouse_X = e.X;
@@ -379,13 +356,13 @@ namespace OSBilişim
             this.Cursor = Cursors.SizeAll;
         }
 
-        private void Kullanicigirisiform_MouseUp(object sender, MouseEventArgs e)
+        private void Kullanıcı_girisi_MouseUp(object sender, MouseEventArgs e)
         {
             Move = 0;
             this.Cursor = Cursors.Default;
         }
 
-        private void Kullanicigirisiform_MouseMove(object sender, MouseEventArgs e)
+        private void Kullanıcı_girisi_MouseMove(object sender, MouseEventArgs e)
         {
             if (Move == 1)
             {

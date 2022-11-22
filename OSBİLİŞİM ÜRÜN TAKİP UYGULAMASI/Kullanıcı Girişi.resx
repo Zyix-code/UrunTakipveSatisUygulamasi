@@ -129,7 +129,7 @@
     <value>NoControl</value>
   </data>
   <data name="btn_giris.Location" type="System.Drawing.Point, System.Drawing">
-    <value>569, 294</value>
+    <value>569, 287</value>
   </data>
   <data name="btn_giris.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 33</value>
@@ -430,7 +430,7 @@
     <value>NoControl</value>
   </data>
   <data name="şifremiunuttumlinklabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>652, 330</value>
+    <value>652, 323</value>
   </data>
   <data name="şifremiunuttumlinklabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 13</value>
@@ -795,7 +795,7 @@ bir -eposta mesaji gönderebilirsiniz
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Kullanicigirisiform</value>
+    <value>Kullanıcı_girisi</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

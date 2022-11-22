@@ -1,6 +1,6 @@
 ﻿namespace OSBilişim
 {
-    partial class Diğer_malzeme_Grubları_Ürün_ekle_ve_Düzenleme
+    partial class Diger_malzeme_grubları_urun_ekle
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Diğer_malzeme_Grubları_Ürün_ekle_ve_Düzenleme));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Diger_malzeme_grubları_urun_ekle));
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.secili_ürünün_kod_seri_no_sil_btn = new System.Windows.Forms.Button();
             this.secili_ürünü_sil_btn = new System.Windows.Forms.Button();
@@ -437,7 +437,7 @@
             this.label6.Text = "Bu uygulamaya ilgili \r\nherhangi bir sorun, şikayet ve öneri için\r\nbir -eposta mes" +
     "aji gönderebilirsiniz";
             // 
-            // Diğer_malzeme_Grubları_Ürün_ekle_ve_Düzenleme
+            // Diger_malzeme_grubları_urun_ekle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -456,7 +456,7 @@
             this.Controls.Add(this.logout_label);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Diğer_malzeme_Grubları_Ürün_ekle_ve_Düzenleme";
+            this.Name = "Diger_malzeme_grubları_urun_ekle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Diğer_malzeme_Grubları_Ürün_ekle_ve_Düzenleme";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Diğer_malzeme_Grubları_Ürün_ekle_ve_Düzenleme_FormClosed);

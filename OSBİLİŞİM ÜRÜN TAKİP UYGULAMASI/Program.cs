@@ -15,7 +15,7 @@ namespace OSBilişim
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Kullanicigirisiform());
+            Application.Run(new Kullanıcı_girisi());
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace OSBilişim
 {
-    partial class Sifresıfırlamaforum
+    partial class Sifre_sifirlama
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sifresıfırlamaforum));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sifre_sifirlama));
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.loginpanel_hosgeldiniz_label = new System.Windows.Forms.Label();
@@ -37,12 +37,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.logout_label = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.sifre_label = new System.Windows.Forms.Label();
             this.kullaniciadi_label = new System.Windows.Forms.Label();
-            this.yenisifretekrartextbox = new System.Windows.Forms.TextBox();
             this.yenisifretextbox = new System.Windows.Forms.TextBox();
             this.btn_sıfırla = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -53,6 +49,7 @@
             this.btn_onaykodugönder = new System.Windows.Forms.Button();
             this.kullanıcıadıtextbox = new System.Windows.Forms.TextBox();
             this.sifre_goster_gizle_checkbox = new System.Windows.Forms.CheckBox();
+            this.yenisifretekrartextbox = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -60,6 +57,8 @@
             this.şifremiunuttumlinklabel = new System.Windows.Forms.LinkLabel();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.sifre_label = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -160,26 +159,6 @@
             this.logout_label.MouseLeave += new System.EventHandler(this.Logout_label_MouseLeave);
             this.logout_label.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Logout_label_MouseMove);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 16F);
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
-            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(584, 84);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 25);
-            this.label4.TabIndex = 31;
-            this.label4.Text = "ŞİFRE SIFIRLA";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(195)))), ((int)(((byte)(215)))));
-            this.panel3.Location = new System.Drawing.Point(563, 201);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 1);
-            this.panel3.TabIndex = 30;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(195)))), ((int)(((byte)(215)))));
@@ -187,18 +166,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 1);
             this.panel1.TabIndex = 29;
-            // 
-            // sifre_label
-            // 
-            this.sifre_label.AutoSize = true;
-            this.sifre_label.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.sifre_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
-            this.sifre_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.sifre_label.Location = new System.Drawing.Point(397, 183);
-            this.sifre_label.Name = "sifre_label";
-            this.sifre_label.Size = new System.Drawing.Size(117, 19);
-            this.sifre_label.TabIndex = 26;
-            this.sifre_label.Text = "Yeni şifre tekrar: ";
             // 
             // kullaniciadi_label
             // 
@@ -211,17 +178,6 @@
             this.kullaniciadi_label.Size = new System.Drawing.Size(74, 19);
             this.kullaniciadi_label.TabIndex = 25;
             this.kullaniciadi_label.Text = "Yeni şifre: ";
-            // 
-            // yenisifretekrartextbox
-            // 
-            this.yenisifretekrartextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.yenisifretekrartextbox.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.yenisifretekrartextbox.ForeColor = System.Drawing.Color.Black;
-            this.yenisifretekrartextbox.Location = new System.Drawing.Point(563, 183);
-            this.yenisifretekrartextbox.Name = "yenisifretekrartextbox";
-            this.yenisifretekrartextbox.Size = new System.Drawing.Size(200, 17);
-            this.yenisifretekrartextbox.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.yenisifretekrartextbox, "Yeni şifrenizi tekrar girmeniz gereken alan.");
             // 
             // yenisifretextbox
             // 
@@ -352,6 +308,17 @@
             this.sifre_goster_gizle_checkbox.UseVisualStyleBackColor = true;
             this.sifre_goster_gizle_checkbox.CheckedChanged += new System.EventHandler(this.Sifre_goster_gizle_checkbox_CheckedChanged);
             // 
+            // yenisifretekrartextbox
+            // 
+            this.yenisifretekrartextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.yenisifretekrartextbox.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.yenisifretekrartextbox.ForeColor = System.Drawing.Color.Black;
+            this.yenisifretekrartextbox.Location = new System.Drawing.Point(563, 183);
+            this.yenisifretekrartextbox.Name = "yenisifretekrartextbox";
+            this.yenisifretekrartextbox.Size = new System.Drawing.Size(200, 17);
+            this.yenisifretekrartextbox.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.yenisifretekrartextbox, "Yeni şifrenizi tekrar girmeniz gereken alan.");
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(195)))), ((int)(((byte)(215)))));
@@ -442,6 +409,26 @@
     "aji gönderebilirsiniz";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(195)))), ((int)(((byte)(215)))));
+            this.panel3.Location = new System.Drawing.Point(563, 201);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 1);
+            this.panel3.TabIndex = 30;
+            // 
+            // sifre_label
+            // 
+            this.sifre_label.AutoSize = true;
+            this.sifre_label.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.sifre_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
+            this.sifre_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.sifre_label.Location = new System.Drawing.Point(397, 183);
+            this.sifre_label.Name = "sifre_label";
+            this.sifre_label.Size = new System.Drawing.Size(117, 19);
+            this.sifre_label.TabIndex = 26;
+            this.sifre_label.Text = "Yeni şifre tekrar: ";
+            // 
             // Sifresıfırlamaforum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -462,7 +449,6 @@
             this.Controls.Add(this.güvenlikonaykodutextbox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.güvenliksorusutextbox);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.sifre_label);
@@ -500,12 +486,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label logout_label;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label sifre_label;
         private System.Windows.Forms.Label kullaniciadi_label;
-        private System.Windows.Forms.TextBox yenisifretekrartextbox;
         private System.Windows.Forms.TextBox yenisifretextbox;
         private System.Windows.Forms.Button btn_sıfırla;
         private System.Windows.Forms.ToolTip toolTip1;
@@ -523,5 +505,8 @@
         private System.Windows.Forms.CheckBox sifre_goster_gizle_checkbox;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox yenisifretekrartextbox;
+        private System.Windows.Forms.Label sifre_label;
     }
 }

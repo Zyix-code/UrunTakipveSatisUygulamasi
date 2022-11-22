@@ -108,34 +108,34 @@
   <PropertyGroup />
   <PropertyGroup />
   <ItemGroup>
-    <Compile Include="Diğer malzeme Grubları Ürün ekle ve Düzenleme.cs">
+    <Compile Include="Diğer Malzeme Grubları Ürün Ekle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Diğer malzeme Grubları Ürün ekle ve Düzenleme.Designer.cs">
-      <DependentUpon>Diğer malzeme Grubları Ürün ekle ve Düzenleme.cs</DependentUpon>
+    <Compile Include="Diğer Malzeme Grubları Ürün Ekle.Designer.cs">
+      <DependentUpon>Diğer Malzeme Grubları Ürün Ekle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Diğer Malzeme Grubları.cs">
+    <Compile Include="Diğer Malzeme Grubları Sipariş Oluşturma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Diğer Malzeme Grubları.Designer.cs">
-      <DependentUpon>Diğer Malzeme Grubları.cs</DependentUpon>
+    <Compile Include="Diğer Malzeme Grubları Sipariş Oluşturma.Designer.cs">
+      <DependentUpon>Diğer Malzeme Grubları Sipariş Oluşturma.cs</DependentUpon>
     </Compile>
-    <Compile Include="Kullanıcı Girişi Form .cs">
+    <Compile Include="Kullanıcı Girişi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Kullanıcı Girişi Form .Designer.cs">
-      <DependentUpon>Kullanıcı Girişi Form .cs</DependentUpon>
+    <Compile Include="Kullanıcı Girişi.Designer.cs">
+      <DependentUpon>Kullanıcı Girişi.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Siparis Olusturma Form.cs">
+    <Compile Include="Siparis Olusturma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Siparis Olusturma Form.Designer.cs">
-      <DependentUpon>Siparis Olusturma Form.cs</DependentUpon>
+    <Compile Include="Siparis Olusturma.Designer.cs">
+      <DependentUpon>Siparis Olusturma.cs</DependentUpon>
     </Compile>
     <Compile Include="Ana Form.cs">
       <SubType>Form</SubType>
@@ -145,17 +145,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sipariş Kontrol Form.cs">
+    <Compile Include="Sipariş Kontrol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sipariş Kontrol Form.Designer.cs">
-      <DependentUpon>Sipariş Kontrol Form.cs</DependentUpon>
+    <Compile Include="Sipariş Kontrol.Designer.cs">
+      <DependentUpon>Sipariş Kontrol.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ürün Ekle ve Düzenleme.cs">
+    <Compile Include="Yeni Kullanici.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ürün Ekle ve Düzenleme.Designer.cs">
-      <DependentUpon>Ürün Ekle ve Düzenleme.cs</DependentUpon>
+    <Compile Include="Yeni Kullanici.Designer.cs">
+      <DependentUpon>Yeni Kullanici.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ürün Ekle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ürün Ekle.Designer.cs">
+      <DependentUpon>Ürün Ekle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ürün İsimleri Düzenleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ürün İsimleri Düzenleme.Designer.cs">
+      <DependentUpon>Ürün İsimleri Düzenleme.cs</DependentUpon>
     </Compile>
     <Compile Include="Şifre Sıfırlama.cs">
       <SubType>Form</SubType>
@@ -163,28 +175,28 @@
     <Compile Include="Şifre Sıfırlama.Designer.cs">
       <DependentUpon>Şifre Sıfırlama.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Diğer malzeme Grubları Ürün ekle ve Düzenleme.resx">
-      <DependentUpon>Diğer malzeme Grubları Ürün ekle ve Düzenleme.cs</DependentUpon>
+    <EmbeddedResource Include="Diğer Malzeme Grubları Ürün Ekle.resx">
+      <DependentUpon>Diğer Malzeme Grubları Ürün Ekle.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Diğer Malzeme Grubları.resx">
-      <DependentUpon>Diğer Malzeme Grubları.cs</DependentUpon>
+    <EmbeddedResource Include="Diğer Malzeme Grubları Sipariş Oluşturma.resx">
+      <DependentUpon>Diğer Malzeme Grubları Sipariş Oluşturma.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Kullanıcı Girişi Form .agq.resx">
-      <DependentUpon>Kullanıcı Girişi Form .cs</DependentUpon>
+    <EmbeddedResource Include="Kullanıcı Girişi.agq.resx">
+      <DependentUpon>Kullanıcı Girişi.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Kullanıcı Girişi Form .resx">
-      <DependentUpon>Kullanıcı Girişi Form .cs</DependentUpon>
+    <EmbeddedResource Include="Kullanıcı Girişi.resx">
+      <DependentUpon>Kullanıcı Girişi.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Kullanıcı Girişi Form .tr.resx">
-      <DependentUpon>Kullanıcı Girişi Form .cs</DependentUpon>
+    <EmbeddedResource Include="Kullanıcı Girişi.tr.resx">
+      <DependentUpon>Kullanıcı Girişi.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Siparis Olusturma Form.resx">
-      <DependentUpon>Siparis Olusturma Form.cs</DependentUpon>
+    <EmbeddedResource Include="Siparis Olusturma.resx">
+      <DependentUpon>Siparis Olusturma.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Ana Form.resx">
@@ -196,13 +208,19 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sipariş Kontrol Form.resx">
-      <DependentUpon>Sipariş Kontrol Form.cs</DependentUpon>
+    <EmbeddedResource Include="Sipariş Kontrol.resx">
+      <DependentUpon>Sipariş Kontrol.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ürün Ekle ve Düzenleme.resx">
-      <DependentUpon>Ürün Ekle ve Düzenleme.cs</DependentUpon>
+    <EmbeddedResource Include="Yeni Kullanici.resx">
+      <DependentUpon>Yeni Kullanici.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ürün Ekle.resx">
+      <DependentUpon>Ürün Ekle.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ürün İsimleri Düzenleme.resx">
+      <DependentUpon>Ürün İsimleri Düzenleme.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Şifre Sıfırlama.resx">
       <DependentUpon>Şifre Sıfırlama.cs</DependentUpon>
@@ -228,6 +246,10 @@
     <Content Include="alt-logo-green.ico" />
     <Content Include="alt-logo.ico" />
     <Content Include="Resources\alt-logo.ico" />
+    <Content Include="Resources\onay.png" />
+    <Content Include="Resources\red.png" />
+    <None Include="Resources\teknikservis-man.png" />
+    <None Include="Resources\teknikservis-gril.png" />
     <None Include="Resources\person-icon-man.png" />
     <None Include="Resources\person-icon-gril.png" />
     <None Include="Resources\person-icon-man-green.png" />

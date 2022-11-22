@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Anaform));
             this.siparis_kontrol_btn = new System.Windows.Forms.Button();
-            this.ürün_ekle_ve_düzenle_btn = new System.Windows.Forms.Button();
+            this.ürün_ekle_btn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.aktifkullanicilar_listbox = new System.Windows.Forms.ListBox();
@@ -43,7 +43,6 @@
             this.soyisim_label = new System.Windows.Forms.Label();
             this.isim_label = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.loginpanel_gelistiren_label = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
@@ -55,9 +54,12 @@
             this.logout_label = new System.Windows.Forms.Label();
             this.siparis_olustur_btn = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.diğer_malzeme_grubları = new System.Windows.Forms.Button();
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn = new System.Windows.Forms.Button();
+            this.diğer_malzeme_grubları_sipariş_oluşturma = new System.Windows.Forms.Button();
+            this.diğer_malzeme_grubları_ürün_ekle = new System.Windows.Forms.Button();
+            this.yenikullanici_btn = new System.Windows.Forms.Button();
+            this.ürün_düzenleme_btn = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -80,23 +82,23 @@
             this.siparis_kontrol_btn.MouseLeave += new System.EventHandler(this.Siparis_kontrol_btn_MouseLeave);
             this.siparis_kontrol_btn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Siparis_kontrol_btn_MouseMove);
             // 
-            // ürün_ekle_ve_düzenle_btn
+            // ürün_ekle_btn
             // 
-            this.ürün_ekle_ve_düzenle_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.ürün_ekle_ve_düzenle_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ürün_ekle_ve_düzenle_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ürün_ekle_ve_düzenle_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.ürün_ekle_ve_düzenle_btn.ForeColor = System.Drawing.Color.White;
-            this.ürün_ekle_ve_düzenle_btn.Location = new System.Drawing.Point(474, 267);
-            this.ürün_ekle_ve_düzenle_btn.Name = "ürün_ekle_ve_düzenle_btn";
-            this.ürün_ekle_ve_düzenle_btn.Size = new System.Drawing.Size(111, 45);
-            this.ürün_ekle_ve_düzenle_btn.TabIndex = 3;
-            this.ürün_ekle_ve_düzenle_btn.Text = "Ürün ekle ve düzenleme";
-            this.toolTip1.SetToolTip(this.ürün_ekle_ve_düzenle_btn, "Ürünleri düzenleyebileceğiniz sayfaya yönlendirir.\r\n");
-            this.ürün_ekle_ve_düzenle_btn.UseVisualStyleBackColor = false;
-            this.ürün_ekle_ve_düzenle_btn.Click += new System.EventHandler(this.Ürün_ekle_ve_düzenle_btn_Click);
-            this.ürün_ekle_ve_düzenle_btn.MouseLeave += new System.EventHandler(this.Ürün_ekle_ve_düzenle_btn_MouseLeave);
-            this.ürün_ekle_ve_düzenle_btn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Ürün_ekle_ve_düzenle_btn_MouseMove);
+            this.ürün_ekle_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.ürün_ekle_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ürün_ekle_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ürün_ekle_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.ürün_ekle_btn.ForeColor = System.Drawing.Color.White;
+            this.ürün_ekle_btn.Location = new System.Drawing.Point(534, 267);
+            this.ürün_ekle_btn.Name = "ürün_ekle_btn";
+            this.ürün_ekle_btn.Size = new System.Drawing.Size(111, 45);
+            this.ürün_ekle_btn.TabIndex = 3;
+            this.ürün_ekle_btn.Text = "Ürün ekle";
+            this.toolTip1.SetToolTip(this.ürün_ekle_btn, "Ürünleri düzenleyebileceğiniz sayfaya yönlendirir.\r\n");
+            this.ürün_ekle_btn.UseVisualStyleBackColor = false;
+            this.ürün_ekle_btn.Click += new System.EventHandler(this.ürün_ekle_btn_Click);
+            this.ürün_ekle_btn.MouseLeave += new System.EventHandler(this.Ürün_ekle_ve_düzenle_btn_MouseLeave);
+            this.ürün_ekle_btn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Ürün_ekle_ve_düzenle_btn_MouseMove);
             // 
             // panel2
             // 
@@ -254,16 +256,6 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Kayıt tarihi: ";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::OSBilişim.Properties.Resources.person_icon_man;
-            this.pictureBox1.Location = new System.Drawing.Point(116, 27);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(128, 128);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
             // loginpanel_gelistiren_label
             // 
             this.loginpanel_gelistiren_label.AutoSize = true;
@@ -411,41 +403,87 @@
             // 
             this.toolTip1.IsBalloon = true;
             // 
-            // diğer_malzeme_grubları
+            // diğer_malzeme_grubları_sipariş_oluşturma
             // 
-            this.diğer_malzeme_grubları.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.diğer_malzeme_grubları.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.diğer_malzeme_grubları.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.diğer_malzeme_grubları.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.diğer_malzeme_grubları.ForeColor = System.Drawing.Color.White;
-            this.diğer_malzeme_grubları.Location = new System.Drawing.Point(591, 267);
-            this.diğer_malzeme_grubları.Name = "diğer_malzeme_grubları";
-            this.diğer_malzeme_grubları.Size = new System.Drawing.Size(111, 45);
-            this.diğer_malzeme_grubları.TabIndex = 4;
-            this.diğer_malzeme_grubları.Text = "Diğer Malzeme Grubları";
-            this.toolTip1.SetToolTip(this.diğer_malzeme_grubları, "Diğer malzeme,ürünlerin siparişini oluşturmanız için sayfaya yönlendirir.\r\n");
-            this.diğer_malzeme_grubları.UseVisualStyleBackColor = false;
-            this.diğer_malzeme_grubları.Click += new System.EventHandler(this.Diğer_malzeme_grubları_Click);
-            this.diğer_malzeme_grubları.MouseLeave += new System.EventHandler(this.Diğer_malzeme_grubları_MouseLeave);
-            this.diğer_malzeme_grubları.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Diğer_malzeme_grubları_MouseMove);
+            this.diğer_malzeme_grubları_sipariş_oluşturma.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.diğer_malzeme_grubları_sipariş_oluşturma.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.diğer_malzeme_grubları_sipariş_oluşturma.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.diğer_malzeme_grubları_sipariş_oluşturma.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.diğer_malzeme_grubları_sipariş_oluşturma.ForeColor = System.Drawing.Color.White;
+            this.diğer_malzeme_grubları_sipariş_oluşturma.Location = new System.Drawing.Point(591, 322);
+            this.diğer_malzeme_grubları_sipariş_oluşturma.Name = "diğer_malzeme_grubları_sipariş_oluşturma";
+            this.diğer_malzeme_grubları_sipariş_oluşturma.Size = new System.Drawing.Size(111, 59);
+            this.diğer_malzeme_grubları_sipariş_oluşturma.TabIndex = 4;
+            this.diğer_malzeme_grubları_sipariş_oluşturma.Text = "Diğer Malzeme Grubları Sipariş Oluşturma";
+            this.toolTip1.SetToolTip(this.diğer_malzeme_grubları_sipariş_oluşturma, "Diğer malzeme,ürünlerin siparişini oluşturmanız için sayfaya yönlendirir.\r\n");
+            this.diğer_malzeme_grubları_sipariş_oluşturma.UseVisualStyleBackColor = false;
+            this.diğer_malzeme_grubları_sipariş_oluşturma.Click += new System.EventHandler(this.diğer_malzeme_grubları_sipariş_oluşturma_Click);
+            this.diğer_malzeme_grubları_sipariş_oluşturma.MouseLeave += new System.EventHandler(this.Diğer_malzeme_grubları_MouseLeave);
+            this.diğer_malzeme_grubları_sipariş_oluşturma.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Diğer_malzeme_grubları_MouseMove);
             // 
-            // Diğer_malzeme_grubları_ekle_ve_düzenleme_btn
+            // diğer_malzeme_grubları_ürün_ekle
             // 
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.ForeColor = System.Drawing.Color.White;
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.Location = new System.Drawing.Point(522, 318);
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.Name = "Diğer_malzeme_grubları_ekle_ve_düzenleme_btn";
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.Size = new System.Drawing.Size(124, 63);
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.TabIndex = 5;
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.Text = "Diğer Malzeme Grubları Ürün Ekle ve Düzenle";
-            this.toolTip1.SetToolTip(this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn, "Diğer malzeme,ürünlerin siparişini oluşturmanız için sayfaya yönlendirir.\r\n");
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.UseVisualStyleBackColor = false;
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.Click += new System.EventHandler(this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn_Click);
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.MouseLeave += new System.EventHandler(this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn_MouseLeave);
-            this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn_MouseMove);
+            this.diğer_malzeme_grubları_ürün_ekle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.diğer_malzeme_grubları_ürün_ekle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.diğer_malzeme_grubları_ürün_ekle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.diğer_malzeme_grubları_ürün_ekle.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.diğer_malzeme_grubları_ürün_ekle.ForeColor = System.Drawing.Color.White;
+            this.diğer_malzeme_grubları_ürün_ekle.Location = new System.Drawing.Point(474, 318);
+            this.diğer_malzeme_grubları_ürün_ekle.Name = "diğer_malzeme_grubları_ürün_ekle";
+            this.diğer_malzeme_grubları_ürün_ekle.Size = new System.Drawing.Size(111, 63);
+            this.diğer_malzeme_grubları_ürün_ekle.TabIndex = 5;
+            this.diğer_malzeme_grubları_ürün_ekle.Text = "Diğer Malzeme Grubları Ürün Ekle";
+            this.toolTip1.SetToolTip(this.diğer_malzeme_grubları_ürün_ekle, "Diğer ürünleri düzenleyebileceğiniz sayfaya yönlendirir.");
+            this.diğer_malzeme_grubları_ürün_ekle.UseVisualStyleBackColor = false;
+            this.diğer_malzeme_grubları_ürün_ekle.Click += new System.EventHandler(this.diğer_malzeme_grubları_ürün_ekle_Click);
+            this.diğer_malzeme_grubları_ürün_ekle.MouseLeave += new System.EventHandler(this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn_MouseLeave);
+            this.diğer_malzeme_grubları_ürün_ekle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn_MouseMove);
+            // 
+            // yenikullanici_btn
+            // 
+            this.yenikullanici_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.yenikullanici_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.yenikullanici_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.yenikullanici_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.yenikullanici_btn.ForeColor = System.Drawing.Color.White;
+            this.yenikullanici_btn.Location = new System.Drawing.Point(534, 435);
+            this.yenikullanici_btn.Name = "yenikullanici_btn";
+            this.yenikullanici_btn.Size = new System.Drawing.Size(111, 45);
+            this.yenikullanici_btn.TabIndex = 18;
+            this.yenikullanici_btn.Text = "Yeni kullanıcı";
+            this.toolTip1.SetToolTip(this.yenikullanici_btn, "Yeni bir kullanıcı oluşturabileceğiniz sayfaya yönlendirir.");
+            this.yenikullanici_btn.UseVisualStyleBackColor = false;
+            this.yenikullanici_btn.Click += new System.EventHandler(this.yenikullanici_btn_Click);
+            this.yenikullanici_btn.MouseLeave += new System.EventHandler(this.yenikullanici_btn_MouseLeave);
+            this.yenikullanici_btn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.yenikullanici_btn_MouseMove);
+            // 
+            // ürün_düzenleme_btn
+            // 
+            this.ürün_düzenleme_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
+            this.ürün_düzenleme_btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ürün_düzenleme_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ürün_düzenleme_btn.Font = new System.Drawing.Font("Century Gothic", 8F);
+            this.ürün_düzenleme_btn.ForeColor = System.Drawing.Color.White;
+            this.ürün_düzenleme_btn.Location = new System.Drawing.Point(534, 384);
+            this.ürün_düzenleme_btn.Name = "ürün_düzenleme_btn";
+            this.ürün_düzenleme_btn.Size = new System.Drawing.Size(111, 45);
+            this.ürün_düzenleme_btn.TabIndex = 19;
+            this.ürün_düzenleme_btn.Text = "Ürün Düzenleme";
+            this.toolTip1.SetToolTip(this.ürün_düzenleme_btn, "Ürün isimlerini düzenleyebileceğiniz sayfaya yönlendirir.");
+            this.ürün_düzenleme_btn.UseVisualStyleBackColor = false;
+            this.ürün_düzenleme_btn.Click += new System.EventHandler(this.ürün_düzenleme_btn_Click);
+            this.ürün_düzenleme_btn.MouseLeave += new System.EventHandler(this.ürün_düzenleme_btn_MouseLeave);
+            this.ürün_düzenleme_btn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ürün_düzenleme_btn_MouseMove);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::OSBilişim.Properties.Resources.teknikservis_man;
+            this.pictureBox1.Location = new System.Drawing.Point(116, 33);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(128, 128);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
             // Anaform
             // 
@@ -453,8 +491,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(802, 559);
-            this.Controls.Add(this.Diğer_malzeme_grubları_ekle_ve_düzenleme_btn);
-            this.Controls.Add(this.diğer_malzeme_grubları);
+            this.Controls.Add(this.ürün_düzenleme_btn);
+            this.Controls.Add(this.yenikullanici_btn);
+            this.Controls.Add(this.diğer_malzeme_grubları_ürün_ekle);
+            this.Controls.Add(this.diğer_malzeme_grubları_sipariş_oluşturma);
             this.Controls.Add(this.siparis_olustur_btn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.logout_label);
@@ -462,7 +502,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.ürün_ekle_ve_düzenle_btn);
+            this.Controls.Add(this.ürün_ekle_btn);
             this.Controls.Add(this.siparis_kontrol_btn);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -487,7 +527,7 @@
 
         #endregion
         private System.Windows.Forms.Button siparis_kontrol_btn;
-        private System.Windows.Forms.Button ürün_ekle_ve_düzenle_btn;
+        private System.Windows.Forms.Button ürün_ekle_btn;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Label loginpanel_gelistiren_label;
@@ -511,8 +551,10 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ListBox aktifkullanicilar_listbox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button diğer_malzeme_grubları;
-        private System.Windows.Forms.Button Diğer_malzeme_grubları_ekle_ve_düzenleme_btn;
+        private System.Windows.Forms.Button diğer_malzeme_grubları_sipariş_oluşturma;
+        private System.Windows.Forms.Button diğer_malzeme_grubları_ürün_ekle;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button yenikullanici_btn;
+        private System.Windows.Forms.Button ürün_düzenleme_btn;
     }
 }

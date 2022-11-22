@@ -1,6 +1,6 @@
 ﻿namespace OSBilişim
 {
-    partial class Sipariskontrolform
+    partial class Siparis_kontrol
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sipariskontrolform));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Siparis_kontrol));
             this.sipariskontrolview = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.üründurumunugüncelle_combobox = new System.Windows.Forms.ComboBox();
@@ -919,7 +919,7 @@
             this.label20.TabIndex = 30;
             this.label20.Text = "Aranacak kelimeyi giriniz:";
             // 
-            // Sipariskontrolform
+            // Siparis_kontrol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -942,14 +942,14 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "Sipariskontrolform";
+            this.Name = "Siparis_kontrol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SİPARİŞ KONTROL FORUM";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Sipariskontrol_FormClosed);
             this.Load += new System.EventHandler(this.Sipariskontrol_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Sipariskontrolform_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Sipariskontrolform_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Sipariskontrolform_MouseUp);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Siparis_olusturma_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Siparis_olusturma_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Siparis_olusturma_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.sipariskontrolview)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

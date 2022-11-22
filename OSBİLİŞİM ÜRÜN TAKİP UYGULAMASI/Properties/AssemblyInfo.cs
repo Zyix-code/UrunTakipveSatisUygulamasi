@@ -33,6 +33,6 @@ using System.Runtime.InteropServices;
 // Tüm değerleri belirtebilir veya varsayılan Derleme ve Düzeltme Numaralarını kullanmak için
 // aşağıda gösterildiği gibi '*' kullanabilirsiniz:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("35")]
-[assembly: AssemblyFileVersion("35")]
+[assembly: AssemblyVersion("39")]
+[assembly: AssemblyFileVersion("39")]
 [assembly: NeutralResourcesLanguage("tr")]

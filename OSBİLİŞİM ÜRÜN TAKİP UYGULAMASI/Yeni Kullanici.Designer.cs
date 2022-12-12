@@ -44,7 +44,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.loginpanel_hosgeldiniz_label = new System.Windows.Forms.Label();
             this.loginpanel_gelistiren_label = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.statü_textbox = new System.Windows.Forms.TextBox();
             this.kayit_tarihi_textbox = new System.Windows.Forms.TextBox();
@@ -67,8 +66,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // linkLabel1
@@ -253,17 +253,6 @@
             this.loginpanel_gelistiren_label.Size = new System.Drawing.Size(107, 30);
             this.loginpanel_gelistiren_label.TabIndex = 7;
             this.loginpanel_gelistiren_label.Text = "        Selçuk Şahin \r\nTarafından geliştirildi\r\n";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::OSBilişim.Properties.Resources.footer_green;
-            this.pictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.pictureBox1.Location = new System.Drawing.Point(47, 85);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(282, 207);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // toolTip1
             // 
@@ -510,6 +499,17 @@
             this.label11.TabIndex = 88;
             this.label11.Text = "E-posta adresi: ";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::OSBilişim.Properties.Resources.footer_green;
+            this.pictureBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.pictureBox1.Location = new System.Drawing.Point(47, 85);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(282, 207);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // Yeni_kullanici
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -558,9 +558,9 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Yeni_Kullanici_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Yeni_Kullanici_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Yeni_Kullanici_MouseUp);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

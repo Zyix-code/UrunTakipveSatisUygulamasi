@@ -228,6 +228,7 @@
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -246,8 +247,7 @@
     <Content Include="alt-logo-green.ico" />
     <Content Include="alt-logo.ico" />
     <Content Include="Resources\alt-logo.ico" />
-    <Content Include="Resources\onay.png" />
-    <Content Include="Resources\red.png" />
+    <None Include="Resources\passwordicon.png" />
     <None Include="Resources\teknikservis-man.png" />
     <None Include="Resources\teknikservis-gril.png" />
     <None Include="Resources\person-icon-man.png" />
@@ -284,6 +284,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
       <HintPath>..\packages\MySqlConnector.2.1.10\lib\net471\MySqlConnector.dll</HintPath>
+    </Reference>
+    <Reference Include="SplashScreen, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SplashScreen.Winforms.1.0.0\lib\SplashScreen.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

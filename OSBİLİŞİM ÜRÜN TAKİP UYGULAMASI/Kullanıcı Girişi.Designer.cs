@@ -45,11 +45,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.loginpanel_hosgeldiniz_label = new System.Windows.Forms.Label();
             this.loginpanel_gelistiren_label = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -189,13 +189,6 @@
             this.loginpanel_gelistiren_label.ForeColor = System.Drawing.Color.Black;
             this.loginpanel_gelistiren_label.Name = "loginpanel_gelistiren_label";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::OSBilişim.Properties.Resources.footer_green;
-            resources.ApplyResources(this.pictureBox1, "pictureBox1");
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.TabStop = false;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(195)))), ((int)(((byte)(215)))));
@@ -225,6 +218,14 @@
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
             this.linkLabel1.MouseLeave += new System.EventHandler(this.linkLabel1_MouseLeave);
             this.linkLabel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.linkLabel1_MouseMove);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::OSBilişim.Properties.Resources.footer_green;
+            this.pictureBox1.Image = global::OSBilişim.Properties.Resources.footer_green;
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.TabStop = false;
             // 
             // Kullanıcı_girisi
             // 

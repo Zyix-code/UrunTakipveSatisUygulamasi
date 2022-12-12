@@ -535,7 +535,6 @@ namespace OSBilişim
                             aciklama_textbox.Text = "";
                             ürünserino_checklistbox.Items.Clear();
                             sipariş_numarası_textbox.Text = "";
-                            MessageBox.Show("Sipariş oluşturuldu, hazırlanmasını bekleyiniz.", "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     catch (Exception hata)

@@ -516,7 +516,7 @@ namespace OSBilişim
         private void Sifretextbox_Leave(object sender, EventArgs e)
         {
             if (sifretextbox.Text == "")
-            { sifretextbox.Text = "Şifrenizi giriniz"; sifretextbox.UseSystemPasswordChar = false; }
+            { sifretextbox.Text = ""; sifretextbox.UseSystemPasswordChar = false; }
         }
     }
 }

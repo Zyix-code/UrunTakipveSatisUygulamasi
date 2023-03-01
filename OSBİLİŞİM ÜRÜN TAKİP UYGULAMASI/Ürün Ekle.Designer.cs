@@ -69,6 +69,7 @@
             this.penta_seri_no_listbox = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.arena_seri_no_listbox = new System.Windows.Forms.ListBox();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::OSBilişim.WaitForm1), true, true);
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -589,6 +590,10 @@
             this.arena_seri_no_listbox.TabIndex = 40;
             this.arena_seri_no_listbox.SelectedIndexChanged += new System.EventHandler(this.arena_seri_no_listbox_SelectedIndexChanged);
             // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
+            // 
             // Ürün_ekle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -672,5 +677,6 @@
         private System.Windows.Forms.Label arenaürünkullanım_label;
         private System.Windows.Forms.Label pentaürünkullanım_label;
         private System.Windows.Forms.Label indexürünkullanım_label;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

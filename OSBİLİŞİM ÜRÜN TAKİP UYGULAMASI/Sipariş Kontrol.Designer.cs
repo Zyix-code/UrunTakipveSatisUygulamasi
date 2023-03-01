@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Siparis_kontrol));
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::OSBilişim.WaitForm1), true, true);
             this.sipariskontrolview = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.üründurumunugüncelle_combobox = new System.Windows.Forms.ComboBox();
@@ -105,6 +106,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
             // 
             // sipariskontrolview
             // 
@@ -469,7 +474,7 @@
             this.groupBox2.Size = new System.Drawing.Size(354, 181);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "ALICI VE FİRMA BİLGİLERİ";
+            this.groupBox2.Text = "Alıcı ve Firma Bilgileri";
             // 
             // label18
             // 
@@ -601,7 +606,7 @@
             this.groupBox3.Size = new System.Drawing.Size(674, 286);
             this.groupBox3.TabIndex = 22;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Ürün Çıkarılan Parça Kontrol";
+            this.groupBox3.Text = "Ürün Çıkarılan Parça Bilgileri";
             // 
             // label12
             // 
@@ -855,8 +860,8 @@
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "selcuksahin158@gmail.com";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
-            this.linkLabel1.MouseLeave += new System.EventHandler(this.linkLabel1_MouseLeave);
-            this.linkLabel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.linkLabel1_MouseMove);
+            this.linkLabel1.MouseLeave += new System.EventHandler(this.LinkLabel1_MouseLeave);
+            this.linkLabel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LinkLabel1_MouseMove);
             // 
             // label19
             // 
@@ -1032,5 +1037,6 @@
         private System.Windows.Forms.Button Arama_btn;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label20;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

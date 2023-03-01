@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraSplashScreen;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,11 +21,12 @@ namespace OSBilişim
         {
             InitializeComponent();
         }
-        readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.123,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
+        readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.110,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
         ErrorProvider provider = new ErrorProvider();
         Kullanıcı_girisi Kullanıcı_girisi = new Kullanıcı_girisi();
         private void Ürün_İsimleri_Düzenleme_Load(object sender, EventArgs e)
         {
+            splashScreenManager1.ShowWaitForm();
             notebook_ürünler_listbox.Enabled = false;
             diger_ürünler_listbox.Enabled = false;
             çıkartılacak_ürünler_listbox.Enabled = false;
@@ -75,7 +77,7 @@ namespace OSBilişim
                             if (dialog == DialogResult.Yes)
                             {
                                 string dosya_dizini = AppDomain.CurrentDomain.BaseDirectory.ToString() + "OSUpdate.exe";
-                                File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.123/Update/OSUpdate.exe"));
+                                File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.110/Update/OSUpdate.exe"));
                                 Process.Start("OSUpdate.exe");
                                 System.Threading.Thread.Sleep(1000);
                                 Application.Exit();
@@ -112,6 +114,7 @@ namespace OSBilişim
                 SqlCommand digerürün = new SqlCommand("SELECT diger_urun_adi from diger_ürünler ", connection);
                 SqlDataReader digerürünokuyucu;
                 digerürünokuyucu = digerürün.ExecuteReader();
+
                 while (digerürünokuyucu.Read())
                 {
                     diger_ürünler_listbox.Items.Add(digerürünokuyucu["diger_urun_adi"]);
@@ -146,6 +149,7 @@ namespace OSBilişim
                 Application.Exit();
             }
             connection.Close();
+            splashScreenManager1.CloseWaitForm();
         }
         private void diger_ürünler_listbox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -448,7 +452,8 @@ namespace OSBilişim
                 {if (notebook_ürünler_listbox.Items.Contains(ürün_adi_textbox.Text))
                         provider.SetError(ürün_adi_textbox, "Notebook ürünlerinde böyle bir ürün mevcut, tekrar deneyiniz.");
                     else
-                    {SqlCommand notebookurungüncelle = new SqlCommand("Update notebook_urunler set urun_adi='" + ürün_adi_textbox.Text + "' where urun_adi = '" + notebook_ürünler_listbox.SelectedItem.ToString() + "'", connection);
+                    {
+                        SqlCommand notebookurungüncelle = new SqlCommand("Update notebook_urunler set urun_adi='" + ürün_adi_textbox.Text + "' where urun_adi = '" + notebook_ürünler_listbox.SelectedItem.ToString() + "'", connection);
                         notebookurungüncelle.ExecuteNonQuery();
                         SqlCommand notebookürünkodlarıürünisimgüncelle = new SqlCommand("Update notebook_urun_kodları set urun_adi='" + ürün_adi_textbox.Text + "' where urun_adi = '" + notebook_ürünler_listbox.SelectedItem.ToString() + "'", connection);
                         notebookürünkodlarıürünisimgüncelle.ExecuteNonQuery();

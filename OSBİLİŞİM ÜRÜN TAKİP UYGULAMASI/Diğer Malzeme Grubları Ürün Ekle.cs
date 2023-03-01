@@ -15,7 +15,7 @@ namespace OSBilişim
         {
             InitializeComponent();
         }
-        readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.123,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
+        readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.110,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
 
         public void Listeyenile()
         {
@@ -87,6 +87,7 @@ namespace OSBilişim
         ErrorProvider provider = new ErrorProvider();
         private void Diğer_malzeme_Grubları_Ürün_ekle_ve_Düzenleme_Load(object sender, EventArgs e)
         {
+            splashScreenManager1.ShowWaitForm();
             Kullanıcı_girisi Kullanıcı_girisi = new Kullanıcı_girisi();
             try
             {
@@ -134,7 +135,7 @@ namespace OSBilişim
                             if (dialog == DialogResult.Yes)
                             {
                                 string dosya_dizini = AppDomain.CurrentDomain.BaseDirectory.ToString() + "OSUpdate.exe";
-                                File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.123/Update/OSUpdate.exe"));
+                                File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.110/Update/OSUpdate.exe"));
                                 Process.Start("OSUpdate.exe");
                                 System.Threading.Thread.Sleep(1000);
                                 Application.Exit();
@@ -196,6 +197,7 @@ namespace OSBilişim
                 MessageBox.Show("Ürün bilgileri alınamadı, bağlantı kesildi.\nHata kodu: " + hata.Message, "OS BİLİŞİM", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
+            splashScreenManager1.CloseWaitForm();
         }
 
         private void Diger_ürünler_listbox_SelectedIndexChanged(object sender, EventArgs e)
@@ -209,7 +211,7 @@ namespace OSBilişim
                 diger_ürün_adi_textbox.Text = diger_ürün_adi_listbox.SelectedItem.ToString();
                 try
                 {
-                    using (var cn = new SqlConnection("server=192.168.1.123,1433;database=OSBİLİSİM;UId=Admin;Pwd=1;MultipleActiveResultSets=True;"))
+                    using (var cn = new SqlConnection("server=192.168.1.110,1433;database=OSBİLİSİM;UId=Admin;Pwd=1;MultipleActiveResultSets=True;"))
                     using (var cmd = new SqlCommand(@"select COUNT(diger_urun_serino) from diger_ürün_stok where diger_urun_durumu = 'Kullanılmadı' and diger_urun_adi = '" + diger_ürün_adi_listbox.SelectedItem.ToString() + "'", cn))
                     {
                         cn.Open();

@@ -209,7 +209,7 @@
             // 
             this.loginpanel_gelistiren_label.AutoSize = true;
             this.loginpanel_gelistiren_label.Font = new System.Drawing.Font("Century Gothic", 7F);
-            this.loginpanel_gelistiren_label.ForeColor = System.Drawing.Color.Black;
+            this.loginpanel_gelistiren_label.ForeColor = System.Drawing.Color.White;
             this.loginpanel_gelistiren_label.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.loginpanel_gelistiren_label.Location = new System.Drawing.Point(267, 452);
             this.loginpanel_gelistiren_label.Name = "loginpanel_gelistiren_label";
@@ -231,9 +231,6 @@
             // toolTip1
             // 
             this.toolTip1.IsBalloon = true;
-            this.toolTip1.Tag = "Bilgilendirme";
-            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.toolTip1.ToolTipTitle = "Bilgilendirme";
             // 
             // windows_kücültme_label
             // 
@@ -473,10 +470,10 @@
             this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(53)))), ((int)(((byte)(56)))));
             this.linkLabel1.Location = new System.Drawing.Point(562, 464);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(151, 16);
+            this.linkLabel1.Size = new System.Drawing.Size(133, 16);
             this.linkLabel1.TabIndex = 13;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "selcuksahin158@gmail.com\r\n";
+            this.linkLabel1.Text = "teknik@trentatek.com.tr";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
             this.linkLabel1.MouseLeave += new System.EventHandler(this.linkLabel1_MouseLeave);
             this.linkLabel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.linkLabel1_MouseMove);
@@ -485,7 +482,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 8F);
-            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(27)))));
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label6.Location = new System.Drawing.Point(378, 433);
             this.label6.Name = "label6";
@@ -494,7 +491,7 @@
             this.label6.Text = "Bu uygulamaya ilgili \r\nherhangi bir sorun, şikayet ve öneri için\r\nbir -eposta mes" +
     "aji gönderebilirsiniz";
             // 
-            // Diğer_Malzeme_Grubları
+            // Diger_malzeme_grubları_siparis_olusturma
             // 
             this.AcceptButton = this.siparis_gonder;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -511,7 +508,7 @@
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Diğer_Malzeme_Grubları";
+            this.Name = "Diger_malzeme_grubları_siparis_olusturma";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Diğer_Malzeme_Grubları";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Diğer_Malzeme_Grubları_FormClosed);

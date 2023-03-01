@@ -73,7 +73,7 @@ namespace OSBilişim
             }
             else { provider.SetError(yenisifretextbox,"Girdiğiniz şifreler birbiri ile uyuşmamaktadır kontrol ediniz."); provider.SetError(yenisifretekrartextbox, "Girdiğiniz şifreler birbiri ile uyuşmamaktadır kontrol ediniz."); }
         }
-        readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.123,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
+        readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.110,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
         private void Sifresıfırlamaforum_Load(object sender, EventArgs e)
         {
             yenisifretekrartextbox.UseSystemPasswordChar = true;
@@ -126,7 +126,7 @@ namespace OSBilişim
                             if (dialog == DialogResult.Yes)
                             {
                                 string dosya_dizini = AppDomain.CurrentDomain.BaseDirectory.ToString() + "OSUpdate.exe";
-                                File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.123/Update/OSUpdate.exe"));
+                                File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.110/Update/OSUpdate.exe"));
                                 Process.Start("OSUpdate.exe");
                                 System.Threading.Thread.Sleep(1000);
                                 Application.Exit();

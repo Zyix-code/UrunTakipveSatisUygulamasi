@@ -20,9 +20,10 @@ namespace OSBilişim
             InitializeComponent();
         }
 
-        readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.123,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
+        readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.110,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
         private void Anaform_Load(object sender, EventArgs e)
         {
+            splashScreenManager1.ShowWaitForm();
             isim = isim_label.Text;
             statü = statü_label.Text;
             Kullanıcı_girisi Kullanıcı_girisi = new Kullanıcı_girisi();
@@ -73,7 +74,7 @@ namespace OSBilişim
                             if (dialog == DialogResult.Yes)
                             {
                                 string dosya_dizini = AppDomain.CurrentDomain.BaseDirectory.ToString() + "OSUpdate.exe";
-                                File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.123/Update/OSUpdate.exe"));
+                                File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.110/Update/OSUpdate.exe"));
                                 Process.Start("OSUpdate.exe");
                                 System.Threading.Thread.Sleep(1000);
                                 Application.Exit();
@@ -196,6 +197,7 @@ namespace OSBilişim
                 Application.Exit();
             }
             tarih_label.Text = DateTime.Now.ToLongDateString();
+            splashScreenManager1.CloseWaitForm();
         }
         private void Anaform_FormClosed(object sender, FormClosedEventArgs e)
         {

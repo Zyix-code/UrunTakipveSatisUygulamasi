@@ -76,6 +76,7 @@
             this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label14 = new System.Windows.Forms.Label();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::OSBilişim.WaitForm1), true, true);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -636,6 +637,10 @@
             this.label14.Text = "Bu uygulamaya ilgili \r\nherhangi bir sorun, şikayet ve öneri için\r\nbir -eposta mes" +
     "aji gönderebilirsiniz";
             // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
+            // 
             // Siparis_olusturma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -723,5 +728,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox satış_yapılan_firma;
         private System.Windows.Forms.Label label7;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

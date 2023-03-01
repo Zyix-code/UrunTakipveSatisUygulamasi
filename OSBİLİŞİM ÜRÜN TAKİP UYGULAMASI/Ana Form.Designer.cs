@@ -43,6 +43,7 @@
             this.soyisim_label = new System.Windows.Forms.Label();
             this.isim_label = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.loginpanel_gelistiren_label = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
@@ -59,7 +60,7 @@
             this.yenikullanici_btn = new System.Windows.Forms.Button();
             this.ürün_düzenleme_btn = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::OSBilişim.WaitForm1), true, true);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -255,6 +256,16 @@
             this.label5.Size = new System.Drawing.Size(136, 25);
             this.label5.TabIndex = 12;
             this.label5.Text = "Kayıt tarihi: ";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::OSBilişim.Properties.Resources.teknikservis_man;
+            this.pictureBox1.Location = new System.Drawing.Point(116, 33);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(128, 128);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
             // 
             // loginpanel_gelistiren_label
             // 
@@ -475,15 +486,9 @@
             this.ürün_düzenleme_btn.MouseLeave += new System.EventHandler(this.ürün_düzenleme_btn_MouseLeave);
             this.ürün_düzenleme_btn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ürün_düzenleme_btn_MouseMove);
             // 
-            // pictureBox1
+            // splashScreenManager1
             // 
-            this.pictureBox1.Image = global::OSBilişim.Properties.Resources.teknikservis_man;
-            this.pictureBox1.Location = new System.Drawing.Point(116, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(128, 128);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
+            this.splashScreenManager1.ClosingDelay = 500;
             // 
             // Anaform
             // 
@@ -556,5 +561,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button yenikullanici_btn;
         private System.Windows.Forms.Button ürün_düzenleme_btn;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

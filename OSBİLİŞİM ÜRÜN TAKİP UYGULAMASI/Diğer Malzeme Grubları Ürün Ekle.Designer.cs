@@ -58,6 +58,7 @@
             this.diger_ürün_kodu_listbox = new System.Windows.Forms.ListBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::OSBilişim.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -437,6 +438,10 @@
             this.label6.Text = "Bu uygulamaya ilgili \r\nherhangi bir sorun, şikayet ve öneri için\r\nbir -eposta mes" +
     "aji gönderebilirsiniz";
             // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
+            // 
             // Diger_malzeme_grubları_urun_ekle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,5 +506,6 @@
         private System.Windows.Forms.Label ürünkalankullanımlabel;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label6;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

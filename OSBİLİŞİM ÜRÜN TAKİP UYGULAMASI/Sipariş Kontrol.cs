@@ -12,9 +12,6 @@ using System.Net;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Data.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OSBilişim
 {
@@ -25,7 +22,7 @@ namespace OSBilişim
         {
             InitializeComponent();
         }
-        ErrorProvider provider = new ErrorProvider();
+        readonly ErrorProvider provider = new ErrorProvider();
 
         private void Sipariskontrol_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -157,7 +154,7 @@ namespace OSBilişim
                                         using (StreamWriter x = File.AppendText("OSBilisim-log.log"))
                                         {
                                             Kullanıcı_girisi.Parcalarlog("-------------------------------", x);
-                                            Kullanıcı_girisi.Parcalarlog("Sipariş için takılacak parçalar", x);
+                                            Kullanıcı_girisi.Parcalarlog("  ", x);
                                         }
                                         using (StreamReader r = File.OpenText("OSBilisim-log.log"))
                                         {
@@ -255,6 +252,7 @@ namespace OSBilişim
                     DataTable datagorev = new DataTable();
                     komut.Fill(datagorev);
                     sipariskontrolview.DataSource = datagorev;
+                    sipariskontrolview.Columns["siparis_id"].Visible = false;
                     connection.Close();
                 }
             }
@@ -274,9 +272,10 @@ namespace OSBilişim
             }
         }
 
-        readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.123,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
+        readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.110,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
         private void Sipariskontrol_Load(object sender, EventArgs e)
         {
+            splashScreenManager1.ShowWaitForm();
             string connectionString = connection.ConnectionString;
             var maxId = new DataContext(connectionString)
                    .ExecuteQuery<int?>("select max(siparis_id) from siparisler")
@@ -336,7 +335,7 @@ namespace OSBilişim
                             if (dialog == DialogResult.Yes)
                             {
                                 string dosya_dizini = AppDomain.CurrentDomain.BaseDirectory.ToString() + "OSUpdate.exe";
-                                File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.123/Update/OSUpdate.exe"));
+                                File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.110/Update/OSUpdate.exe"));
                                 Process.Start("OSUpdate.exe");
                                 System.Threading.Thread.Sleep(1000);
                                 Application.Exit();
@@ -397,10 +396,11 @@ namespace OSBilişim
             connection.Close();
             SipariskontrolviewSetting(sipariskontrolview);
             Siparisgetir();
+            splashScreenManager1.CloseWaitForm();
         }
         public void Handle_SiparisControl(object sender, System.Timers.ElapsedEventArgs e)
         {
-            string connectionString = "server=192.168.1.123,1433;database=OSBİLİSİM;UId=Admin;Pwd=1;MultipleActiveResultSets=True;";
+            string connectionString = "server=192.168.1.110,1433;database=OSBİLİSİM;UId=Admin;Pwd=1;MultipleActiveResultSets=True;";
 
             var siparisler = new DataContext(connectionString)
                    .ExecuteQuery<int>("select siparis_id from siparisler where siparis_id > {0}", lastId)
@@ -1037,7 +1037,7 @@ namespace OSBilişim
             }
             using (FileStream stream = new FileStream("D:\\VeritabanıYedek/" + DateTime.Now.ToString("dd.MM.yyyy") + "-OSBilisim_satisraporu" + ".pdf", FileMode.Create))
             {
-                Document pdfDoc = new Document(PageSize.A4, 30f, 30f, 42f, 30f);// sayfa boyutu.
+                Document pdfDoc = new Document(PageSize.A4, 30f, 30f, 42f, 30f);
                 PdfWriter.GetInstance(pdfDoc, stream);
                 pdfDoc.Open();
                 pdfDoc.Add(pdfTable);
@@ -1347,12 +1347,12 @@ namespace OSBilişim
             kullanilacak_malzeme_serino_ekle_btn.BackColor = Color.FromArgb(13, 31, 33);
            
         }
-        private void linkLabel1_MouseLeave(object sender, EventArgs e)
+        private void LinkLabel1_MouseLeave(object sender, EventArgs e)
         {
             linkLabel1.LinkColor = Color.FromArgb(22, 53, 56);
         }
 
-        private void linkLabel1_MouseMove(object sender, MouseEventArgs e)
+        private void LinkLabel1_MouseMove(object sender, MouseEventArgs e)
         {
             linkLabel1.LinkColor = Color.FromArgb(13, 31, 33);
         }
@@ -1472,7 +1472,7 @@ namespace OSBilişim
                 }
                 else
                 {
-                    SqlCommand komut = new SqlCommand("select * from siparisler where urun_adi Like'%" + Arama_textbox.Text + "%' OR urun_stok_kodu Like '%" + Arama_textbox.Text + "%' OR urun_seri_no Like '%" + Arama_textbox.Text + "%' OR urun_adeti Like '%" + Arama_textbox.Text + "%' OR teslim_alacak_kisi_adi Like '%" + Arama_textbox.Text + "%' OR teslim_alacak_kisi_soyadi Like '%" + Arama_textbox.Text + "%' OR urun_hazirlik_durumu Like '%" + Arama_textbox.Text + "%'", connection);
+                    SqlCommand komut = new SqlCommand("select * from siparisler where urun_adi Like'%" + Arama_textbox.Text + "%' OR urun_stok_kodu Like '%" + Arama_textbox.Text + "%' OR urun_seri_no Like '%" + Arama_textbox.Text + "%' OR urun_adeti Like '%" + Arama_textbox.Text + "%' OR teslim_alacak_kisi_adi Like '%" + Arama_textbox.Text + "%' OR teslim_alacak_kisi_soyadi Like '%" + Arama_textbox.Text + "%' OR urun_hazirlik_durumu Like '%" + Arama_textbox.Text + "%' OR sip_no Like '%" + Arama_textbox.Text + "%'", connection);
                     SqlDataAdapter okuyucu = new SqlDataAdapter(komut);
                     DataSet ds = new DataSet();
                     okuyucu.Fill(ds);

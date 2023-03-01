@@ -16,7 +16,7 @@ namespace OSBilişim
             InitializeComponent();
         }
 
-        readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.123,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
+        readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.110,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
 
         private void Ana_menü_btn_Click(object sender, EventArgs e)
         {
@@ -109,7 +109,7 @@ namespace OSBilişim
                             if (dialog == DialogResult.Yes)
                             {
                                 string dosya_dizini = AppDomain.CurrentDomain.BaseDirectory.ToString() + "OSUpdate.exe";
-                                File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.123/Update/OSUpdate.exe"));
+                                File.WriteAllBytes(@"OSUpdate.exe", new WebClient().DownloadData("http://192.168.1.106/Update/OSUpdate.exe"));
                                 Process.Start("OSUpdate.exe");
                                 System.Threading.Thread.Sleep(1000);
                                 Application.Exit();
@@ -282,7 +282,7 @@ namespace OSBilişim
                     {
                         if (ürünün_satıldığı_firma.SelectedItem.ToString() == "Diğer")
                         {
-                            using (var cn = new SqlConnection("server=192.168.1.123,1433;database=OSBİLİSİM;UId=Admin;Pwd=1;MultipleActiveResultSets=True;"))
+                            using (var cn = new SqlConnection("server=192.168.1.106,1433;database=OSBİLİSİM;UId=Admin;Pwd=1;MultipleActiveResultSets=True;"))
                             using (var cmd = new SqlCommand(@"select max(try_cast(sip_no as int)) from siparisler where urunun_satildigi_firma = 'Diğer'", cn))
                             {
                                 cn.Open();
@@ -516,6 +516,8 @@ namespace OSBilişim
                     Kullanıcı_girisi Kullanıcı_girisi = new Kullanıcı_girisi();
                     SqlCommand kullanicidurumgüncelle = new SqlCommand("Update kullanicilar set durum='" + 0 + "' where k_adi = '" + Kullanıcı_girisi.username + "'", connection);
                     kullanicidurumgüncelle.ExecuteNonQuery();
+                    Kullanıcı_girisi.Show();
+                    Hide();
                 }
             }
             catch (Exception kullaniciaktifligi)

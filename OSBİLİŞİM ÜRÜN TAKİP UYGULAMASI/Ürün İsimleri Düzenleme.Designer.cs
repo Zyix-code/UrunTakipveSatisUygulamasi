@@ -57,6 +57,7 @@
             this.çıkartılacak_ürünler_listbox = new System.Windows.Forms.ListBox();
             this.kullanilacak_ürünler_listbox = new System.Windows.Forms.ListBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::OSBilişim.WaitForm1), true, true);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -414,6 +415,10 @@
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTip1.ToolTipTitle = "Bilgilendirme";
             // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
+            // 
             // Ürün_İsimleri_Düzenleme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -484,5 +489,6 @@
         private System.Windows.Forms.ListBox çıkartılacak_ürünler_listbox;
         private System.Windows.Forms.ListBox kullanilacak_ürünler_listbox;
         private System.Windows.Forms.ToolTip toolTip1;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

@@ -20,7 +20,7 @@ namespace OSBilişim
         }
         ErrorProvider provider = new ErrorProvider();
 
-        readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.123,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
+        readonly SqlConnection connection = new SqlConnection("Data Source=192.168.1.110,1433;Network Library=DBMSSOCN; Initial Catalog=OSBİLİSİM;User Id=Admin; Password=1; MultipleActiveResultSets=True;");
         private void Yeni_Kullanici_Load(object sender, EventArgs e)
         {
             kayit_tarihi_textbox.Text = DateTime.Now.ToString();
@@ -148,7 +148,7 @@ namespace OSBilişim
                 e.Handled = true;
                 provider.SetError(kadi_textbox, "Kullanıcı adın'a özel karakter giriş yapmazsınız.");
             }
-            if ((int)e.KeyChar >= 33 && (int)e.KeyChar <= 47)
+            if (e.KeyChar >= 33 && e.KeyChar <= 47)
             {
                 e.Handled = true;
                 provider.SetError(kadi_textbox, "Kullanıcı adın'a özel karakter giriş yapmazsınız.");
@@ -274,32 +274,32 @@ namespace OSBilişim
 
         private void olustur_btn_MouseMove(object sender, MouseEventArgs e)
         {
-            olustur_btn.BackColor = Color.FromArgb(13, 31, 33);
+            olustur_btn.ForeColor = Color.FromArgb(13, 31, 33);
         }
 
         private void olustur_btn_MouseLeave(object sender, EventArgs e)
         {
-            olustur_btn.BackColor = Color.FromArgb(22, 53, 56);
+            olustur_btn.ForeColor = Color.FromArgb(22, 53, 56);
         }
 
         private void logout_label_MouseMove(object sender, MouseEventArgs e)
         {
-            logout_label.BackColor = Color.FromArgb(13, 31, 33);
+            logout_label.ForeColor = Color.FromArgb(13, 31, 33);
         }
 
         private void logout_label_MouseLeave(object sender, EventArgs e)
         {
-            logout_label.BackColor = Color.FromArgb(22, 53, 56);
+            logout_label.ForeColor = Color.FromArgb(22, 53, 56);
         }
 
         private void label3_MouseMove(object sender, MouseEventArgs e)
         {
-            label3.BackColor = Color.FromArgb(13, 31, 33);
+            label3.ForeColor = Color.FromArgb(13, 31, 33);
         }
 
         private void label3_MouseLeave(object sender, EventArgs e)
         {
-            label3.BackColor = Color.FromArgb(22, 53, 56);
+            label3.ForeColor = Color.FromArgb(22, 53, 56);
         }
     }
 }

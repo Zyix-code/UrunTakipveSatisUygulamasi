@@ -1086,19 +1086,19 @@ namespace OSBilişim
                             EnableSsl = true
                         };
 
-                        string kime = "teknik@trentatek.com.tr";
+                        string kime = "SİZİN MAİL ADRESİNİZ";
                         string konu = "OSBİLİŞİM - Yedek Dosyaları";
-                        sc.Credentials = new NetworkCredential("teknik@trentatek.com.tr", "A6P3e2DvK6");
+                        sc.Credentials = new NetworkCredential("SİNİZ MAİL ADRESİNİZ", "SİZİN ŞİFRENİZ");
                         MailMessage mail = new MailMessage
                         {
-                            From = new MailAddress("teknik@trentatek.com.tr", "OS BİLİŞİM")
+                            From = new MailAddress("SİNİZ MAİL ADRESİNİZ", "OS BİLİŞİM")
                         };
                         mail.To.Add(kime);
-                        mail.To.Add("teknik@trentatek.com.tr");
-                        mail.To.Add("onur.demir@osbilisim.com.tr");
-                        mail.To.Add("alper@osbilisim.com.tr");
-                        mail.To.Add("yener.guner@trentatek.com.tr");
-                        mail.To.Add("selcuksahin158@gmail.com");
+                        mail.To.Add("SİNİZ MAİL ADRESİNİZ");
+                        mail.To.Add("GÖNDERİLECEK 1. MAİL");
+                        mail.To.Add("GÖNDERİLECEK 2. MAİL");
+                        mail.To.Add("GÖNDERİLECEK 3. MAİL");
+                        mail.To.Add("GÖNDERİLECEK 4. MAİL");
                         mail.Subject = konu;
                         mail.IsBodyHtml = true;
                         string htmlString = "<html>" +
@@ -1499,4 +1499,5 @@ namespace OSBilişim
 
        
     }
+
 }
